@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 plt.ion()
-background = plt.imread("/home/alexis/Escritorio/asot.jpg")  # Leemos la imagen que queremos usar de fondo, lo que escribáis entre comillas es la ruta a la imagen
+background = plt.imread("./RUTA")  # Leemos la imagen que queremos usar de fondo, lo que escribáis entre comillas es la ruta a la imagen
 x = np.arange(background.shape[1])  # Definimos valores de x
 y = np.random.rand(background.shape[0]) * background.shape[0]  # Definimos valores de y
 plt.plot(x, y)  # Dibujamos la serie
