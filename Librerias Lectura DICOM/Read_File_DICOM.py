@@ -1,11 +1,8 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-import matplotlib.pyplot as plt
-import numpy as np
+import dicom
+import pylab
 
-plt.ion()
-background = plt.imread("./RUTA")  # Leemos la imagen que queremos usar de fondo, lo que escribáis entre comillas es la ruta a la imagen
-x = np.arange(background.shape[1])  # Definimos valores de x
-y = np.random.rand(background.shape[0]) * background.shape[0]  # Definimos valores de y
-plt.plot(x, y)  # Dibujamos la serie
-plt.imshow(background, alpha = 0.25)  # Creamos el fondo con una transparencia del 0.10 (1 es opaco y 0 es transparente)
+ds=dicom.read_file("/home/alexis/Escritorio/my/ejemplo")
+print(ds.pixel_array)
+print(ds.pixel_array.shape)
+pylab.imshow(ds.pixel_array, cmap=pylab.cm.bone)
+pylab.show()
