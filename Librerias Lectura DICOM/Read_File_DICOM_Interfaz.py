@@ -9,7 +9,7 @@ forward = NavigationToolbar2.forward
 
 position = 0
 A = []
-path = "/home/alexis/Escritorio/imgDicom"
+path = "/home/garo/Documents/Trabajo-Terminal/Ejemplo CD DICOM"
 
 def new_home(self, *args, **kwargs):
 	print 'chosto'
@@ -19,6 +19,8 @@ def new_back(self, *args, **kwargs):
 	global position	
 	position -= 1
 	pylab.imshow(A[position].pixel_array, cmap=pylab.cm.bone)
+	print A[position].pixel_array
+	print A[position].pixel_array[200][200]
 	pylab.show()
 	back(self, *args, **kwargs)
 
@@ -26,6 +28,8 @@ def new_forward(self, *args, **kwargs):
 	global position	
 	position += 1
 	pylab.imshow(A[position].pixel_array, cmap=pylab.cm.bone)
+	print A[position].pixel_array
+	print A[position].pixel_array[200][200]
 	pylab.show()
 	forward(self, *args, **kwargs)
 
