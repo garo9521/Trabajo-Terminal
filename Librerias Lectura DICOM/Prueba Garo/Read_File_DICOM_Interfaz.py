@@ -13,7 +13,8 @@ Colores = {'azul' : (HexToDec('00'), HexToDec('00'), HexToDec('ff')),
 		   'amarillo' : (239, 235, 9),
 		   'naranja' : (239, 174, 9),
 		   'morado' : (185, 9, 239),
-		   'verde' : (44, 239, 9)
+		   'verde' : (44, 239, 9),
+		   'negro' : (0, 0, 0)
 		  }
 
 
@@ -32,6 +33,8 @@ def Umbralizacion(x, y, pixeles):
 			if j >= x + 1000 and j <= y + 1000:
 				
 				vectorAux.append(Colores['azul'])
+			elif j >= 0 and j <= 900:
+				vectorAux.append(Colores['morado'])
 			else:
 				a = EscalaGrises(j)
 				vectorAux.append((a, a, a))
@@ -45,8 +48,8 @@ forward = NavigationToolbar2.forward
 
 position = 0
 A = []
-path = "/home/alexis/Escritorio/imgDicom"
-path = "/home/garo/Documents/Trabajo-Terminal/Ejemplos Archivos DICOM/Ejemplo CD DICOM"
+path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\Ejemplo CD DICOM"   # Ruta Windows
+#path = "/home/garo/Documents/Trabajo-Terminal/Ejemplos Archivos DICOM/Ejemplo CD DICOM"  # Ruta Ubuntu
 print path
 
 def new_home(self, *args, **kwargs):
@@ -77,12 +80,7 @@ for fil in dirs:
 	aux = path + "/" + fil 
 	A.append(dicom.read_file(aux))			
 
-binarizacion = Umbralizacion(0, 100, A[0].pixel_array)
-#print binarizacion
-
-# im = Image.open("image.png")
-# a = list(im.getdata())
-# im.putdata(binarizacion)
+binarizacion = Umbralizacion(0, 900, A[0].pixel_array)
 N = len(binarizacion)
 M = len(binarizacion[0])
 img = Image.new('RGB', (N, M))
@@ -98,6 +96,7 @@ img.save('myimg.png')
 #im = pylab.imshow(binarizacion, interpolation='none', aspect='auto')
 #pylab.colorbar(im, orientation='horizontal')
 # pylab.show()
-pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
+pylab.imshow(img)
+#pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
 pylab.show()
 
