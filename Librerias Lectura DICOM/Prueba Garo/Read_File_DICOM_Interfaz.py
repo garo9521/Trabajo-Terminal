@@ -78,7 +78,7 @@ dirs = os.listdir(path)
 
 for fil in dirs:		    
 	aux = path + "/" + fil 
-	A.append(dicom.read_file(aux))			
+	A.append(dicom.read_file(aux))	
 
 binarizacion = Umbralizacion(0, 900, A[0].pixel_array)
 N = len(binarizacion)
