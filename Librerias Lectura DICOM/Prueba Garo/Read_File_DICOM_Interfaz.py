@@ -14,9 +14,19 @@ Colores = {'azul' : (HexToDec('00'), HexToDec('00'), HexToDec('ff')),
 		   'naranja' : (239, 174, 9),
 		   'morado' : (185, 9, 239),
 		   'verde' : (44, 239, 9),
+		   'crema' : (255, 255, 191),
+		   'gris' : (171, 171, 171),
+		   'rosa' : (247, 191, 190),
 		   'negro' : (0, 0, 0)
 		  }
-
+Rango = { (-1000, -899) : 'gris',  		# aire
+		  (-900, -500)  : 'rosa',   	# pulmones
+		  (-5, 5) 		: 'azul',       # agua
+          (-100, -80) 	: 'amarillo',  	# grasa
+          (250, 2000) 	: 'crema',   	# hueso compacto
+          (100, 230)   	: 'naranja',	# hueso esponjoso
+		  (10, 90)		: 'rojo'		# organos
+}
 
 def EscalaGrises(x):
 	value = int((2.0 ** 8 / 2000.0) * x)
@@ -24,20 +34,19 @@ def EscalaGrises(x):
 	value = max(0, value) 
 	return value
 
-def Umbralizacion(x, y, pixeles):
+def Umbralizacion(rango, pixeles):
 	nuevaPixeles = []
 
 	for i in pixeles:
 		vectorAux = []
 		for j in i:
-			if j >= x + 1000 and j <= y + 1000:
-				
-				vectorAux.append(Colores['azul'])
-			elif j >= 0 and j <= 900:
-				vectorAux.append(Colores['morado'])
-			else:
-				a = EscalaGrises(j)
-				vectorAux.append((a, a, a))
+			j -= 1000
+			color = (0, 0, 0)
+			for k in rango:
+				if k[0] <= j and k[1] >= j:
+					color = Colores[rango[k]]
+					break
+			vectorAux.append(color)
 		nuevaPixeles.append(vectorAux)
 
 	return nuevaPixeles
@@ -59,14 +68,34 @@ def new_home(self, *args, **kwargs):
 def new_back(self, *args, **kwargs):	
 	global position	
 	position -= 1
-	pylab.imshow(A[position].pixel_array, cmap=pylab.cm.bone)
+	binarizacion = Umbralizacion(Rango, A[position].pixel_array)
+	N = len(binarizacion)
+	M = len(binarizacion[0])
+	img = Image.new('RGB', (N, M))
+	auxArray = []
+	for i in binarizacion:
+		for j in i:
+			auxArray.append(j)
+	img.putdata(auxArray)
+	
+	pylab.imshow(img)
 	pylab.show()
 	back(self, *args, **kwargs)
 
 def new_forward(self, *args, **kwargs):	
 	global position	
 	position += 1
-	pylab.imshow(A[position].pixel_array, cmap=pylab.cm.bone)
+	binarizacion = Umbralizacion(Rango, A[position].pixel_array)
+	N = len(binarizacion)
+	M = len(binarizacion[0])
+	img = Image.new('RGB', (N, M))
+	auxArray = []
+	for i in binarizacion:
+		for j in i:
+			auxArray.append(j)
+	img.putdata(auxArray)
+	
+	pylab.imshow(img)
 	pylab.show()
 	forward(self, *args, **kwargs)
 
@@ -80,7 +109,7 @@ for fil in dirs:
 	aux = path + "/" + fil 
 	A.append(dicom.read_file(aux))	
 
-binarizacion = Umbralizacion(0, 900, A[0].pixel_array)
+binarizacion = Umbralizacion(Rango, A[0].pixel_array)
 N = len(binarizacion)
 M = len(binarizacion[0])
 img = Image.new('RGB', (N, M))
@@ -89,7 +118,6 @@ for i in binarizacion:
 	for j in i:
 		auxArray.append(j)
 img.putdata(auxArray)
-img.save('myimg.png')
 
 # pylab.imshow(binarizacion, cmap = pylab.cm.bone)
 #pylab.show()
