@@ -9,7 +9,8 @@ Colores = {'azul' : (0, 0, 255),
 		   'rosa' : (247, 191, 190),
 		   'negro' : (0, 0, 0) }
 
-Rango = { (-1000, -899) : 'gris',  		# aire
+				   #Escala de Hounsfield
+RangoHouns = { (-1000, -899) : 'gris',  		# aire
 		  (-900, -500)  : 'rosa',   	# pulmones
 		  (-5, 5) 		: 'azul',       # agua
           (-100, -80) 	: 'amarillo',  	# grasa
@@ -18,20 +19,27 @@ Rango = { (-1000, -899) : 'gris',  		# aire
 		  (10, 90)		: 'rojo'		# organos
 }
 
-def Umbralizacion(rango, originalPix):
-	nuevaPix = []
 
+def EscalaGrises(x):    # Es una escala sencilla
+	value = int((2.0 ** 8 / 2000.0) * x)
+	value = min(255, value)
+	value = max(0, value) 
+	return value
+
+def Umbral(originalPix):
+	nuevoPix = []
+	global RangoHouns
 	for i in originalPix:
 		auxV = []
 		for j in i:
 			j -= 1000
 			a = EscalaGrises(j + 10000)
 			color = (a, a, a)
-			for k in rango:
+			for k in RangoHouns:
 				if k[0] <= j and k[1] >= j:
-					color = Colores[rango[k]]
+					color = Colores[RangoHouns[k]]
 					break
 			auxV.append(color)
-		nuevaPix.append(auxV)
+		nuevoPix.append(auxV)
 
-	return nuevaPixeles
+	return nuevoPix
