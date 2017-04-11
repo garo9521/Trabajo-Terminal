@@ -1,17 +1,32 @@
-import dicom
-import pylab
+import dicom, pylab, os, sys
 from matplotlib.backend_bases import NavigationToolbar2
-import os, sys
 from PIL import Image
-import numpy as np
 
 from Umbralizacion import Umbral
 from RegionCreciente import *
+
+from Tkinter import *
+from tkFileDialog import *
 
 home = NavigationToolbar2.home
 back = NavigationToolbar2.back
 forward = NavigationToolbar2.forward
 position = 0
+
+def LeerArchivosDICOM():
+	root = Tk()
+	root.withdraw()
+	filez = askdirectory(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
+	paths = [filez]
+	A = []
+	print "La ruta de las imagenes cargadas:", filez
+	for path in paths:
+		dirs = os.listdir(path)
+		print len(dirs)
+		for fil in dirs:		    
+			aux = path + "/" + fil 
+			A.append(dicom.read_file(aux))	
+	return A
 
 def CrearImagenRGB(Pixeles):
 	N = len(Pixeles)
@@ -54,22 +69,16 @@ NavigationToolbar2.home = new_home
 NavigationToolbar2.back = new_back
 NavigationToolbar2.forward = new_forward
 
-A = []
-# Ruta Windows
-path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\Ejemplo CD DICOM"   
+# # Ruta Windows
+# path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\Ejemplo CD DICOM"   
 
-# Ruta Ubuntu
-#path = "/home/garo/Documents/Trabajo-Terminal/Ejemplos Archivos DICOM/Ejemplo CD DICOM"  
+# # Ruta Ubuntu
+# #path = "/home/garo/Documents/Trabajo-Terminal/Ejemplos Archivos DICOM/Ejemplo CD DICOM"  
 
-path = "C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\Ejemplos Archivos DICOM\\32370000"
-print "La ruta de las imagenes cargadas:", path
+# path = "C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\Ejemplos Archivos DICOM\\32370000"
 
+A = LeerArchivosDICOM()
 
-dirs = os.listdir(path)
-
-for fil in dirs:		    
-	aux = path + "/" + fil 
-	A.append(dicom.read_file(aux))	
 print A[0].pixel_array
 #binarizacion = Umbral(A[0].pixel_array)
 binarizacion = RegionCrecienteOrigen(A[0].pixel_array, 0, 0)
