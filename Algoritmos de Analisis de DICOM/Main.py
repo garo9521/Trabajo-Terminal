@@ -1,12 +1,13 @@
 import dicom, pylab, os, sys
+import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.backend_bases import NavigationToolbar2
 from PIL import Image
+from Tkinter import *
+from tkFileDialog import *
 
 from Umbralizacion import Umbral
 from RegionCreciente import *
-
-from Tkinter import *
-from tkFileDialog import *
 
 home = NavigationToolbar2.home
 back = NavigationToolbar2.back
@@ -69,17 +70,12 @@ NavigationToolbar2.home = new_home
 NavigationToolbar2.back = new_back
 NavigationToolbar2.forward = new_forward
 
-# # Ruta Windows
-# path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\Ejemplo CD DICOM"   
-
-# # Ruta Ubuntu
-# #path = "/home/garo/Documents/Trabajo-Terminal/Ejemplos Archivos DICOM/Ejemplo CD DICOM"  
-
-# path = "C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\Ejemplos Archivos DICOM\\32370000"
-
 A = LeerArchivosDICOM()
 
-print A[0].pixel_array
+lum_img = np.array(A[0].pixel_array)
+plt.hist(lum_img.ravel(), bins = 400, range = (800, 1200), fc='k', ec='k')
+plt.show(block = False)
+print lum_img
 #binarizacion = Umbral(A[0].pixel_array)
 binarizacion = RegionCrecienteOrigen(A[0].pixel_array, 0, 0)
 # N = len(binarizacion)
