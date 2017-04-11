@@ -41,7 +41,8 @@ def Umbralizacion(rango, pixeles):
 		vectorAux = []
 		for j in i:
 			j -= 1000
-			color = (0, 0, 0)
+			a = EscalaGrises(j + 10000)
+			color = (a, a, a)
 			for k in rango:
 				if k[0] <= j and k[1] >= j:
 					color = Colores[rango[k]]
@@ -59,6 +60,7 @@ position = 0
 A = []
 path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\Ejemplo CD DICOM"   # Ruta Windows
 #path = "/home/garo/Documents/Trabajo-Terminal/Ejemplos Archivos DICOM/Ejemplo CD DICOM"  # Ruta Ubuntu
+path = "C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\Ejemplos Archivos DICOM\\55080000"
 print path
 
 def new_home(self, *args, **kwargs):
@@ -108,7 +110,7 @@ dirs = os.listdir(path)
 for fil in dirs:		    
 	aux = path + "/" + fil 
 	A.append(dicom.read_file(aux))	
-
+print A[0].pixel_array
 binarizacion = Umbralizacion(Rango, A[0].pixel_array)
 N = len(binarizacion)
 M = len(binarizacion[0])
