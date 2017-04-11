@@ -1,4 +1,4 @@
-Colores = {'azul' : (HexToDec('00'), HexToDec('00'), HexToDec('ff')),
+Colores = {'azul' : (0, 0, 255),
 		   'rojo' : (239, 9, 9),
 		   'amarillo' : (239, 235, 9),
 		   'naranja' : (239, 174, 9),
