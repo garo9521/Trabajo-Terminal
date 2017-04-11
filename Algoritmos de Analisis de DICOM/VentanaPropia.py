@@ -1,7 +1,6 @@
-import dicom, pylab, os, sys
+import dicom, os, sys
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.backend_bases import NavigationToolbar2
 from Tkinter import *
 from tkFileDialog import *
 from matplotlib.widgets import Button
@@ -10,18 +9,14 @@ from PIL import Image
 from Umbralizacion import Umbral
 from RegionCreciente import *
 
-home = NavigationToolbar2.home
-back = NavigationToolbar2.back
-forward = NavigationToolbar2.forward
 position = 0
 
 
 
 def LeerArchivosDICOM():
-	# root = Tk()
-	# root.withdraw()
-	# filez = askdirectory(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
-	filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
+	root = Tk()
+	root.withdraw()
+	filez = askdirectory(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
 	paths = [filez]
 	A = []
 	print "La ruta de las imagenes cargadas:", filez
@@ -32,13 +27,6 @@ def LeerArchivosDICOM():
 			aux = path + "/" + fil 
 			A.append(dicom.read_file(aux))	
 	return A
-
-def MostrarHistograma(Pixeles):
-	lum_img = np.array(Pixeles)
-	plt.hist(lum_img.ravel(), bins = 400, range = (800, 1200), fc='k', ec='k')
-	plt.show(block = False)
-	print lum_img
-
 
 def CrearImagenRGB(Pixeles):
 	global Image
@@ -56,7 +44,7 @@ def CrearImagenRGB(Pixeles):
 class Acciones:
     def histograma(self, event):
         print "funciona boton histograma"
-        pylab.show()
+        plt.show()
 
 def new_home(self, *args, **kwargs):
 	position = 0
@@ -67,8 +55,8 @@ def new_back(self, *args, **kwargs):
 	position -= 1
 	binarizacion = Umbral(A[position].pixel_array)
 	img = CrearImagenRGB(binarizacion)
-	pylab.imshow(img)
-	pylab.show()
+	plt.imshow(img)
+	plt.show()
 	back(self, *args, **kwargs)
 
 def new_forward(self, *args, **kwargs):	
@@ -78,32 +66,23 @@ def new_forward(self, *args, **kwargs):
 	
 	img = CrearImagenRGB(binarizacion)
 	
-	pylab.imshow(img)
-	pylab.show()
+	plt.imshow(img)
+	plt.show()
 	forward(self, *args, **kwargs)
 
-NavigationToolbar2.home = new_home
-NavigationToolbar2.back = new_back
-NavigationToolbar2.forward = new_forward
 
 A = LeerArchivosDICOM()
 
-fig, ax = pylab.subplots()
-pylab.subplots_adjust(bottom=0.2)
-
-
-binarizacion = RegionCrecienteOrigen(A[0].pixel_array, 0, 0)
-
-pylab.imshow(binarizacion, cmap = plt.cm.bone)
-
-
+# lum_img = np.array(A[0].pixel_array)
+# plt.hist(lum_img.ravel(), bins = 400, range = (800, 1200), fc='k', ec='k')
+# plt.show(block = False)
 callback = Acciones()
-axprev = pylab.axes([0.0, 0.0, 0.1, 0.075])
+axprev = plt.axes([1.0, 1.0, 0.1, 0.075])
 bprev = Button(axprev, 'Histograma')
 bprev.on_clicked(callback.histograma)
 
-pylab.show()
 #binarizacion = Umbral(A[0].pixel_array)
+binarizacion = RegionCrecienteOrigen(A[0].pixel_array, 0, 0)
 # N = len(binarizacion)
 # M = len(binarizacion[0])
 # img = Image.new('RGB', (N, M))
@@ -113,10 +92,12 @@ pylab.show()
 # 		auxArray.append(j)
 # img.putdata(auxArray)
 
-#pylab.show()
-#im = pylab.imshow(binarizacion, interpolation='none', aspect='auto')
-#pylab.colorbar(im, orientation='horizontal')
-# pylab.show()
-#pylab.imshow(img)
-#pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
+plt.plot(binarizacion, cmap = plt.cm.bone, lw = 2)
+#plt.show()
+#im = plt.imshow(binarizacion, interpolation='none', aspect='auto')
+#plt.colorbar(im, orientation='horizontal')
+# plt.show()
+#plt.imshow(img)
+#plt.imshow(A[0].pixel_array, cmap = plt.cm.bone)
+plt.show()
 
