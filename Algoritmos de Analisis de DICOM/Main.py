@@ -8,13 +8,52 @@ import numpy as np
 from Umbralizacion import Umbral
 from RegionCreciente import *
 
-
-
 home = NavigationToolbar2.home
 back = NavigationToolbar2.back
 forward = NavigationToolbar2.forward
-
 position = 0
+
+def CrearImagenRGB(Pixeles):
+	N = len(Pixeles)
+	M = len(Pixeles[0])
+	img = Image.new('RGB', (N, M))
+	auxArray = []
+	for i in Pixeles:
+		for j in i:
+			auxArray.append(j)
+	img.putdata(auxArray)
+	del auxArray
+	return img
+
+
+def new_home(self, *args, **kwargs):
+	position = 0
+	home(self, *args, **kwargs)
+
+def new_back(self, *args, **kwargs):	
+	global position	
+	position -= 1
+	binarizacion = Umbral(A[position].pixel_array)
+	img = CrearImagenRGB(binarizacion)
+	pylab.imshow()
+	pylab.show()
+	back(self, *args, **kwargs)
+
+def new_forward(self, *args, **kwargs):	
+	global position	
+	position += 1
+	binarizacion = Umbral(A[position].pixel_array)
+	
+	img = CrearImagenRGB(binarizacion)
+	
+	pylab.imshow(img)
+	pylab.show()
+	forward(self, *args, **kwargs)
+
+NavigationToolbar2.home = new_home
+NavigationToolbar2.back = new_back
+NavigationToolbar2.forward = new_forward
+
 A = []
 # Ruta Windows
 path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\Ejemplo CD DICOM"   
@@ -25,47 +64,6 @@ path = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivo
 path = "C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\Ejemplos Archivos DICOM\\32370000"
 print "La ruta de las imagenes cargadas:", path
 
-def new_home(self, *args, **kwargs):
-	print 'chosto'
-	home(self, *args, **kwargs)
-
-def new_back(self, *args, **kwargs):	
-	global position	
-	position -= 1
-	binarizacion = Umbral(A[position].pixel_array)
-	N = len(binarizacion)
-	M = len(binarizacion[0])
-	img = Image.new('RGB', (N, M))
-	auxArray = []
-	for i in binarizacion:
-		for j in i:
-			auxArray.append(j)
-	img.putdata(auxArray)
-	
-	pylab.imshow(img)
-	pylab.show()
-	back(self, *args, **kwargs)
-
-def new_forward(self, *args, **kwargs):	
-	global position	
-	position += 1
-	binarizacion = Umbral(A[position].pixel_array)
-	N = len(binarizacion)
-	M = len(binarizacion[0])
-	img = Image.new('RGB', (N, M))
-	auxArray = []
-	for i in binarizacion:
-		for j in i:
-			auxArray.append(j)
-	img.putdata(auxArray)
-	
-	pylab.imshow(img)
-	pylab.show()
-	forward(self, *args, **kwargs)
-
-NavigationToolbar2.home = new_home
-NavigationToolbar2.back = new_back
-NavigationToolbar2.forward = new_forward
 
 dirs = os.listdir(path)
 
