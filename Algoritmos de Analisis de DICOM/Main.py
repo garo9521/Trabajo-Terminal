@@ -24,10 +24,10 @@ def LeerArchivosDICOM():
 	filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
 	paths = [filez]
 	A = []
-	print "La ruta de las imagenes cargadas:", filez
+	print ("La ruta de las imagenes cargadas:", filez)
 	for path in paths:
 		dirs = os.listdir(path)
-		print len(dirs)
+		print (len(dirs))
 		for fil in dirs:		    
 			aux = path + "/" + fil 
 			A.append(dicom.read_file(aux))	
@@ -37,7 +37,7 @@ def MostrarHistograma(Pixeles):
 	lum_img = np.array(Pixeles)
 	plt.hist(lum_img.ravel(), bins = 400, range = (800, 1200), fc='k', ec='k')
 	plt.show(block = False)
-	print lum_img
+	print (lum_img)
 
 
 def CrearImagenRGB(Pixeles):
@@ -55,7 +55,7 @@ def CrearImagenRGB(Pixeles):
 
 class Acciones:
     def histograma(self, event):
-        print "funciona boton histograma"
+        print ("funciona boton histograma")
         pylab.show()
 
 def new_home(self, *args, **kwargs):
