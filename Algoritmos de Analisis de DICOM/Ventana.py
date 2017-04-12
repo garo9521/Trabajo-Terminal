@@ -6,6 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+import matplotlib.pyplot as plt
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -28,7 +30,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(900, 650)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.Canvas = QtGui.QLabel(self.centralwidget)
+        self.figure = plt.figure()
+        self.Canvas = FigureCanvas(self.figure)
         self.Canvas.setGeometry(QtCore.QRect(10, 10, 700, 550))
         self.Canvas.setObjectName(_fromUtf8("Canvas"))
         self.BotonAnterior = QtGui.QPushButton(self.centralwidget)

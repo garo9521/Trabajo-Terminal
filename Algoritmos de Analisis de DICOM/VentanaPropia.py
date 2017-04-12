@@ -4,8 +4,8 @@ import dicom, os, sys
 import numpy as np
 from tkinter.filedialog import *
 from PIL import Image
-import matplotlib 
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg 
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 
 from Ventana import *
 from Umbralizacion import Umbral
@@ -75,11 +75,17 @@ class MyForm(QtGui.QMainWindow):
 		self.ui.setupUi(self)
 		self.ui.BotonSiguient.clicked.connect(self.Siguiente)
 		self.ui.BotonAnterior.clicked.connect(self.Anterior)
+		A = LeerArchivosDICOM()
+		data = A[0].pixel_array
+        # create an axis
+		ax = self.ui.figure.add_subplot(111)
 
-		global A
-		img = CrearImagenGrisQT(CambiarDensidadGris(A[0].pixel_array))
-		self.DesplegarImagen(img)
-	
+        # plot data
+		ax.imshow(data, cmap = plt.cm.bone)
+
+        # refresh canvas
+		self.ui.Canvas.draw()
+
 	def DesplegarImagen(self, img):
 		pic = QtGui.QLabel(self.ui.Canvas)
 		qp = QtGui.QPixmap() 
