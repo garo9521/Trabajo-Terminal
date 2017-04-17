@@ -1,5 +1,7 @@
 # Aplicacion QT
 
+import time # pruebas de tiempo
+
 import dicom, os, sys
 import numpy as np
 from tkinter.filedialog import *
@@ -13,12 +15,8 @@ from RegionCreciente import *
 
 position = 0
 
-def EscalaGrises(x, i, j):    # Es una escala sencilla
-	size = j - i + 1
-	value = int((2.0 ** 8 / size) * (x - i))
-	return value
-
 def CambiarDensidadGris(Pixeles):
+	
 	maxValor = -100000
 	minValor = 100000
 	for i in Pixeles:
@@ -26,10 +24,12 @@ def CambiarDensidadGris(Pixeles):
 			maxValor = max(maxValor, int(j))
 			minValor = min(minValor, int(j))
 	nuevoMat = []
+	size = maxValor - minValor + 1
 	for i in Pixeles:
 		nuevoArr = []
 		for j in i:
-			nuevoArr.append(EscalaGrises(j, minValor, maxValor))
+			x = int((256.0 / size) * j)
+			nuevoArr.append(x)
 		nuevoMat.append(nuevoArr)
 	return nuevoMat
 
@@ -39,6 +39,7 @@ def CrearImagenRGB(Pixeles):
 	M = len(Pixeles[0])
 	img = Image.new('RGB', (N, M))
 	auxArray = []
+
 	for i in Pixeles:
 		for j in i:
 			auxArray.append(j)
@@ -75,16 +76,9 @@ class MyForm(QtGui.QMainWindow):
 		self.ui.setupUi(self)
 		self.ui.BotonSiguient.clicked.connect(self.Siguiente)
 		self.ui.BotonAnterior.clicked.connect(self.Anterior)
-		A = LeerArchivosDICOM()
-		data = A[0].pixel_array
-        # create an axis
-		ax = self.ui.figure.add_subplot(111)
-
-        # plot data
-		ax.imshow(data, cmap = plt.cm.bone)
-
-        # refresh canvas
-		self.ui.Canvas.draw()
+		data = A[0]
+		img = CrearImagenGrisQT(CambiarDensidadGris(data))
+		self.DesplegarImagen(img)
 
 	def DesplegarImagen(self, img):
 		pic = QtGui.QLabel(self.ui.Canvas)
@@ -96,7 +90,7 @@ class MyForm(QtGui.QMainWindow):
 		print("entro siguiente")
 		global A, position
 		position += 1
-		img = CrearImagenGrisQT(CambiarDensidadGris(A[position].pixel_array))
+		img = CrearImagenGrisQT(CambiarDensidadGris(A[position]))
 		self.DesplegarImagen(img)
 
 
@@ -104,7 +98,7 @@ class MyForm(QtGui.QMainWindow):
 		print("entro en anterior")
 		global A, position
 		position -= 1
-		img = CrearImagenGrisQT(CambiarDensidadGris(A[position].pixel_array))
+		img = CrearImagenGrisQT(CambiarDensidadGris(A[position]))
 		self.DesplegarImagen(img)
 	
 
@@ -122,19 +116,55 @@ def LeerArchivosDICOM():
 		print (len(dirs))
 		for fil in dirs:		    
 			aux = path + "/" + fil 
-			A.append(dicom.read_file(aux))	
+			auxDICOM = dicom.read_file(aux)
+			M = []
+			for i in auxDICOM.pixel_array:
+				V = []
+				for j in i:
+					V.append(int(j))
+				M.append(V)
+			A.append(M)
 	return A
 
 def MostrarHistograma(Pixeles):
 	lum_img = np.array(Pixeles)
 	plt.hist(lum_img.ravel(), bins = 400, range = (800, 1200), fc='k', ec='k')
 	plt.show(block = False)
-	print (lum_img)
+
+import subprocess
 
 
 A = LeerArchivosDICOM()
+
+proc = subprocess.Popen("a.exe",
+stdin=subprocess.PIPE,
+stdout=subprocess.PIPE)
+
+state = "run"
+N = 0 #int(len(A[0]))
+M = 0 #int(len(A[0][0]))
+
+input = str(N) + " " + str(M)
+proc.stdin.write(input.encode('utf-8'))
+proc.stdin.flush()
+#print (input)
+for i in range(N):
+	for j in range(M):
+		input = str(j) + "\n"
+		proc.stdin.write(input.encode('utf-8'))
+		proc.stdin.flush()
+		#print (input)
+#cppMessage = proc.stdout.readline()
+print ("acabo")
+#print ("cppreturn message ->" + cppMessage + " written by python \n")
 
 app = QtGui.QApplication(sys.argv)
 myapp = MyForm()
 myapp.show()
 sys.exit(app.exec())
+
+# begin = time.time()
+
+# end = time.time()
+# print ("Total:", end - begin)
+## Medir tiempos

@@ -6,8 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-import matplotlib.pyplot as plt
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -27,21 +25,22 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(900, 650)
+        MainWindow.resize(804, 563)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.figure = plt.figure()
-        self.Canvas = FigureCanvas(self.figure)
-        self.Canvas.setGeometry(QtCore.QRect(10, 10, 700, 550))
+        self.Canvas = QtGui.QMdiArea(self.centralwidget)
+        self.Canvas.setGeometry(QtCore.QRect(10, 10, 781, 441))
         self.Canvas.setObjectName(_fromUtf8("Canvas"))
+        self.subwindow = QtGui.QWidget()
+        self.subwindow.setObjectName(_fromUtf8("subwindow"))
         self.BotonAnterior = QtGui.QPushButton(self.centralwidget)
-        self.BotonAnterior.setGeometry(QtCore.QRect(30, 580, 80, 40))
+        self.BotonAnterior.setGeometry(QtCore.QRect(30, 480, 81, 41))
         self.BotonAnterior.setObjectName(_fromUtf8("BotonAnterior"))
         self.BotonSiguient = QtGui.QPushButton(self.centralwidget)
-        self.BotonSiguient.setGeometry(QtCore.QRect(130, 580, 80, 40))
+        self.BotonSiguient.setGeometry(QtCore.QRect(130, 480, 81, 41))
         self.BotonSiguient.setObjectName(_fromUtf8("BotonSiguient"))
         self.CerrarTodo = QtGui.QPushButton(self.centralwidget)
-        self.CerrarTodo.setGeometry(QtCore.QRect(240, 580, 80, 40))
+        self.CerrarTodo.setGeometry(QtCore.QRect(240, 480, 81, 41))
         self.CerrarTodo.setObjectName(_fromUtf8("CerrarTodo"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
@@ -57,6 +56,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
+        self.subwindow.setWindowTitle(_translate("MainWindow", "Subwindow", None))
         self.BotonAnterior.setText(_translate("MainWindow", "Anterior", None))
         self.BotonSiguient.setText(_translate("MainWindow", "Siguiente", None))
         self.CerrarTodo.setText(_translate("MainWindow", "Cerrar todo", None))
