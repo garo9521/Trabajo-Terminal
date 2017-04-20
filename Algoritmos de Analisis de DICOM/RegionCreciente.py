@@ -6,7 +6,7 @@ movs4 = [(0, 1),
         (-1, 0)]
 
 def RegionCrecienteOrigen(Pixeles, y, x):
-    Epsilon = int(raw_input("Error de transicion: "))
+    Epsilon = int(input("Error de transicion: "))
     N = len(Pixeles)
     M = len(Pixeles[0])
     cola = deque([(y, x)])

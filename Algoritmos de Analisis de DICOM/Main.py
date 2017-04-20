@@ -18,10 +18,11 @@ position = 0
 
 
 def LeerArchivosDICOM():
-	# root = Tk()
-	# root.withdraw()
-	# filez = askdirectory(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
-	filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
+	root = Tk()
+	root.withdraw()
+
+	filez = askdirectory(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
+	#filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
 	paths = [filez]
 	A = []
 	print ("La ruta de las imagenes cargadas:", filez)
@@ -64,21 +65,25 @@ def new_home(self, *args, **kwargs):
 
 def new_back(self, *args, **kwargs):	
 	global position	
-	position -= 1
-	binarizacion = Umbral(A[position].pixel_array)
-	img = CrearImagenRGB(binarizacion)
-	pylab.imshow(img)
+	# position -= 1
+	# binarizacion = Umbral(A[position].pixel_array)
+	# img = CrearImagenRGB(binarizacion)
+	# pylab.imshow(img)
+	# pylab.show()
+	pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
 	pylab.show()
 	back(self, *args, **kwargs)
 
 def new_forward(self, *args, **kwargs):	
 	global position	
 	position += 1
-	binarizacion = Umbral(A[position].pixel_array)
+	# binarizacion = Umbral(A[position].pixel_array)
 	
-	img = CrearImagenRGB(binarizacion)
+	# img = CrearImagenRGB(binarizacion)
 	
-	pylab.imshow(img)
+	# pylab.imshow(img)
+	# pylab.show()
+	pylab.imshow(A[position].pixel_array, cmap = pylab.cm.bone)
 	pylab.show()
 	forward(self, *args, **kwargs)
 
@@ -88,21 +93,6 @@ NavigationToolbar2.forward = new_forward
 
 A = LeerArchivosDICOM()
 
-fig, ax = pylab.subplots()
-pylab.subplots_adjust(bottom=0.2)
-
-
-binarizacion = RegionCrecienteOrigen(A[0].pixel_array, 0, 0)
-
-pylab.imshow(binarizacion, cmap = plt.cm.bone)
-
-
-callback = Acciones()
-axprev = pylab.axes([0.0, 0.0, 0.1, 0.075])
-bprev = Button(axprev, 'Histograma')
-bprev.on_clicked(callback.histograma)
-
-pylab.show()
 #binarizacion = Umbral(A[0].pixel_array)
 # N = len(binarizacion)
 # M = len(binarizacion[0])
@@ -118,5 +108,6 @@ pylab.show()
 #pylab.colorbar(im, orientation='horizontal')
 # pylab.show()
 #pylab.imshow(img)
-#pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
+pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
+pylab.show()
 

@@ -24,14 +24,24 @@ def CambiarDensidadGris(Pixeles):
 			maxValor = max(maxValor, int(j))
 			minValor = min(minValor, int(j))
 	nuevoMat = []
-	size = maxValor - minValor + 1
+	size = maxValor - minValor
 	for i in Pixeles:
 		nuevoArr = []
 		for j in i:
-			x = int((256.0 / size) * j)
+			x = int((255.0 / size) * j)
 			nuevoArr.append(x)
 		nuevoMat.append(nuevoArr)
 	return nuevoMat
+
+def CrearImagenRGBQT(Pixeles):
+	N = len(Pixeles)
+	M = len(Pixeles[0])
+	img = QtGui.QImage(N, M, QtGui.QImage.Format_RGB888)
+	for i in range(N):
+		for j in range(M):
+			a, b, c = Pixeles[i][j]
+			img.setPixel(j, i, QtGui.qRgb(a, b, c))
+	return img
 
 def CrearImagenRGB(Pixeles):
 	global Image
@@ -89,16 +99,24 @@ class MyForm(QtGui.QMainWindow):
 	def Siguiente(self):
 		print("entro siguiente")
 		global A, position
-		position += 1
-		img = CrearImagenGrisQT(CambiarDensidadGris(A[position]))
+		# position += 1
+		# img = CrearImagenGrisQT(CambiarDensidadGris(A[position]))
+		img = CrearImagenRGBQT(Umbral(A[0]))
 		self.DesplegarImagen(img)
 
 
 	def Anterior(self):
 		print("entro en anterior")
 		global A, position
-		position -= 1
-		img = CrearImagenGrisQT(CambiarDensidadGris(A[position]))
+		pos = input("Punto de origen: ").split()
+		MA = RegionCrecienteOrigen(A[0], int(pos[0]), int(pos[1]))
+		#print (MA)
+		#print (MA[int(pos[0])][int(pos[1])])
+		MAD = CambiarDensidadGris(MA)
+		#print (MAD)
+		img = CrearImagenGrisQT(MAD)
+		# position -= 1
+		# img = CrearImagenGrisQT(CambiarDensidadGris(A[position]))
 		self.DesplegarImagen(img)
 	
 
@@ -106,7 +124,7 @@ class MyForm(QtGui.QMainWindow):
 def LeerArchivosDICOM():
 	# root = Tk()
 	# root.withdraw()
-	# filez = askdirectory(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
+	#filez = askopenfilename()(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
 	filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
 	paths = [filez]
 	A = []
@@ -136,27 +154,27 @@ import subprocess
 
 A = LeerArchivosDICOM()
 
-proc = subprocess.Popen("a.exe",
-stdin=subprocess.PIPE,
-stdout=subprocess.PIPE)
+# proc = subprocess.Popen("a.exe",
+# stdin=subprocess.PIPE,
+# stdout=subprocess.PIPE)
 
-state = "run"
-N = 0 #int(len(A[0]))
-M = 0 #int(len(A[0][0]))
+# state = "run"
+# N = 0 #int(len(A[0]))
+# M = 0 #int(len(A[0][0]))
 
-input = str(N) + " " + str(M)
-proc.stdin.write(input.encode('utf-8'))
-proc.stdin.flush()
-#print (input)
-for i in range(N):
-	for j in range(M):
-		input = str(j) + "\n"
-		proc.stdin.write(input.encode('utf-8'))
-		proc.stdin.flush()
-		#print (input)
-#cppMessage = proc.stdout.readline()
-print ("acabo")
-#print ("cppreturn message ->" + cppMessage + " written by python \n")
+# input = str(N) + " " + str(M)
+# proc.stdin.write(input.encode('utf-8'))
+# proc.stdin.flush()
+# #print (input)
+# for i in range(N):
+# 	for j in range(M):
+# 		input = str(j) + "\n"
+# 		proc.stdin.write(input.encode('utf-8'))
+# 		proc.stdin.flush()
+# 		#print (input)
+# #cppMessage = proc.stdout.readline()
+# print ("acabo")
+# #print ("cppreturn message ->" + cppMessage + " written by python \n")
 
 app = QtGui.QApplication(sys.argv)
 myapp = MyForm()
