@@ -28,7 +28,7 @@ def CambiarDensidadGris(Pixeles):
 	for i in Pixeles:
 		nuevoArr = []
 		for j in i:
-			x = int((255.0 / size) * j)
+			x = int((255.0 / size) * (j - minValor))
 			nuevoArr.append(x)
 		nuevoMat.append(nuevoArr)
 	return nuevoMat
@@ -122,26 +122,23 @@ class MyForm(QtGui.QMainWindow):
 
 
 def LeerArchivosDICOM():
-	# root = Tk()
-	# root.withdraw()
-	#filez = askopenfilename()(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
-	filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
+	root = Tk()
+	root.withdraw()
+	filez = askopenfilename(parent = root, title = 'Escoge carpeta que contenga los archivos DICOM')
+	#filez = "C:\\Users\\lenovo\\Documents\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000"
 	paths = [filez]
 	A = []
 	print ("La ruta de las imagenes cargadas:", filez)
-	for path in paths:
-		dirs = os.listdir(path)
-		print (len(dirs))
-		for fil in dirs:		    
-			aux = path + "/" + fil 
-			auxDICOM = dicom.read_file(aux)
-			M = []
-			for i in auxDICOM.pixel_array:
-				V = []
-				for j in i:
-					V.append(int(j))
-				M.append(V)
-			A.append(M)
+			    
+	aux = filez
+	auxDICOM = dicom.read_file(aux)
+	M = []
+	for i in auxDICOM.pixel_array:
+		V = []
+		for j in i:
+			V.append(int(j - 1000))
+		M.append(V)
+	A.append(M)
 	return A
 
 def MostrarHistograma(Pixeles):

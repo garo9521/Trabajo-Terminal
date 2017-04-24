@@ -65,7 +65,7 @@ def new_home(self, *args, **kwargs):
 
 def new_back(self, *args, **kwargs):	
 	global position	
-	# position -= 1
+	position -= 1
 	# binarizacion = Umbral(A[position].pixel_array)
 	# img = CrearImagenRGB(binarizacion)
 	# pylab.imshow(img)
@@ -108,6 +108,7 @@ A = LeerArchivosDICOM()
 #pylab.colorbar(im, orientation='horizontal')
 # pylab.show()
 #pylab.imshow(img)
+
 pylab.imshow(A[0].pixel_array, cmap = pylab.cm.bone)
 pylab.show()
 

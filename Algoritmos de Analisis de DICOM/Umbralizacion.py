@@ -32,8 +32,7 @@ def Umbral(originalPix):
 	for i in originalPix:
 		auxV = []
 		for j in i:
-			j -= 1000
-			a = EscalaGrises(j + 10000)
+			a = 0   # Preferente usar escala de grises
 			color = (a, a, a)
 			for k in RangoHouns:
 				if k[0] <= j and k[1] >= j:
