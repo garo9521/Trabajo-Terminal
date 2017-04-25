@@ -1,0 +1,37 @@
+\select@language {spanish}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama del funcionamiento del sistema.}}{10}{figure.1.1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Pixel y voxel.}}{14}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Cortes axiales en TAC.}}{16}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Estructura de un archivo DICOM}}{18}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Escala de Hounsfield}}{19}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces M\IeC {\'e}todos de caracter\IeC {\'\i }sticas espaciales y regi\IeC {\'o}n creciente. (a)Histograma con 3 aparentes clases. (b)Caracter\IeC {\'\i }stica espacial en 2-D. (c)Ejemplo de regi\IeC {\'o}n creciente.}}{21}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Ejemplo iteraci\IeC {\'o}n algoritmo Split and Merge.}}{27}{figure.2.6}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Flujo metodolog\IeC {\'\i }a incremental.}}{37}{figure.3.1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de casos de uso general.}}{55}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagrama caso de uso seleccionar archivo.}}{57}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Diagrama caso de uso ver tomograf\IeC {\'\i }a.}}{58}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagrama caso de uso de seleccinar regiones.}}{59}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Diagrama caso de uso de seleccionar tratamiento.}}{60}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Diagrama caso de uso ir a tomograf\IeC {\'\i }a original.}}{61}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Diagrama caso de uso exportar imagen.}}{62}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Secuencia: Seleccionar archivos.}}{73}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Secuencia: Ver tomograf\IeC {\'\i }a.}}{74}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Secuencia: Seleccionar regiones.}}{74}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Secuencia: Seleccionar tratamiento.}}{75}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Secuencia: Seleccionar t\IeC {\'e}cnica de segmentaci\IeC {\'o}n.}}{75}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Secuencia: Seleccionar t\IeC {\'e}cnica de clasificaci\IeC {\'o}n.}}{76}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Secuencia: Seleccionar t\IeC {\'e}cnica de an\IeC {\'a}lisis.}}{76}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Secuencia:Ir a tomograf\IeC {\'\i }a original.}}{77}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Secuencia:Exportar tomograf\IeC {\'\i }a.}}{77}{figure.4.16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Ventana de navegaci\IeC {\'o}n.}}{79}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Matriz con valores de Hounsfield.}}{80}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Cabecera archivo DICOM.}}{81}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Tomograf\IeC {\'\i }a mostrada en 2D.}}{82}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Tomograf\IeC {\'\i }a sin tratamiento.}}{83}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Tomograf\IeC {\'\i }a con multiumbralizaci\IeC {\'o}n.}}{84}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Regi\IeC {\'o}n creciente en una tomograf\IeC {\'\i }a.}}{85}{figure.5.7}
