@@ -10,7 +10,8 @@ Colores = {'azul' : (0, 0, 255),
 		   'negro' : (0, 0, 0) }
 
 				   #Escala de Hounsfield
-RangoHouns = { (-1000, -899) : 'gris',  		# aire
+RangoHouns = { 
+		  (-1000, -899) : 'gris',  		# aire
 		  (-900, -500)  : 'rosa',   	# pulmones
 		  (-5, 5) 		: 'azul',       # agua
           (-100, -80) 	: 'amarillo',  	# grasa
