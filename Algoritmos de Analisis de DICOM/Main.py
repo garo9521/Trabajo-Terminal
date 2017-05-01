@@ -93,6 +93,7 @@ NavigationToolbar2.forward = new_forward
 
 A = LeerArchivosDICOM()
 
+print A[0]
 #binarizacion = Umbral(A[0].pixel_array)
 # N = len(binarizacion)
 # M = len(binarizacion[0])
