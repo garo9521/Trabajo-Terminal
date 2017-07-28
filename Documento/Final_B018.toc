@@ -16,8 +16,8 @@
 \contentsline {section}{\numberline {2.4}Tomograf\IeC {\'\i }a computarizada}{15}{section.2.4}
 \contentsline {section}{\numberline {2.5}DICOM}{17}{section.2.5}
 \contentsline {section}{\numberline {2.6}Escala de Hounsfield}{18}{section.2.6}
-\contentsline {section}{\numberline {2.7}Segmentaci\IeC {\'o}n}{19}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Umbralizaci\IeC {\'o}n}{20}{subsection.2.7.1}
+\contentsline {section}{\numberline {2.7}Segmentaci\IeC {\'o}n}{20}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Umbralizaci\IeC {\'o}n}{21}{subsection.2.7.1}
 \contentsline {subsubsection}{T\IeC {\'e}cnicas de umbralizaci\IeC {\'o}n.}{22}{section*.4}
 \contentsline {subsection}{\numberline {2.7.2}Regi\IeC {\'o}n creciente}{25}{subsection.2.7.2}
 \contentsline {subsubsection}{T\IeC {\'e}cnicas de regi\IeC {\'o}n creciente.}{26}{section*.5}
@@ -69,14 +69,14 @@
 \contentsline {section}{\numberline {4.4}Diagramas de secuencia}{73}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Secuencia: Seleccionar archivos}{73}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Secuencia: Ver tomograf\IeC {\'\i }a}{74}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Secuencia: Seleccionar regiones}{74}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Secuencia: Seleccionar tratamiento}{75}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Secuencia: Seleccionar t\IeC {\'e}cnica de segmentaci\IeC {\'o}n}{75}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.4.6}Secuencia: Seleccionar t\IeC {\'e}cnica de clasificaci\IeC {\'o}n}{76}{subsection.4.4.6}
-\contentsline {subsection}{\numberline {4.4.7}Secuencia: Seleccionar t\IeC {\'e}cnica de an\IeC {\'a}lisis}{76}{subsection.4.4.7}
-\contentsline {subsection}{\numberline {4.4.8}Secuencia: Ir a tomograf\IeC {\'\i }a original}{77}{subsection.4.4.8}
-\contentsline {subsection}{\numberline {4.4.9}Secuencia: Exportar tomograf\IeC {\'\i }a}{77}{subsection.4.4.9}
-\contentsline {chapter}{\numberline {5}Avances}{78}{chapter.5}
-\contentsline {section}{\numberline {5.1}Decodificaci\IeC {\'o}n DICOM}{78}{section.5.1}
-\contentsline {section}{\numberline {5.2}Visualizaci\IeC {\'o}n}{82}{section.5.2}
-\contentsline {section}{\numberline {5.3}Tratamiento de imagen}{82}{section.5.3}
+\contentsline {subsection}{\numberline {4.4.3}Secuencia: Seleccionar regiones}{75}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Secuencia: Seleccionar tratamiento}{76}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Secuencia: Seleccionar t\IeC {\'e}cnica de segmentaci\IeC {\'o}n}{77}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Secuencia: Seleccionar t\IeC {\'e}cnica de clasificaci\IeC {\'o}n}{78}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Secuencia: Seleccionar t\IeC {\'e}cnica de an\IeC {\'a}lisis}{79}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.4.8}Secuencia: Ir a tomograf\IeC {\'\i }a original}{80}{subsection.4.4.8}
+\contentsline {subsection}{\numberline {4.4.9}Secuencia: Exportar tomograf\IeC {\'\i }a}{81}{subsection.4.4.9}
+\contentsline {chapter}{\numberline {5}Avances}{82}{chapter.5}
+\contentsline {section}{\numberline {5.1}Decodificaci\IeC {\'o}n DICOM}{82}{section.5.1}
+\contentsline {section}{\numberline {5.2}Visualizaci\IeC {\'o}n}{86}{section.5.2}
+\contentsline {section}{\numberline {5.3}Tratamiento de imagen}{86}{section.5.3}
