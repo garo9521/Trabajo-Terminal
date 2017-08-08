@@ -78,6 +78,7 @@ En la figura 1.1 se observa el diagrama general de funcionamiento del sistema.
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{diagramageneral}
 \caption{Diagrama del funcionamiento del sistema.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \section{Justificación}
@@ -153,6 +154,7 @@ Una imagen puede ser definida como una función de dos dimensiones $f(x, y)$, do
 \centering
 \includegraphics[width = 5 cm, height = 3 cm]{pixel}
 \caption{Pixel y voxel.}
+Basado en: https://carestreamdentalblogdotcom1.files.wordpress.com/2014/02/pixel-voxel.jpg
 \end{figure}
 
 \section{Imágenes médicas}
@@ -181,6 +183,7 @@ La TC produce imágenes axiales de la anotomía de un paciente. Dichas imágenes
 \centering
 \includegraphics[width = 5 cm, height = 5 cm]{tac}
 \caption{Cortes axiales en TAC.}
+Basado en: http://tomografiaprocedimiento.blogspot.mx/2014_04_01_archive.html
 \end{figure}
 
  La TC es una técnica de diagnóstico para imagen digital. La fuente de rayo X se une rígidamente a un dispositivo detector de la geometría en abanico de los rayos, que rota 360 grados alrededor del paciente y recoge los datos. El detector de imagen presenta un estado gaseoso o sólido, lo que produce señales que sirven como datos de entrada para un ordenador exclusivo. Dicho ordenador procesa los datos mediante técnicas de retroproyección con algoritmo de Fourier, desarrolladas por primera vez por Hounsfield para dar lugar a imágenes de TC. Las imágenes de TC son en sí mismas tridimensionales, de 512 X 512 pixeles típicamente, con un espesor definido por la separación de cortes de la técnica de imagen. Cada elemento de la imagen de TC se denomina vóxel, el cual presenta un valor, al cual se le refiere en unidades de Hounsfield, que describe la densidad de la imagen de TC en dicho punto.\cite{prote}\\
@@ -203,6 +206,7 @@ El formato genérico del archivo de DICOM consiste en dos partes diferenciadas:
 \centering
 \includegraphics[width = 7 cm, height = 8 cm]{estructura}
 \caption{Estructura de un archivo DICOM}
+Fuente: Análisis digital de imágenes tomográficas sin contraste para la busqueda de tumores cerebrales.
 \end{figure}
 
 \section{Escala de Hounsfield}
@@ -215,6 +219,7 @@ La escala Hounsfield se extiende a lo largo de 2000 unidades que difícilmente s
 \centering
 \includegraphics[width = 13 cm, height = 10 cm]{escala}
 \caption{Escala de Hounsfield}
+Fuente: Análisis digital de imágenes tomográficas sin contraste para la busqueda de tumores cerebrales.
 \end{figure}
 
 
@@ -234,6 +239,7 @@ Las ténicas de umbralización segmentan imágenes escalares al generar una part
 \centering
 \includegraphics[width = 10 cm, height = 10 cm]{umbral}
 \caption{Métodos de características espaciales y región creciente. (a)Histograma con 3 aparentes clases. (b)Característica espacial en 2-D. (c)Ejemplo de región creciente.}
+Basado en http://www.dtic.upf.edu/~afrangi/ibi/CurrentMethodsInImageSegmentation_Phan2000.pdf
 \end{figure}
 
 La umbralización es un procedimiento simple pero efectivo para segementar imagenes en las cuales diferentes estructuras tienen intensidades contrastantes u otras características cuantificables. A menudo la partición de la imagen se genera en interacción con el usuario aunque también existen métodos automatizados. A menudo, la umbralización se lleva a cabo interactivamente, basado en la asistencia visual del operador a partir la partición resultante.\\
@@ -328,6 +334,7 @@ Una vez que se ha llevado a cabo el proceso de división, se comprueba para cada
 \centering
 \includegraphics[width = 7 cm, height = 7 cm]{split}
 \caption{Ejemplo iteración algoritmo Split and Merge.}
+Fuente: Basado en http://users.cs.cf.ac.uk/Dave.Marshall/Vision_lecture/node34.html
 \end{figure}
 \end{enumerate}
 
@@ -486,6 +493,7 @@ La metodología de trabajo a utilizar en el desarrollo de este sistema será la 
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{incre}
 \caption{Flujo metodología incremental.}
+Fuente: I. Sommerville, Software Engineering.
 \end{figure}
 
 La metodología incremental, que es una pieza fundamental para enfoques ágiles, es mejor que la metodología en cascada que está más enfocada al negocio, al e-commerce y a sistemas personales. La metodología incremental refleja la manera en la que resolvemos problemas. Raramente trabajamos la solución de un problema por adelantado, pero nos movemos a través de una serie de pasos para la solución, retroalimentándonos cuando nos damos cuenta de que un error fue cometido. Desarrollar un sistema de forma incremental es barato y con un fácil manejo de cambios mientras este está siendo desarrollado.\cite{meto}\\
@@ -977,6 +985,7 @@ En esta sección describimos la entrada, núcleo y salida del sistema en un buen
 \centering
 \includegraphics[width = 11 cm, height =  13 cm]{MainCasos}
 \caption{Diagrama de casos de uso general.}
+Fuente: Elaboración propia.
 \end{figure}
 
 En la figura 4.1 se observa el caso de uso general del sistema, el sistema tiene  las siguientes interacciones principales con el usuario: selección de archivos, selección de región, selección de tratamiento, visualizar tomografía, ir a tomografía original y exportar tomografía.\\ 
@@ -999,6 +1008,7 @@ Finalmente el usuario tiene la opción de guardar la tomografía con o sin trata
 \centering
 \includegraphics[width = 9 cm, height =  7 cm]{ArchivoCasos}
 \caption{Diagrama caso de uso seleccionar archivo.}
+Fuente: Elaboración propia.
 \end{figure}
 
 La figura 4.2 muestra el diagrama de caso de uso seleccionar archivo en el cual el usuario carga un archivo al sistema.
@@ -1008,6 +1018,7 @@ La figura 4.2 muestra el diagrama de caso de uso seleccionar archivo en el cual 
 \centering
 \includegraphics[width = 9 cm, height =  7 cm]{VerCasos}
 \caption{Diagrama caso de uso ver tomografía.}
+Fuente: Elaboración propia.
 \end{figure}
 
 La figura 4.3 muestra el diagrama de caso de uso ver tomografía donde el usuario después de haber cargado un archivo al sistema accede a el mediante un visor.
@@ -1017,6 +1028,7 @@ La figura 4.3 muestra el diagrama de caso de uso ver tomografía donde el usuari
 \centering
 \includegraphics[width = 9 cm, height =  7 cm]{RegionCasos}
 \caption{Diagrama caso de uso de seleccinar regiones.}
+Fuente: Elaboración propia.
 \end{figure}
 
 En el caso de uso de selección de región mostrado en la figura 4.4 el usuario selecciona una región determinada para su análisis, para poder realizar esto el usuario debe ser capaz de ver la tomografía en el visor para hacer la delimitación.
@@ -1026,6 +1038,7 @@ En el caso de uso de selección de región mostrado en la figura 4.4 el usuario 
 \centering
 \includegraphics[width = 13 cm, height =  10 cm]{TrataCasos}
 \caption{Diagrama caso de uso de seleccionar tratamiento.}
+Fuente: Elaboración propia.
 \end{figure}
 
 El caso de uso de tratamiento de imagen que se muestra en la figura 4.5 elige una de las diversas técnicas de tratamiento para la imagen o región según sea el caso, podrá seleccionar técnicas de segmentación, clasificación y/o análisis.
@@ -1035,6 +1048,7 @@ El caso de uso de tratamiento de imagen que se muestra en la figura 4.5 elige un
 \centering
 \includegraphics[width = 9 cm, height =  7 cm]{origi}
 \caption{Diagrama caso de uso ir a tomografía original.}
+Fuente: Elaboración propia.
 \end{figure}
 
 El caso de uso ir a tratamiento original mostrado en la figura 4.6 el usuario regresa a la tomografía sin tratamientos ni acotados.
@@ -1044,6 +1058,7 @@ El caso de uso ir a tratamiento original mostrado en la figura 4.6 el usuario re
 \centering
 \includegraphics[width = 9 cm, height =  7 cm]{expor}
 \caption{Diagrama caso de uso exportar imagen.}
+Fuente: Elaboración propia.
 \end{figure}
 
 El caso de uso ir a tratamiento original mostrado en la figura 4.6 el usuario regresa a la tomografía sin tratamientos ni acotados.
@@ -1388,6 +1403,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{seleccionar_archivo}
 \caption{Secuencia: Seleccionar archivos.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Ver tomografía}
@@ -1395,6 +1411,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{visualizar}
 \caption{Secuencia: Ver tomografía.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Seleccionar regiones}
@@ -1402,6 +1419,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{region}
 \caption{Secuencia: Seleccionar regiones.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Seleccionar tratamiento}
@@ -1409,6 +1427,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{tratamientodeimagen}
 \caption{Secuencia: Seleccionar tratamiento.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Seleccionar técnica de segmentación}
@@ -1416,6 +1435,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{segmentacion}
 \caption{Secuencia: Seleccionar técnica de segmentación.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Seleccionar técnica de clasificación}
@@ -1423,6 +1443,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{clasificacion}
 \caption{Secuencia: Seleccionar técnica de clasificación.}
+Fuente: Elaboración propia.
 \end{figure}
 
 
@@ -1431,6 +1452,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{analisis}
 \caption{Secuencia: Seleccionar técnica de análisis.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Ir a tomografía original}
@@ -1438,6 +1460,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{ir_a_tomografia}
 \caption{Secuencia:Ir a tomografía original.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \subsection{Secuencia: Exportar tomografía}
@@ -1445,6 +1468,7 @@ Módulo & 3.Tratamiento de imagen.\\
 \centering
 \includegraphics[width = 12 cm, height = 7 cm]{exportacion}
 \caption{Secuencia:Exportar tomografía.}
+Fuente: Elaboración propia.
 \end{figure}
 
 
@@ -1470,18 +1494,21 @@ Para este módulo se ha generado un programa en Python donde el usuario elije un
 \centering
 \includegraphics[width = 5 cm, height = 5 cm]{navega}
 \caption{Ventana de navegación.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width = 12 cm, height = 18 cm]{matriz}
 \caption{Matriz con valores de Hounsfield.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width = 12 cm, height = 18 cm]{cabecera}
 \caption{Cabecera archivo DICOM.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \section{Visualización}
@@ -1491,6 +1518,7 @@ El módulo de visualización se encarga de mostrar la tomografía con base en lo
 \centering
 \includegraphics[width = 10 cm, height = 10 cm]{visua}
 \caption{Tomografía mostrada en 2D.}
+Fuente: Elaboración propia.
 \end{figure}
 
 \section{Tratamiento de imagen}
@@ -1501,6 +1529,7 @@ Se implementaron dos algoritmos básicos de tratamiento sobre la tomografía mos
 \centering
 \includegraphics[width = 12 cm, height = 11 cm]{origin}
 \caption{Tomografía sin tratamiento.}
+Fuente: Elaboración propia.
 \end{figure}
 
 La primera técnica aplicada fue multiumbralización. Se asignó un color diferente a cada tejido tomando como valores de umbral los límites establecidos a cada tejido en escala de Hounsfield, se observa el resultado en la figura 5.6.
@@ -1509,6 +1538,7 @@ La primera técnica aplicada fue multiumbralización. Se asignó un color difere
 \centering
 \includegraphics[width = 12 cm, height = 10 cm]{umbralizado}
 \caption{Tomografía con multiumbralización.}
+Fuente: Elaboración propia.
 \end{figure}
 
 Otra técnica que se implementó fue región creciente a partir de un punto dado por el usuario  y un margen de similitud al punto. Se obtiene el valor del pixel en el punto dado y se realiza una busqueda de amplitud generando dos clases, una donde los valores de los pixeles se encuentran en un rango del valor del pixel más/menos el valor de similitud proporcionado, además deben cumplir para entrar en la clase es que tengan al menos un punto vecino que  también se encuentre dentro del margen, la otra clase contiene los pixeles que no cumplieron las condiciones.
@@ -1517,6 +1547,7 @@ Otra técnica que se implementó fue región creciente a partir de un punto dado
 \centering
 \includegraphics[width = 12 cm, height = 10 cm]{regionu}
 \caption{Región creciente en una tomografía.}
+Fuente: Elaboración propia.
 \end{figure}
 
 
