@@ -16,7 +16,7 @@ namespace CallPython {
         public MatrizDicom()
         {
             N = 512;
-            matriz = new int[N + 100, N + 100];
+            matriz = new int[N + 10, N + 10];
             minValor = 10000;
             maxValor = -10000;
         }
@@ -46,9 +46,8 @@ namespace CallPython {
         public Bitmap ObtenerImagen() {
             Bitmap imagen = new Bitmap(512, 512);
             int tam = maxValor - minValor + 1;
-            Console.WriteLine(maxValor + " " + minValor);
             double porcion = 255.0 / tam;
-            Console.WriteLine(tam + " " + porcion);
+
             for (int i = 0; i < N; i++)
             {
                 for(int j = 0; j < N; j++)
@@ -77,20 +76,19 @@ namespace CallPython {
         }
     }
 
-    class Program {
+    class LecturaArchivosDicom {
         
         public static MatrizDicom[] archivosDicom;
 
-        static void Main(string[] args) {
+        public LecturaArchivosDicom(string ruta) {
             int x = 0;
-            string y = "C:\\Users\\edgar\\Documentos\\GitHub\\Trabajo-Terminal\\Ejemplos Archivos DICOM\\32370000";
-            string[] fileEntries = Directory.GetFiles(y);
+            string[] fileEntries = Directory.GetFiles(ruta);
 
             DateTime start = DateTime.Now;
             int N = fileEntries.Length;
             Thread[] threadsArray = new Thread[N];
-            archivosDicom = new MatrizDicom[N + 1];
-            for (int i = 0; i < N + 1; i++)
+            archivosDicom = new MatrizDicom[N];
+            for (int i = 0; i < N; i++)
             {
                 archivosDicom[i] = new MatrizDicom();
             }
@@ -110,17 +108,16 @@ namespace CallPython {
             {
                 threadsArray[i].Join();
             }
-
-            archivosDicom[1].ImprimeMatriz();
-
+            
             TimeSpan timeDiff = DateTime.Now - start;
             var res = timeDiff.TotalMilliseconds;
-            Console.WriteLine(res);
-            Console.ReadLine();
+
+            Console.WriteLine("Tiempo de ejecucion: " + res);
             var pruebaImagen = archivosDicom[1].ObtenerImagen();
             pruebaImagen.Save("prueba.jpg");
             pruebaImagen.Dispose();
 
+            Console.ReadLine();
         }
         public static void Pregunta_Python(ParametroPython o) {
             string ruta = o.ruta;
