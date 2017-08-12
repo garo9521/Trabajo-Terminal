@@ -24,9 +24,9 @@ namespace SAARTAC {
 
         private void button1_Click(object sender, EventArgs e) {
             try {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
                     Console.WriteLine("si entre we");
-                    string imagen = openFileDialog1.FileName;
+                    string imagen = folderBrowserDialog1.SelectedPath;
                     LecturaArchivosDicom lect = new LecturaArchivosDicom(imagen);
                     var aux = lect.obtenerArchivo(0);
                     pictureBox1.Image = aux.ObtenerImagen();

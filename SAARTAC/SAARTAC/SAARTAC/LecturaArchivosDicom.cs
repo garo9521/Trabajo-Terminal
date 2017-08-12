@@ -15,7 +15,7 @@ namespace SAARTAC {
 
         public LecturaArchivosDicom(string ruta) {
             int x = 0;
-            string[] fileEntries = new string[] { ruta };//Directory.GetFiles(ruta);
+            string[] fileEntries = Directory.GetFiles(ruta);
 
             DateTime start = DateTime.Now;
             int N = fileEntries.Length;
