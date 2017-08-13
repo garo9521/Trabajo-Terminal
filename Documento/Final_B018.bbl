@@ -109,10 +109,6 @@ H.~F. Mondragón and K.~P. Hernández, ``Reconstrucción tridimensional de
   computarizadas,'' Escuela Superior de Cómputo - Instituto Politécnico
   Nacional, México, Tech. Rep., 2012.
 
-\bibitem{imag}
-R.~C. Gónzalez and R.~E. Woods, \emph{Digital Image Processing.}\hskip 1em
-  plus 0.5em minus 0.4em\relax Pearson, 2008.
-
 \bibitem{essen}
 J.~Bushberg, \emph{The essential physics of medical imaging.}\hskip 1em plus
   0.5em minus 0.4em\relax Lippincott Williams \& Wilkins, 2002.
@@ -245,18 +241,6 @@ G.~Team. Gnu image manipulation program. [Online]. Available:
 MKLab. (2016) Staruml. [Online]. Available: \url{http://staruml.io/}
 \BIBentrySTDinterwordspacing
 
-\bibitem{prewd}
-\BIBentryALTinterwordspacing
-Microsoft. (2017) Windows 10 home. [Online]. Available:
-  \url{https://goo.gl/aueHx0}
-\BIBentrySTDinterwordspacing
-
-\bibitem{prewo}
-\BIBentryALTinterwordspacing
-THEGRUTECHNOLOGYMX. (2017) Windows 8.1 pro licencia original. [Online].
-  Available: \url{https://goo.gl/dDv5gd}
-\BIBentrySTDinterwordspacing
-
 \bibitem{preubu}
 \BIBentryALTinterwordspacing
 Ubuntu. (2017) Ubuntu. [Online]. Available:
@@ -267,18 +251,6 @@ Ubuntu. (2017) Ubuntu. [Online]. Available:
 \BIBentryALTinterwordspacing
 elementary. (2017) elementary. [Online]. Available:
   \url{https://elementary.io/es/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{obse}
-\BIBentryALTinterwordspacing
-O.~Laboral. (2016) Promedio de ingresos de los profesionistas. [Online].
-  Available: \url{https://goo.gl/E0dm9j}
-\BIBentrySTDinterwordspacing
-
-\bibitem{conas}
-\BIBentryALTinterwordspacing
-C.~N. de~Salarios~Mínimos. (2017) Salarios mínimos. [Online]. Available:
-  \url{https://goo.gl/nMh4pI}
 \BIBentrySTDinterwordspacing
 
 \bibitem{pert}

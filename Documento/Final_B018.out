@@ -18,8 +18,8 @@
 \BOOKMARK [1][-]{section.2.7}{Segmentaci\363n}{chapter.2}% 18
 \BOOKMARK [2][-]{subsection.2.7.1}{Umbralizaci\363n}{section.2.7}% 19
 \BOOKMARK [2][-]{subsection.2.7.2}{Regi\363n creciente}{section.2.7}% 20
-\BOOKMARK [1][-]{section.2.8}{Clasificadores}{chapter.2}% 21
-\BOOKMARK [1][-]{section.2.9}{Clustering}{chapter.2}% 22
+\BOOKMARK [2][-]{subsection.2.7.3}{Clasificadores}{section.2.7}% 21
+\BOOKMARK [2][-]{subsection.2.7.4}{Clustering}{section.2.7}% 22
 \BOOKMARK [0][-]{chapter.3}{An\341lisis}{}% 23
 \BOOKMARK [1][-]{section.3.1}{Comparaci\363n de software}{chapter.3}% 24
 \BOOKMARK [2][-]{subsection.3.1.1}{Sistemas operativos}{section.3.1}% 25
@@ -41,33 +41,30 @@
 \BOOKMARK [1][-]{section.4.1}{Arquitectura del sistema}{chapter.4}% 41
 \BOOKMARK [1][-]{section.4.2}{Casos de uso}{chapter.4}% 42
 \BOOKMARK [2][-]{subsection.4.2.1}{Caso de uso general}{section.4.2}% 43
-\BOOKMARK [2][-]{subsection.4.2.2}{Caso de uso seleccionar archivo}{section.4.2}% 44
-\BOOKMARK [2][-]{subsection.4.2.3}{Caso de uso ver tomograf\355a}{section.4.2}% 45
-\BOOKMARK [2][-]{subsection.4.2.4}{Caso de uso seleccionar regiones}{section.4.2}% 46
-\BOOKMARK [2][-]{subsection.4.2.5}{Caso de uso seleccionar tratamiento}{section.4.2}% 47
-\BOOKMARK [2][-]{subsection.4.2.6}{Caso de uso ir a tomograf\355a original}{section.4.2}% 48
-\BOOKMARK [2][-]{subsection.4.2.7}{Caso de uso exportar tomograf\355a}{section.4.2}% 49
-\BOOKMARK [1][-]{section.4.3}{Descripci\363n de casos de uso}{chapter.4}% 50
-\BOOKMARK [2][-]{subsection.4.3.1}{Caso de uso seleccionar archivos}{section.4.3}% 51
-\BOOKMARK [2][-]{subsection.4.3.2}{Caso de uso ver tomgraf\355a}{section.4.3}% 52
-\BOOKMARK [2][-]{subsection.4.3.3}{Caso de uso seleccionar regi\363n}{section.4.3}% 53
-\BOOKMARK [2][-]{subsection.4.3.4}{Caso de uso seleccionar tratamiento}{section.4.3}% 54
-\BOOKMARK [2][-]{subsection.4.3.5}{Caso de uso seleccionar t\351cnica de segmetaci\363n}{section.4.3}% 55
-\BOOKMARK [2][-]{subsection.4.3.6}{Caso de uso seleccionar t\351cnica de clasificaci\363n}{section.4.3}% 56
-\BOOKMARK [2][-]{subsection.4.3.7}{Caso de uso seleccionar t\351cnica de an\341lisis}{section.4.3}% 57
-\BOOKMARK [2][-]{subsection.4.3.8}{Caso de uso seleccionar ir a tomograf\355a original}{section.4.3}% 58
-\BOOKMARK [2][-]{subsection.4.3.9}{Caso de uso seleccionar exportar tomograf\355a}{section.4.3}% 59
-\BOOKMARK [1][-]{section.4.4}{Diagramas de secuencia}{chapter.4}% 60
-\BOOKMARK [2][-]{subsection.4.4.1}{Secuencia: Seleccionar archivos}{section.4.4}% 61
-\BOOKMARK [2][-]{subsection.4.4.2}{Secuencia: Ver tomograf\355a}{section.4.4}% 62
-\BOOKMARK [2][-]{subsection.4.4.3}{Secuencia: Seleccionar regiones}{section.4.4}% 63
-\BOOKMARK [2][-]{subsection.4.4.4}{Secuencia: Seleccionar tratamiento}{section.4.4}% 64
-\BOOKMARK [2][-]{subsection.4.4.5}{Secuencia: Seleccionar t\351cnica de segmentaci\363n}{section.4.4}% 65
-\BOOKMARK [2][-]{subsection.4.4.6}{Secuencia: Seleccionar t\351cnica de clasificaci\363n}{section.4.4}% 66
-\BOOKMARK [2][-]{subsection.4.4.7}{Secuencia: Seleccionar t\351cnica de an\341lisis}{section.4.4}% 67
-\BOOKMARK [2][-]{subsection.4.4.8}{Secuencia: Ir a tomograf\355a original}{section.4.4}% 68
-\BOOKMARK [2][-]{subsection.4.4.9}{Secuencia: Exportar tomograf\355a}{section.4.4}% 69
-\BOOKMARK [0][-]{chapter.5}{Avances}{}% 70
-\BOOKMARK [1][-]{section.5.1}{Decodificaci\363n DICOM}{chapter.5}% 71
-\BOOKMARK [1][-]{section.5.2}{Visualizaci\363n}{chapter.5}% 72
-\BOOKMARK [1][-]{section.5.3}{Tratamiento de imagen}{chapter.5}% 73
+\BOOKMARK [2][-]{subsection.4.2.2}{Caso de uso decodificaci\363n}{section.4.2}% 44
+\BOOKMARK [2][-]{subsection.4.2.3}{Caso de uso selecci\363n de regi\363n}{section.4.2}% 45
+\BOOKMARK [2][-]{subsection.4.2.4}{Caso de uso tratamiento de imagen}{section.4.2}% 46
+\BOOKMARK [1][-]{section.4.3}{Descripci\363n de casos de uso}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.3.1}{Caso de uso seleccionar archivos}{section.4.3}% 48
+\BOOKMARK [2][-]{subsection.4.3.2}{Caso de uso decodificar DICOM}{section.4.3}% 49
+\BOOKMARK [2][-]{subsection.4.3.3}{Caso de uso obtener arreglo}{section.4.3}% 50
+\BOOKMARK [2][-]{subsection.4.3.4}{Caso de uso seleccionar regi\363n}{section.4.3}% 51
+\BOOKMARK [2][-]{subsection.4.3.5}{Caso de uso tratar imagen}{section.4.3}% 52
+\BOOKMARK [2][-]{subsection.4.3.6}{Caso de uso umbralizar}{section.4.3}% 53
+\BOOKMARK [2][-]{subsection.4.3.7}{Caso de uso segementar regiones}{section.4.3}% 54
+\BOOKMARK [2][-]{subsection.4.3.8}{Caso de uso clasificar regiones}{section.4.3}% 55
+\BOOKMARK [2][-]{subsection.4.3.9}{Caso de uso analizar regiones}{section.4.3}% 56
+\BOOKMARK [2][-]{subsection.4.3.10}{Caso de uso manipular arreglo}{section.4.3}% 57
+\BOOKMARK [2][-]{subsection.4.3.11}{Caso de uso mostrar tomgraf\355a}{section.4.3}% 58
+\BOOKMARK [1][-]{section.4.4}{Diagramas de secuencia}{chapter.4}% 59
+\BOOKMARK [2][-]{subsection.4.4.1}{Secuencia: Decodificar DICOM}{section.4.4}% 60
+\BOOKMARK [2][-]{subsection.4.4.2}{Secuencia: Seleccionar archivos}{section.4.4}% 61
+\BOOKMARK [2][-]{subsection.4.4.3}{Secuencia: Obtener arreglo}{section.4.4}% 62
+\BOOKMARK [2][-]{subsection.4.4.4}{Secuencia: Seleccionar regiones}{section.4.4}% 63
+\BOOKMARK [2][-]{subsection.4.4.5}{Secuencia: Analizar imagen}{section.4.4}% 64
+\BOOKMARK [2][-]{subsection.4.4.6}{Secuencia: Clasificar regiones}{section.4.4}% 65
+\BOOKMARK [2][-]{subsection.4.4.7}{Secuencia: Manipular arreglo}{section.4.4}% 66
+\BOOKMARK [2][-]{subsection.4.4.8}{Secuencia: Segmentar regiones}{section.4.4}% 67
+\BOOKMARK [2][-]{subsection.4.4.9}{Secuencia: Tratar imagen}{section.4.4}% 68
+\BOOKMARK [2][-]{subsection.4.4.10}{Secuencia: Umbralizar}{section.4.4}% 69
+\BOOKMARK [2][-]{subsection.4.4.11}{Secuencia: Mostrar tomograf\355a}{section.4.4}% 70
