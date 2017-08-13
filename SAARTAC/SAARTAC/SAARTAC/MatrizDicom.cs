@@ -17,6 +17,10 @@ namespace SAARTAC {
             maxValor = -10000;
         }
 
+        public int ObtenerUH(int x, int y){
+            return matriz[x,y];
+        }
+
         public void CopiarMatriz(ref int[,] A) {
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {

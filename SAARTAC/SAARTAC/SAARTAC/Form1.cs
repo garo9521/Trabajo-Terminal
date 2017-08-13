@@ -14,14 +14,11 @@ using System.Threading;
 
 namespace SAARTAC {
     public partial class Form1 : Form {
+        private static MatrizDicom auxUH;
         public Form1() {
             InitializeComponent();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e) {
-
-        }
-
+        
         private void button1_Click(object sender, EventArgs e) {
             try {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
@@ -29,6 +26,7 @@ namespace SAARTAC {
                     string imagen = folderBrowserDialog1.SelectedPath;
                     LecturaArchivosDicom lect = new LecturaArchivosDicom(imagen);
                     var aux = lect.obtenerArchivo(0);
+                    auxUH = lect.obtenerArchivo(0);
                     pictureBox1.Image = aux.ObtenerImagen();
                 }
                 else
@@ -42,6 +40,16 @@ namespace SAARTAC {
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e){
+            int x = pictureBox1.PointToClient(Cursor.Position).X;
+            int y = pictureBox1.PointToClient(Cursor.Position).Y;
+            if (auxUH != null){
+                label2.Text = (auxUH.ObtenerUH(x, y)).ToString();
+                Console.WriteLine("X = " + x + " Y = " + y);
+            }
         }
     }
 }
