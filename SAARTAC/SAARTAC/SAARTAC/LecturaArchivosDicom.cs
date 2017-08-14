@@ -25,7 +25,7 @@ namespace SAARTAC {
                 archivosDicom[i] = new MatrizDicom();
             }
             for (int i = 0; i < N; i++) {
-                Console.WriteLine(fileEntries[i]);
+                //Console.WriteLine(fileEntries[i]);
                 string parametro = "\"" + fileEntries[i] + "\"";
                 ParametroPython aux = new ParametroPython(x, parametro, i);
                 threadsArray[i] = new Thread(() => Pregunta_Python(aux));
@@ -46,7 +46,12 @@ namespace SAARTAC {
             //pruebaImagen.Save("prueba.jpg");
             //pruebaImagen.Dispose();
 
-            Console.WriteLine("llegue aqui");
+            //Console.WriteLine("llegue aqui");
+        }
+
+        public int num_archivos(String path){
+            string[] fileEntries = Directory.GetFiles(path);
+            return fileEntries.Length;
         }
 
         public static void Pregunta_Python(ParametroPython o) {
@@ -55,7 +60,7 @@ namespace SAARTAC {
             int pos = o.pos;
             MatrizDicom dicom = new MatrizDicom();
             string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+            string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -67,7 +72,7 @@ namespace SAARTAC {
             Process myProcess = new Process();
             myProcess.StartInfo = myProcessStartInfo;
 
-            Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
+            //Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
             myProcess.Start();
 
             StreamReader myStreamReader = myProcess.StandardOutput;

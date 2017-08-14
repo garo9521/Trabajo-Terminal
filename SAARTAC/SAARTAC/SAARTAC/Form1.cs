@@ -15,18 +15,23 @@ using System.Threading;
 namespace SAARTAC {
     public partial class Form1 : Form {
         private static MatrizDicom auxUH;
+        int id_tac, num_tacs;
+        LecturaArchivosDicom lect;
         public Form1() {
             InitializeComponent();
         }
         
         private void button1_Click(object sender, EventArgs e) {
-            try {
+            /*try {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
                     Console.WriteLine("si entre we");
+                    id_tac = 0;
                     string imagen = folderBrowserDialog1.SelectedPath;
-                    LecturaArchivosDicom lect = new LecturaArchivosDicom(imagen);
-                    var aux = lect.obtenerArchivo(0);
-                    auxUH = lect.obtenerArchivo(0);
+                    lect = new LecturaArchivosDicom(imagen);
+                    num_tacs = lect.num_archivos(imagen);
+                    Console.WriteLine(num_tacs);
+                    var aux = lect.obtenerArchivo(id_tac);
+                    auxUH = lect.obtenerArchivo(id_tac);
                     pictureBox1.Image = aux.ObtenerImagen();
                 }
                 else
@@ -34,7 +39,7 @@ namespace SAARTAC {
             }
             catch (Exception ex) {
                 MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
-            }
+            }*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,6 +55,50 @@ namespace SAARTAC {
                 label2.Text = (auxUH.ObtenerUH(x, y)).ToString();
                 Console.WriteLine("X = " + x + " Y = " + y);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e) {
+            if (id_tac >= num_tacs -1)
+                id_tac = 0;
+            else
+                id_tac++;
+            var aux = lect.obtenerArchivo(id_tac);
+            auxUH = lect.obtenerArchivo(id_tac);
+            pictureBox1.Image = aux.ObtenerImagen();
+            Console.WriteLine(id_tac);
+            
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
+                    Console.WriteLine("si entre we");
+                    id_tac = 0;
+                    string imagen = folderBrowserDialog1.SelectedPath;
+                    lect = new LecturaArchivosDicom(imagen);
+                    num_tacs = lect.num_archivos(imagen);
+                    Console.WriteLine(num_tacs);
+                    var aux = lect.obtenerArchivo(id_tac);
+                    auxUH = lect.obtenerArchivo(id_tac);
+                    pictureBox1.Image = aux.ObtenerImagen();
+                }
+                else
+                    Console.WriteLine("aqui es el pedo we");
+            }
+            catch (Exception ex) {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            if (id_tac == 0)
+                id_tac = num_tacs - 1;
+            else
+                id_tac--;
+            var aux = lect.obtenerArchivo(id_tac);
+            auxUH = lect.obtenerArchivo(id_tac);
+            pictureBox1.Image = aux.ObtenerImagen();
+            Console.WriteLine(id_tac);
         }
     }
 }
