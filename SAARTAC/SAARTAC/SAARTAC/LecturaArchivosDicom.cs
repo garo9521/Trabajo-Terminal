@@ -68,7 +68,7 @@ namespace SAARTAC {
             myProcessStartInfo.RedirectStandardOutput = true;
 
             myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
-
+            myProcessStartInfo.CreateNoWindow = true;
             Process myProcess = new Process();
             myProcess.StartInfo = myProcessStartInfo;
 
