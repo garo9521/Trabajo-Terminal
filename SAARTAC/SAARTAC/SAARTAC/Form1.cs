@@ -62,11 +62,16 @@ namespace SAARTAC {
                 id_tac = 0;
             else
                 id_tac++;
+            MostrarImagen1();
+            Console.WriteLine(id_tac);
+            
+        }
+
+        private void MostrarImagen1() {
+            lect.threadsArray[id_tac].Join();
             var aux = lect.obtenerArchivo(id_tac);
             auxUH = lect.obtenerArchivo(id_tac);
             pictureBox1.Image = aux.ObtenerImagen();
-            Console.WriteLine(id_tac);
-            
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -78,9 +83,7 @@ namespace SAARTAC {
                     lect = new LecturaArchivosDicom(imagen);
                     num_tacs = lect.num_archivos(imagen);
                     Console.WriteLine(num_tacs);
-                    var aux = lect.obtenerArchivo(id_tac);
-                    auxUH = lect.obtenerArchivo(id_tac);
-                    pictureBox1.Image = aux.ObtenerImagen();
+                    MostrarImagen1();
                 }
                 else
                     Console.WriteLine("aqui es el pedo we");
@@ -95,9 +98,7 @@ namespace SAARTAC {
                 id_tac = num_tacs - 1;
             else
                 id_tac--;
-            var aux = lect.obtenerArchivo(id_tac);
-            auxUH = lect.obtenerArchivo(id_tac);
-            pictureBox1.Image = aux.ObtenerImagen();
+            MostrarImagen1();
             Console.WriteLine(id_tac);
         }
     }

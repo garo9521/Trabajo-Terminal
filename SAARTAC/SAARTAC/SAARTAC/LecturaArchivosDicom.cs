@@ -8,6 +8,7 @@ namespace SAARTAC {
     internal class LecturaArchivosDicom {
 
         public static MatrizDicom[] archivosDicom;
+        public Thread[] threadsArray;
 
         public MatrizDicom obtenerArchivo(int x) {
             return archivosDicom[x];
@@ -19,11 +20,9 @@ namespace SAARTAC {
 
             DateTime start = DateTime.Now;
             int N = fileEntries.Length;
-            Thread[] threadsArray = new Thread[N];
+            threadsArray = new Thread[N];
             archivosDicom = new MatrizDicom[N];
-            for (int i = 0; i < N; i++) {
-                archivosDicom[i] = new MatrizDicom();
-            }
+
             for (int i = 0; i < N; i++) {
                 //Console.WriteLine(fileEntries[i]);
                 string parametro = "\"" + fileEntries[i] + "\"";
@@ -33,9 +32,6 @@ namespace SAARTAC {
             }
             for (int i = 0; i < N; i++) {
                 threadsArray[i].Start();
-            }
-            for (int i = 0; i < N; i++) {
-                threadsArray[i].Join();
             }
 
             TimeSpan timeDiff = DateTime.Now - start;
