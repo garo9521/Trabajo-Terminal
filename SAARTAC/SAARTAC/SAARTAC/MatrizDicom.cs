@@ -12,7 +12,7 @@ namespace SAARTAC {
 
         public MatrizDicom() {
             N = 512;
-            matriz = new int[N + 10, N + 10];
+            matriz = new int[N, N];
             minValor = 10000;
             maxValor = -10000;
         }
@@ -44,7 +44,7 @@ namespace SAARTAC {
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
-                    int valorGris = (int)(porcion * matriz[i, j]);
+                    int valorGris = (int)(porcion * (matriz[i, j] - minValor));
                     Color color = Color.FromArgb(valorGris, valorGris, valorGris);
                     imagen.SetPixel(i, j, color);
                 }

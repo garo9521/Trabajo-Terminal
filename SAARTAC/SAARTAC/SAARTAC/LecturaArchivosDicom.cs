@@ -59,8 +59,8 @@ namespace SAARTAC {
             int pregunta = o.x;
             int pos = o.pos;
             MatrizDicom dicom = new MatrizDicom();
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -85,7 +85,7 @@ namespace SAARTAC {
                 string[] tokens = myString.Split();
                 int[] filaDicom = Array.ConvertAll(tokens, int.Parse);
                 for (int k = 0; k < M; k++) {
-                    auxMatriz[j, k] = filaDicom[k];
+                    auxMatriz[j, k] = filaDicom[k] - 1000;
                 }
             }
             dicom.CopiarMatriz(ref auxMatriz);
