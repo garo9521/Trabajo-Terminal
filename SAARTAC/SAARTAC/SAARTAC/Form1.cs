@@ -15,6 +15,8 @@ using System.Threading;
 namespace SAARTAC {
     public partial class Form1 : Form {
         private static MatrizDicom auxUH;
+        private Seccion seccion;
+        private bool draw = false;
         int id_tac, num_tacs;
         LecturaArchivosDicom lect;
         public Form1() {
@@ -53,7 +55,34 @@ namespace SAARTAC {
             int y = pictureBox1.PointToClient(Cursor.Position).Y;
             if (auxUH != null){
                 label2.Text = (auxUH.ObtenerUH(x, y)).ToString();
-                Console.WriteLine("X = " + x + " Y = " + y);
+            }
+            if (draw & e.Button == MouseButtons.Left){
+                seccion.setFinal(x, y);
+                Graphics objGrafico = this.pictureBox1.CreateGraphics();
+                seccion.setRectangle();
+                objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
+                pictureBox1.Invalidate();
+            }
+
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e){
+            if (e.Button == MouseButtons.Left){
+                draw = true;
+                seccion = new Seccion(pictureBox1.PointToClient(Cursor.Position).X, pictureBox1.PointToClient(Cursor.Position).Y, auxUH);
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e){
+            if (draw){
+                Graphics objGrafico = this.pictureBox1.CreateGraphics();
+                seccion.setRectangle();
+                objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
+                label5.Text = (seccion.createAverage()).ToString();
+                draw = false;
+                int milliseconds = 1200;
+                Thread.Sleep(milliseconds);
+                pictureBox1.Invalidate();
             }
         }
 
@@ -96,9 +125,7 @@ namespace SAARTAC {
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             Console.WriteLine(comboBox1.SelectedItem);
             string lectura = (string)comboBox1.SelectedItem;
-            if(lectura == "Personalizada")
-                textBox1.
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e) {
