@@ -55,8 +55,8 @@ namespace SAARTAC {
             int pregunta = o.x;
             int pos = o.pos;
             MatrizDicom dicom = new MatrizDicom();
-            string python = @"D:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+            string python = @"C:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 

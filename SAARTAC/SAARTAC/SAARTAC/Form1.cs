@@ -93,6 +93,14 @@ namespace SAARTAC {
             }
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            Console.WriteLine(comboBox1.SelectedItem);
+            string lectura = (string)comboBox1.SelectedItem;
+            if(lectura == "Personalizada")
+                textBox1.
+
+        }
+
         private void button2_Click(object sender, EventArgs e) {
             if (id_tac == 0)
                 id_tac = num_tacs - 1;
