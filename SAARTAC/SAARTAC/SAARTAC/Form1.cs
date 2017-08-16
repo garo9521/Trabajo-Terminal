@@ -17,7 +17,7 @@ namespace SAARTAC {
         private static MatrizDicom auxUH;
         private Seccion seccion;
         private bool draw = false;
-        int id_tac, num_tacs;
+        int id_tac, num_tacs, uh_per, factor_per;
         LecturaArchivosDicom lect;
         public Form1() {
             InitializeComponent();
@@ -125,7 +125,30 @@ namespace SAARTAC {
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             Console.WriteLine(comboBox1.SelectedItem);
             string lectura = (string)comboBox1.SelectedItem;
+            if(lectura == "Personalizada"){
+                label6.Visible = true;
+                label7.Visible = true;
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+                button1.Visible = true;
+            }
             
+        }
+
+        private void label7_Click(object sender, EventArgs e) {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) {
+            uh_per = int.Parse(textBox1.Text);
+            factor_per = int.Parse(textBox2.Text);
+            Console.WriteLine(uh_per);
+            Console.WriteLine(factor_per);
+            label6.Visible = false;
+            label7.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            button1.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e) {
