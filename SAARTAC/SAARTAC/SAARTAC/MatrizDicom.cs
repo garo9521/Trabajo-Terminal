@@ -9,12 +9,21 @@ namespace SAARTAC {
         public int[,] matriz;
         public int minValor;
         public int maxValor;
+        public string ruta;
 
         public MatrizDicom() {
             N = 512;
-            matriz = new int[N, N];
+            matriz = new int [N, N];
             minValor = 10000;
             maxValor = -10000;
+        }
+
+        public MatrizDicom(string ruta) {
+            N = 512;
+            matriz = new int [N, N];
+            minValor = 10000;
+            maxValor = -10000;
+            this.ruta = ruta;
         }
 
         public int ObtenerUH(int x, int y){

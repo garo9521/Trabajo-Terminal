@@ -110,6 +110,7 @@ namespace SAARTAC {
                     id_tac = 0;
                     string imagen = folderBrowserDialog1.SelectedPath;
                     lect = new LecturaArchivosDicom(imagen);
+                    //double [] longitud = LecturaArchivosDicom.Pregunta_Python_Dimensiones(1, ruta);
                     num_tacs = lect.num_archivos(imagen);
                     Console.WriteLine(num_tacs);
                     MostrarImagen1();
@@ -133,6 +134,10 @@ namespace SAARTAC {
                 button1.Visible = true;
             }
             
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e) {
+
         }
 
         private void label7_Click(object sender, EventArgs e) {

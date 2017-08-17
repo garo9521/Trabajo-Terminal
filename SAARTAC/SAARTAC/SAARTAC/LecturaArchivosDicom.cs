@@ -50,11 +50,38 @@ namespace SAARTAC {
             return fileEntries.Length;
         }
 
+        public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta) {
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+
+            ruta = "\"" + ruta + "\"";
+
+            ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
+
+            myProcessStartInfo.UseShellExecute = false;
+            myProcessStartInfo.RedirectStandardOutput = true;
+
+            myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
+            myProcessStartInfo.CreateNoWindow = true;
+            Process myProcess = new Process();
+            myProcess.StartInfo = myProcessStartInfo;
+
+            //Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
+            myProcess.Start();
+
+            StreamReader myStreamReader = myProcess.StandardOutput;
+
+            string myString = myStreamReader.ReadLine();
+            string [] tokens = myString.Split();
+            double[] M = { Convert.ToDouble(tokens [0]), Convert.ToDouble(tokens[1])};
+            return M;
+        }
+
         public static void Pregunta_Python(ParametroPython o) {
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;
-            MatrizDicom dicom = new MatrizDicom();
+            MatrizDicom dicom = new MatrizDicom(ruta);
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
 
