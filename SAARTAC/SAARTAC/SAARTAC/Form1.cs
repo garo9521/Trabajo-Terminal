@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Drawing;
 using System.Diagnostics;
 using System.Threading;
 
@@ -16,8 +15,9 @@ namespace SAARTAC {
     public partial class Form1 : Form {
         private static MatrizDicom auxUH;
         private Seccion seccion;
-        private bool draw = false;
-        int id_tac, num_tacs, uh_per, factor_per;
+        private Regla regla;
+        private bool draw = false, reglaBool = false;
+        int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
         LecturaArchivosDicom lect;
         public Form1() {
             InitializeComponent();
@@ -67,7 +67,8 @@ namespace SAARTAC {
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e){
-            if (e.Button == MouseButtons.Left){
+            if (e.Button == MouseButtons.Left && reglaBool != true && auxUH != null && bandera != 1){
+                Console.WriteLine("promedios");
                 draw = true;
                 seccion = new Seccion(pictureBox1.PointToClient(Cursor.Position).X, pictureBox1.PointToClient(Cursor.Position).Y, auxUH);
             }
@@ -134,6 +135,30 @@ namespace SAARTAC {
                 button1.Visible = true;
             }
             
+        }
+
+        private void button4_Click(object sender, EventArgs e){
+            reglaBool = true;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e){
+            if (reglaBool && bandera == 0){
+                Console.WriteLine("entro 1");
+                regla = new Regla(pictureBox1.PointToClient(Cursor.Position).X, pictureBox1.PointToClient(Cursor.Position).Y);
+                bandera = 1;
+            }
+            else if (reglaBool && bandera == 1){
+                Console.WriteLine("entro 2");
+                reglaBool = false;
+                bandera = 0;
+                regla.setFinal(pictureBox1.PointToClient(Cursor.Position).X, pictureBox1.PointToClient(Cursor.Position).Y);
+                Graphics objGrafico = this.pictureBox1.CreateGraphics();
+                Pen myPen = new Pen(Color.Red, 1);
+                objGrafico.DrawLine(myPen, regla.getPointInicio(), regla.getPoinFinal());
+                int milliseconds = 1200;
+                Thread.Sleep(milliseconds);
+                pictureBox1.Invalidate();
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e) {
