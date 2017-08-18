@@ -155,9 +155,12 @@ namespace SAARTAC {
                 Graphics objGrafico = this.pictureBox1.CreateGraphics();
                 Pen myPen = new Pen(Color.Red, 1);
                 objGrafico.DrawLine(myPen, regla.getPointInicio(), regla.getPoinFinal());
+                label9.Text = (regla.getDistancia(0.44, 0.44)).ToString("N3");
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
                 pictureBox1.Invalidate();
+
+
             }
         }
 

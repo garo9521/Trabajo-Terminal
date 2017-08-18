@@ -52,7 +52,7 @@ namespace SAARTAC {
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta) {
             string python = @"D:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+            string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
 
             ruta = "\"" + ruta + "\"";
 
@@ -83,7 +83,7 @@ namespace SAARTAC {
             int pos = o.pos;
             MatrizDicom dicom = new MatrizDicom(ruta);
             string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\AlexisAlan\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+            string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
 
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 

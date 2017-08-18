@@ -25,5 +25,15 @@ namespace SAARTAC
         public Point getPoinFinal(){
             return PuntoFin;
         }
+
+        public double getDistancia(double filas, double columnas){
+            double dist, y, x, aux;
+            y = (PuntoFin.Y - PuntoInicio.Y) * columnas;
+            x = (PuntoFin.X - PuntoInicio.X) * filas;
+            aux = (x * x) + (y * y);
+            dist = Math.Sqrt(aux);
+
+            return dist;
+        }
     }
 }
