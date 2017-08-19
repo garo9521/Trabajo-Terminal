@@ -30,6 +30,10 @@ namespace SAARTAC {
             return matriz[x,y];
         }
 
+        public string obtenerRuta() {
+            return ruta;
+        }
+
         public void CopiarMatriz(ref int[,] A) {
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
