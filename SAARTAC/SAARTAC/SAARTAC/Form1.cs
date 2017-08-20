@@ -17,6 +17,7 @@ namespace SAARTAC {
         private Seccion seccion;
         private Regla regla;
         private bool draw = false, reglaBool = false;
+        private List<bool[,]> matrizTratada = new List<bool[,]>();
         int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
         LecturaArchivosDicom lect;
         public Form1() {
@@ -93,16 +94,24 @@ namespace SAARTAC {
             else
                 id_tac++;
             MostrarImagen1();
+            if(matrizTratada.Count > 0)
+                MostrarImagen2();
             Console.WriteLine(id_tac);
             
         }
 
         private void MostrarImagen1() {
-            lect.threadsArray[id_tac].Join();
             var aux = lect.obtenerArchivo(id_tac);
             auxUH = lect.obtenerArchivo(id_tac);
             pictureBox1.Image = aux.ObtenerImagen();
         }
+
+        private void MostrarImagen2() {
+
+            var imagenResultado = obtenerImagenUmbral(matrizTratada[id_tac], auxUH.ObtenerImagen(), Color.Red);
+            pictureBox2.Image = imagenResultado;
+        }
+
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
@@ -111,8 +120,7 @@ namespace SAARTAC {
                     id_tac = 0;
                     string imagen = folderBrowserDialog1.SelectedPath;
                     lect = new LecturaArchivosDicom(imagen);
-                    //double [] longitud = LecturaArchivosDicom.Pregunta_Python_Dimensiones(1, ruta);
-                    num_tacs = lect.num_archivos(imagen);
+                    num_tacs = lect.num_archivos();
                     Console.WriteLine(num_tacs);
                     MostrarImagen1();
                 }
@@ -125,20 +133,33 @@ namespace SAARTAC {
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            matrizTratada.Clear();
             Console.WriteLine(comboBox1.SelectedItem);
             string lectura = (string)comboBox1.SelectedItem;
+            Umbralizacion operaciones = new Umbralizacion();
             if(lectura == "Personalizada"){
                 label6.Visible = true;
                 label7.Visible = true;
                 textBox1.Visible = true;
                 textBox2.Visible = true;
                 button1.Visible = true;
+            } else {
+                for (int i = 0; i < lect.num_archivos(); i++) {
+                    var archivo = lect.obtenerArchivo(i);
+                    var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
+                    matrizTratada.Add(matrizResultado);
+                }
+                MostrarImagen2();
             }
             
         }
 
         private void button4_Click(object sender, EventArgs e){
             reglaBool = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e){
@@ -183,6 +204,13 @@ namespace SAARTAC {
             textBox1.Visible = false;
             textBox2.Visible = false;
             button1.Visible = false;
+            Umbralizacion operaciones = new Umbralizacion();
+            for(int i = 0; i < lect.num_archivos() ; i++) {
+                var archivo = lect.obtenerArchivo(i);
+                var matrizResultado = operaciones.UmbralEnRango(archivo.matriz, uh_per - factor_per, uh_per + factor_per);
+                matrizTratada.Add(matrizResultado);
+            }
+            MostrarImagen2();
         }
 
         private void button2_Click(object sender, EventArgs e) {
@@ -191,7 +219,24 @@ namespace SAARTAC {
             else
                 id_tac--;
             MostrarImagen1();
+
+            if (matrizTratada.Count > 0)
+                MostrarImagen2();
+
             Console.WriteLine(id_tac);
+        }
+        private Bitmap obtenerImagenUmbral(bool[,] umbral, Bitmap matrizOriginal, Color color) {
+            Bitmap resultado = new Bitmap(matrizOriginal);
+            int N = umbral.GetLength(0);
+            int M = umbral.GetLength(1);
+            for(int i = 0; i < N; i++) {
+                for(int j = 0; j < M; j++) {
+                    if(umbral[i, j]) {
+                        resultado.SetPixel(i, j, color);
+                    }
+                }
+            }
+            return resultado;
         }
     }
 }
