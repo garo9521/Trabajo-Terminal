@@ -186,6 +186,20 @@ namespace SAARTAC {
             }
         }
 
+        private void left90_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            auxUH = auxUH.GirarIzquierda(auxUH);
+            pictureBox1.Refresh();
+        }
+
+        private void right90_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            auxUH = auxUH.GirarDerecha(auxUH);
+            pictureBox1.Refresh();
+        }
+
         private void pictureBox2_Click(object sender, EventArgs e) {
 
         }
