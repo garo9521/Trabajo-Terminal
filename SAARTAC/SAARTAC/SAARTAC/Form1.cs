@@ -18,6 +18,7 @@ namespace SAARTAC {
         private Regla regla;
         private bool draw = false, reglaBool = false;
         private List<bool[,]> matrizTratada = new List<bool[,]>();
+        private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
         LecturaArchivosDicom lect;
         public Form1() {
@@ -93,6 +94,7 @@ namespace SAARTAC {
                 id_tac = 0;
             else
                 id_tac++;
+            auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
             if(matrizTratada.Count > 0)
                 MostrarImagen2();
@@ -101,6 +103,10 @@ namespace SAARTAC {
         }
 
         private void MostrarImagen1() {
+            if(imagenesCaja1.Count() > 0) {
+                pictureBox1.Image = imagenesCaja1 [id_tac];
+                return;
+            }
             var aux = lect.obtenerArchivo(id_tac);
             auxUH = lect.obtenerArchivo(id_tac);
             pictureBox1.Image = aux.ObtenerImagen();
@@ -129,8 +135,10 @@ namespace SAARTAC {
                     lect = new LecturaArchivosDicom(imagen);
                     num_tacs = lect.num_archivos();
                     Console.WriteLine(num_tacs);
+                    matrizTratada.Clear();
+                    imagenesCaja1.Clear();
                     MostrarImagen1();
-                }
+;                }
                 else
                     Console.WriteLine("aqui es el pedo we");
             }
@@ -204,8 +212,13 @@ namespace SAARTAC {
         private void button5_Click(object sender, EventArgs e) {
             int lim_inf_ven = int.Parse(textBox3.Text);
             int lim_sup_ven = int.Parse(textBox4.Text);
-            var imagen = obtenerImagenConVentana(auxUH.matriz, lim_inf_ven, lim_sup_ven);
-            MostrarImagen1(imagen);
+            imagenesCaja1.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++) {
+                var archivo = lect.obtenerArchivo(i);
+                var imagen = obtenerImagenConVentana(archivo.matriz, lim_inf_ven, lim_sup_ven);
+                imagenesCaja1.Add(imagen);
+            }
+            MostrarImagen1();
         }
 
         private void label7_Click(object sender, EventArgs e) {
@@ -236,6 +249,7 @@ namespace SAARTAC {
                 id_tac = num_tacs - 1;
             else
                 id_tac--;
+            auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
 
             if (matrizTratada.Count > 0)
@@ -267,8 +281,8 @@ namespace SAARTAC {
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
-                    int valorGris = (int)(porcion * (matriz [i, j] - limiteInferior + 1));
-                    if (valorGris < 0 || valorGris > 255)
+                    int valorGris = (int)(porcion * (double)(matriz [i, j] - limiteInferior + 1));
+                    if (matriz[i, j] < limiteInferior || matriz[i, j] > limiteSuperior)
                         valorGris = 0;
                     Color color = Color.FromArgb(valorGris, valorGris, valorGris);
                     imagen.SetPixel(i, j, color);
