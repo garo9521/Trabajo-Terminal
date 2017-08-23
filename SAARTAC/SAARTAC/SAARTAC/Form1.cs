@@ -197,6 +197,17 @@ namespace SAARTAC {
 
         }
 
+        private void pictureBox2_Click_1(object sender, EventArgs e) {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e) {
+            int lim_inf_ven = int.Parse(textBox3.Text);
+            int lim_sup_ven = int.Parse(textBox4.Text);
+            var imagen = obtenerImagenConVentana(auxUH.matriz, lim_inf_ven, lim_sup_ven);
+            MostrarImagen1(imagen);
+        }
+
         private void label7_Click(object sender, EventArgs e) {
 
         }
