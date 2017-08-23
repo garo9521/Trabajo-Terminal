@@ -62,7 +62,6 @@ namespace SAARTAC {
                     imagen.SetPixel(i, j, color);
                 }
             }
-            Console.ReadLine();
             return imagen;
 
         }

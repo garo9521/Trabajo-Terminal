@@ -106,12 +106,19 @@ namespace SAARTAC {
             pictureBox1.Image = aux.ObtenerImagen();
         }
 
+        private void MostrarImagen1(Bitmap imagen) {
+            pictureBox1.Image = imagen;
+        }
+
         private void MostrarImagen2() {
 
             var imagenResultado = obtenerImagenUmbral(matrizTratada[id_tac], auxUH.ObtenerImagen(), Color.Red);
             pictureBox2.Image = imagenResultado;
         }
 
+        private void MostrarImagen2(Bitmap imagen) {
+            pictureBox2.Image = imagen;
+        }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
@@ -237,6 +244,26 @@ namespace SAARTAC {
                 }
             }
             return resultado;
+        }
+
+        private Bitmap obtenerImagenConVentana(int[,] matriz, int limiteInferior, int limiteSuperior) {
+            int N = matriz.GetLength(0);
+            int M = matriz.GetLength(1);
+            Bitmap imagen = new Bitmap(N, M);
+
+            int tam = limiteSuperior - limiteInferior + 1;
+            double porcion = 255.0 / tam;
+
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    int valorGris = (int)(porcion * (matriz [i, j] - limiteInferior + 1));
+                    if (valorGris < 0 || valorGris > 255)
+                        valorGris = 0;
+                    Color color = Color.FromArgb(valorGris, valorGris, valorGris);
+                    imagen.SetPixel(i, j, color);
+                }
+            }
+            return imagen;
         }
     }
 }
