@@ -23,32 +23,36 @@ namespace SAARTAC {
         LecturaArchivosDicom lect;
         public Form1() {
             InitializeComponent();
+            this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
+        }
+
+        private void Form1_MouseWheel(object sender, MouseEventArgs e){
+            if(e.Delta > 0){
+                if (id_tac >= num_tacs - 1)
+                    id_tac = 0;
+                else
+                    id_tac++;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagen1();
+                if (matrizTratada.Count > 0)
+                    MostrarImagen2();
+            }
+            if (e.Delta < 0){
+                if (id_tac == 0)
+                    id_tac = num_tacs - 1;
+                else
+                    id_tac--;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagen1();
+                if (matrizTratada.Count > 0)
+                    MostrarImagen2();
+            }
         }
         
         private void button1_Click(object sender, EventArgs e) {
-            /*try {
-                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
-                    Console.WriteLine("si entre we");
-                    id_tac = 0;
-                    string imagen = folderBrowserDialog1.SelectedPath;
-                    lect = new LecturaArchivosDicom(imagen);
-                    num_tacs = lect.num_archivos(imagen);
-                    Console.WriteLine(num_tacs);
-                    var aux = lect.obtenerArchivo(id_tac);
-                    auxUH = lect.obtenerArchivo(id_tac);
-                    pictureBox1.Image = aux.ObtenerImagen();
-                }
-                else
-                    Console.WriteLine("aqui es el pedo we");
-            }
-            catch (Exception ex) {
-                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
-            }*/
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+        private void Form1_Load(object sender, EventArgs e){
         }
 
 
