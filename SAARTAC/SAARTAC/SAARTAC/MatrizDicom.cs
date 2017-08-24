@@ -5,7 +5,8 @@ using System.Drawing;
 namespace SAARTAC { 
 
     internal class MatrizDicom {
-        private static int N;
+        private int N;
+        private int M;
         public int[,] matriz;
         public int minValor;
         public int maxValor;
@@ -13,20 +14,24 @@ namespace SAARTAC {
 
         public MatrizDicom() {
             N = 512;
+            M = 512;
             matriz = new int [N, N];
             minValor = 10000;
             maxValor = -10000;
         }
 
-        public MatrizDicom(string ruta) {
-            N = 512;
-            matriz = new int [N, N];
+        public MatrizDicom(string ruta, int NN, int MM) {
+            N = NN;
+            M = MM;
+            matriz = new int [N, M];
             minValor = 10000;
             maxValor = -10000;
             this.ruta = ruta;
         }
 
         public int ObtenerUH(int x, int y){
+            if (x >= N || y >= M)
+                return -100000;
             return matriz[x,y];
         }
 
@@ -44,19 +49,13 @@ namespace SAARTAC {
             }
         }
 
-        public void ImprimeMatriz() {
-            Console.WriteLine(matriz[0, 1]);
-        }
-
-
-
         public Bitmap ObtenerImagen() {
-            Bitmap imagen = new Bitmap(512, 512);
+            Bitmap imagen = new Bitmap(N, M);
             int tam = maxValor - minValor + 1;
             double porcion = 255.0 / tam;
 
             for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
+                for (int j = 0; j < M; j++) {
                     int valorGris = (int)(porcion * (matriz[i, j] - minValor));
                     Color color = Color.FromArgb(valorGris, valorGris, valorGris);
                     imagen.SetPixel(i, j, color);

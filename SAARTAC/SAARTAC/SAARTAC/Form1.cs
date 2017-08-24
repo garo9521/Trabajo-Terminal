@@ -286,8 +286,10 @@ namespace SAARTAC {
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     int valorGris = (int)(porcion * (double)(matriz [i, j] - limiteInferior + 1));
-                    if (matriz[i, j] < limiteInferior || matriz[i, j] > limiteSuperior)
+                    if (matriz[i, j] < limiteInferior)
                         valorGris = 0;
+                    if (matriz [i, j] > limiteSuperior)
+                        valorGris = 255;
                     Color color = Color.FromArgb(valorGris, valorGris, valorGris);
                     imagen.SetPixel(i, j, color);
                 }
