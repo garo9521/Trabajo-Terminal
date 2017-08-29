@@ -7,7 +7,6 @@ def Leer_Archivos_DICOM(ruta):
 pregunta = int(sys.argv[1]) 
 ruta = sys.argv[2]
 archivoDicom = Leer_Archivos_DICOM(ruta)
-
 if pregunta == 0:	
 	print len(archivoDicom.pixel_array), len(archivoDicom.pixel_array[0])
 	for j in archivoDicom.pixel_array:
