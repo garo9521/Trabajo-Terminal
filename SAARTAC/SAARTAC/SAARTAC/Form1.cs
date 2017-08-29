@@ -18,36 +18,41 @@ namespace SAARTAC {
         private Regla regla;
         private bool draw = false, reglaBool = false;
         private List<bool[,]> matrizTratada = new List<bool[,]>();
+        private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
         LecturaArchivosDicom lect;
         public Form1() {
             InitializeComponent();
+            this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
+        }
+
+        private void Form1_MouseWheel(object sender, MouseEventArgs e){
+            if(e.Delta > 0){
+                if (id_tac >= num_tacs - 1)
+                    id_tac = 0;
+                else
+                    id_tac++;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagen1();
+                if (matrizTratada.Count > 0)
+                    MostrarImagen2();
+            }
+            if (e.Delta < 0){
+                if (id_tac == 0)
+                    id_tac = num_tacs - 1;
+                else
+                    id_tac--;
+                auxUH = lect.obtenerArchivo(id_tac);
+                MostrarImagen1();
+                if (matrizTratada.Count > 0)
+                    MostrarImagen2();
+            }
         }
         
         private void button1_Click(object sender, EventArgs e) {
-            /*try {
-                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
-                    Console.WriteLine("si entre we");
-                    id_tac = 0;
-                    string imagen = folderBrowserDialog1.SelectedPath;
-                    lect = new LecturaArchivosDicom(imagen);
-                    num_tacs = lect.num_archivos(imagen);
-                    Console.WriteLine(num_tacs);
-                    var aux = lect.obtenerArchivo(id_tac);
-                    auxUH = lect.obtenerArchivo(id_tac);
-                    pictureBox1.Image = aux.ObtenerImagen();
-                }
-                else
-                    Console.WriteLine("aqui es el pedo we");
-            }
-            catch (Exception ex) {
-                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
-            }*/
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+        private void Form1_Load(object sender, EventArgs e){
         }
 
 
@@ -93,6 +98,7 @@ namespace SAARTAC {
                 id_tac = 0;
             else
                 id_tac++;
+            auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
             if(matrizTratada.Count > 0)
                 MostrarImagen2();
@@ -101,9 +107,17 @@ namespace SAARTAC {
         }
 
         private void MostrarImagen1() {
+            if(imagenesCaja1.Count() > 0) {
+                pictureBox1.Image = imagenesCaja1 [id_tac];
+                return;
+            }
             var aux = lect.obtenerArchivo(id_tac);
             auxUH = lect.obtenerArchivo(id_tac);
             pictureBox1.Image = aux.ObtenerImagen();
+        }
+
+        private void MostrarImagen1(Bitmap imagen) {
+            pictureBox1.Image = imagen;
         }
 
         private void MostrarImagen2() {
@@ -112,6 +126,9 @@ namespace SAARTAC {
             pictureBox2.Image = imagenResultado;
         }
 
+        private void MostrarImagen2(Bitmap imagen) {
+            pictureBox2.Image = imagen;
+        }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
@@ -122,8 +139,10 @@ namespace SAARTAC {
                     lect = new LecturaArchivosDicom(imagen);
                     num_tacs = lect.num_archivos();
                     Console.WriteLine(num_tacs);
+                    matrizTratada.Clear();
+                    imagenesCaja1.Clear();
                     MostrarImagen1();
-                }
+;                }
                 else
                     Console.WriteLine("aqui es el pedo we");
             }
@@ -204,6 +223,22 @@ namespace SAARTAC {
 
         }
 
+        private void pictureBox2_Click_1(object sender, EventArgs e) {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e) {
+            int lim_inf_ven = int.Parse(textBox3.Text);
+            int lim_sup_ven = int.Parse(textBox4.Text);
+            imagenesCaja1.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++) {
+                var archivo = lect.obtenerArchivo(i);
+                var imagen = obtenerImagenConVentana(archivo.matriz, lim_inf_ven, lim_sup_ven);
+                imagenesCaja1.Add(imagen);
+            }
+            MostrarImagen1();
+        }
+
         private void label7_Click(object sender, EventArgs e) {
 
         }
@@ -232,6 +267,7 @@ namespace SAARTAC {
                 id_tac = num_tacs - 1;
             else
                 id_tac--;
+            auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
 
             if (matrizTratada.Count > 0)
@@ -251,6 +287,28 @@ namespace SAARTAC {
                 }
             }
             return resultado;
+        }
+
+        private Bitmap obtenerImagenConVentana(int[,] matriz, int limiteInferior, int limiteSuperior) {
+            int N = matriz.GetLength(0);
+            int M = matriz.GetLength(1);
+            Bitmap imagen = new Bitmap(N, M);
+
+            int tam = limiteSuperior - limiteInferior + 1;
+            double porcion = 255.0 / tam;
+
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    int valorGris = (int)(porcion * (double)(matriz [i, j] - limiteInferior + 1));
+                    if (matriz[i, j] < limiteInferior)
+                        valorGris = 0;
+                    if (matriz [i, j] > limiteSuperior)
+                        valorGris = 255;
+                    Color color = Color.FromArgb(valorGris, valorGris, valorGris);
+                    imagen.SetPixel(i, j, color);
+                }
+            }
+            return imagen;
         }
     }
 }

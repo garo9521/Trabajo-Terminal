@@ -9,7 +9,7 @@ namespace SAARTAC {
         public Umbralizacion() {
             umbralesDelCuerpo ["Agua"] = new int [] { 0, 5};
             umbralesDelCuerpo ["Aire"] = new int [] { -1000, 100 };
-            umbralesDelCuerpo ["Grasa"] = new int [] { -90, 10 };
+            umbralesDelCuerpo ["Grasa"] = new int [] { -25, 75 };
             umbralesDelCuerpo ["Hueso compacto"] = new int [] { 1000, 750 };
             umbralesDelCuerpo ["Hueso esponjoso"] = new int [] { 130, 100 };
             umbralesDelCuerpo ["Pulmones"] = new int [] { -700, 200 };

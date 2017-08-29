@@ -49,12 +49,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.right90 = new System.Windows.Forms.Button();
-            this.left90 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,6 +104,16 @@
             this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox2.Location = new System.Drawing.Point(547, 87);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // comboBox1
             // 
@@ -241,30 +253,7 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "mm";
             this.label10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // right90
-            // 
-            this.right90.BackColor = System.Drawing.SystemColors.Menu;
-            this.right90.BackgroundImage = global::SAARTAC.Properties.Resources.right;
-            this.right90.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.right90.Location = new System.Drawing.Point(71, 40);
-            this.right90.Name = "right90";
-            this.right90.Size = new System.Drawing.Size(49, 47);
-            this.right90.TabIndex = 23;
-            this.right90.UseVisualStyleBackColor = false;
-            this.right90.Click += new System.EventHandler(this.right90_Click);
-            // 
-            // left90
-            // 
-            this.left90.BackColor = System.Drawing.SystemColors.Menu;
-            this.left90.BackgroundImage = global::SAARTAC.Properties.Resources.left;
-            this.left90.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.left90.Location = new System.Drawing.Point(12, 40);
-            this.left90.Name = "left90";
-            this.left90.Size = new System.Drawing.Size(52, 47);
-            this.left90.TabIndex = 22;
-            this.left90.UseVisualStyleBackColor = false;
-            this.left90.Click += new System.EventHandler(this.left90_Click);
+            //             
             // 
             // pictureBox2
             // 
@@ -312,14 +301,38 @@
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(1097, 389);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(45, 20);
+            this.textBox3.TabIndex = 22;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(1178, 389);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(34, 20);
+            this.textBox4.TabIndex = 23;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(1139, 426);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(63, 30);
+            this.button5.TabIndex = 24;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 637);
-            this.Controls.Add(this.right90);
-            this.Controls.Add(this.left90);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -378,8 +391,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button left90;
-        private System.Windows.Forms.Button right90;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

@@ -54,6 +54,7 @@ namespace SAARTAC {
         }
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta) {
+
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\sum.py";
             
@@ -81,11 +82,9 @@ namespace SAARTAC {
         public static void Pregunta_Python(ParametroPython o) {
             string ruta = o.ruta;
             int pregunta = o.x;
-            int pos = o.pos;
-            MatrizDicom dicom = new MatrizDicom(ruta);
+            int pos = o.pos;            
             string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\sum.py";
-
+            string myPythonApp = @"C:\sum.py";            
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
@@ -102,12 +101,15 @@ namespace SAARTAC {
             StreamReader myStreamReader = myProcess.StandardOutput;
 
             string myString = myStreamReader.ReadLine();
-            int M = Convert.ToInt32(myString);
-            int[,] auxMatriz = new int[512, 512];
-            for (int j = 0; j < M; j++) {
+            string [] tokens = myString.Split();
+            int N = Convert.ToInt32(tokens [0]);
+            int M = Convert.ToInt32(tokens [1]);
+            MatrizDicom dicom = new MatrizDicom(ruta, N, M);
+            int [,] auxMatriz = new int[N, M];
+            for (int j = 0; j < N; j++) {
                 myString = myStreamReader.ReadLine();
-                string[] tokens = myString.Split();
-                int[] filaDicom = Array.ConvertAll(tokens, int.Parse);
+                string[] tokens2 = myString.Split();
+                int[] filaDicom = Array.ConvertAll(tokens2, int.Parse);
                 for (int k = 0; k < M; k++) {
                     auxMatriz[j, k] = filaDicom[k] - 1000;
                 }
