@@ -16,7 +16,8 @@ namespace SAARTAC {
         private static MatrizDicom auxUH;
         private Seccion seccion;
         private Regla regla;
-        private bool draw = false, reglaBool = false;
+        private static int ventanaZoom = 100;
+        private bool draw = false, reglaBool = false, zoomCon = false;
         private List<bool[,]> matrizTratada = new List<bool[,]>();
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
         int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
@@ -70,6 +71,19 @@ namespace SAARTAC {
                 pictureBox1.Invalidate();
             }
 
+            //PARTE DEL ZOOM
+            if (zoomCon)
+            {                
+                Bitmap zoomImage = new Bitmap(pictureBox1.Image);
+                Rectangle zoomRect = new Rectangle(x-(ventanaZoom/2) , y-(ventanaZoom/2) ,ventanaZoom,ventanaZoom);
+                if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512)
+                {
+                    var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
+                    zoom.Image = newzoomImage;
+                    zoom.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                Console.WriteLine("CLICK X {0} CLICK Y{1} RECTLEFT{2} RECT RIGHT{3} RECT TOP{4} RECTBOTTOM{5}",x,y,zoomRect.Left.ToString(),zoomRect.Right.ToString(),zoomRect.Top.ToString(),zoomRect.Bottom.ToString());
+            }
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e){
@@ -200,24 +214,16 @@ namespace SAARTAC {
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
                 pictureBox1.Invalidate();
-
-
             }
-        }
-
-        private void left90_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            auxUH = auxUH.GirarIzquierda(auxUH);
-            pictureBox1.Refresh();
-        }
-
-        private void right90_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            auxUH = auxUH.GirarDerecha(auxUH);
-            pictureBox1.Refresh();
-        }
+            if (zoomCon == false)
+            {
+                zoomCon = true;
+            }
+            else
+            {
+                zoomCon = false;
+            }
+        }        
 
         private void pictureBox2_Click(object sender, EventArgs e) {
 
@@ -225,6 +231,35 @@ namespace SAARTAC {
 
         private void pictureBox2_Click_1(object sender, EventArgs e) {
 
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e){
+            if (trackBar1.Value == 1)
+            {
+                ventanaZoom = 100;
+            }
+            else if (trackBar1.Value == 2)
+            {
+                ventanaZoom = 50;
+            }
+            else
+            {
+                ventanaZoom = 32;
+            }
+        }        
+
+        private void rotarDerechaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            auxUH = auxUH.GirarDerecha(auxUH);
+            pictureBox1.Refresh();
+        }
+
+        private void rotarIzquierdaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            auxUH = auxUH.GirarIzquierda(auxUH);
+            pictureBox1.Refresh();
         }
 
         private void button5_Click(object sender, EventArgs e) {
