@@ -11,18 +11,19 @@ namespace SAARTA
     class kMeans
     {
 
-        private MatrizDicom matriz;
+        private LecturaArchivosDicom matrices;
+        private MatrizDicom matriz_actual;
         private int numerosK, ite;
         private int min = -1000, max = 2000;
         private List<Double> centros;
         private List<Double> conjunto = new List<Double>();
-        private List<List<Tuple<int, int>>> clases;
+        private int[,,] clases;
         private Random rnd;
 
-        public kMeans(MatrizDicom mtrz, int k, int iteraciones){
-            matriz = mtrz;
+        public kMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos){
+            matrices = lect;
             numerosK = k;
-            clases = new List<List<Tuple<int, int>>>(k);
+            clases = new int [512, 512, numeros_archivos];  
             ite = iteraciones;
             generarCentros();
             mainKmeans();
@@ -38,45 +39,55 @@ namespace SAARTA
         public void mainKmeans(){
             for (int k = 0; k < ite; k++){
                 Console.WriteLine(k + 1);
-                clases.Clear();
-                for (int i = 0; i < numerosK; i++)
-                    clases.Add(new List<Tuple<int, int>>());
-                for (int i = 0; i < 512; i++)
-                    for (int j = 0; j < 512; j++)
-                        distanciaEuclidiana(i, j);
-                promedio();
+                for (int p = 0; p < matrices.num_archivos(); p++) {
+                    matriz_actual = matrices.obtenerArchivo(p);
+                    for (int i = 0; i < 512; i++)
+                        for (int j = 0; j < 512; j++)
+                            distanciaEuclidiana(i, j, p);
+                    promedio();
+                }
             }
 
         }
 
-        public void distanciaEuclidiana(int i, int j)
+        public void distanciaEuclidiana(int i, int j, int p)
         {
             int indc = 0;
             conjunto.Clear();
             foreach (Double indice in centros)
             {
-                Double resta = Math.Abs(matriz.ObtenerUH(i, j) - indice);
+                Double resta = Math.Abs(matriz_actual.ObtenerUH(i, j) - indice);
                 conjunto.Add(resta);
             }
             for (int k = 1; k < conjunto.Count; k++)
                 if (conjunto[indc] > conjunto[k])
                     indc = k;
-            clases[indc].Add(new Tuple<int, int>(i, j));            
+            clases [i, j, p] = indc;            
         }
 
         public void promedio(){
             centros.Clear();
-            foreach (List<Tuple<int, int>> i in clases){
-                int n = i.Count;
-                int sumaUH = 0;
-                foreach (Tuple<int, int> j in i)
-                    sumaUH += matriz.ObtenerUH(j.Item1, j.Item2);                
-                Double promedio = sumaUH / n;                
-                centros.Add(promedio);
+            double [] sumas = new double [numerosK];
+            double [] contador = new double [numerosK];
+            for(int i = 0; i < numerosK; i++) {
+                sumas [i] = contador [i] = 0;
+            }
+            for (int p = 0; p < matrices.num_archivos(); p++) {
+                matriz_actual = matrices.obtenerArchivo(p);
+                for(int i = 0; i < 512; i++) {
+                    for(int j = 0; j < 512; j++) {
+                        sumas [clases [i, j, p]] += matriz_actual.ObtenerUH(i, j);
+                        contador [clases [i, j, p]]++;
+                    }
+                }
+            }
+            centros.Clear();
+            for (int i = 0; i < numerosK; i++) {
+                centros.Add(sumas [i] / contador [i]);
             }
         }
 
-        public List<List<Tuple<int, int>>> getClases(){
+        public int[,,] getClases(){
             return clases;
         }
 

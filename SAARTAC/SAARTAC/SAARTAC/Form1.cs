@@ -19,8 +19,8 @@ namespace SAARTAC {
         private Regla regla;
         private static int ventanaZoom = 100;
         private bool draw = false, reglaBool = false, zoomCon = false;
-        private List<bool[,]> matrizTratada = new List<bool[,]>();
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
+        private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
         int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
         LecturaArchivosDicom lect;
         public Form1() {
@@ -36,7 +36,7 @@ namespace SAARTAC {
                     id_tac++;
                 auxUH = lect.obtenerArchivo(id_tac);
                 MostrarImagen1();
-                if (matrizTratada.Count > 0)
+                if (imagenesCaja2.Count > 0)
                     MostrarImagen2();
             }
             if (e.Delta < 0){
@@ -46,7 +46,7 @@ namespace SAARTAC {
                     id_tac--;
                 auxUH = lect.obtenerArchivo(id_tac);
                 MostrarImagen1();
-                if (matrizTratada.Count > 0)
+                if (imagenesCaja2.Count > 0)
                     MostrarImagen2();
             }
         }
@@ -115,7 +115,7 @@ namespace SAARTAC {
                 id_tac++;
             auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
-            if(matrizTratada.Count > 0)
+            if(imagenesCaja2.Count > 0)
                 MostrarImagen2();
             Console.WriteLine(id_tac);
             
@@ -136,9 +136,11 @@ namespace SAARTAC {
         }
 
         private void MostrarImagen2() {
-
-            var imagenResultado = obtenerImagenUmbral(matrizTratada[id_tac], auxUH.ObtenerImagen(), Color.Red);
-            pictureBox2.Image = imagenResultado;
+            if (imagenesCaja2.Count() > 0) {
+                pictureBox2.Image = imagenesCaja2[id_tac];
+            } else {
+                pictureBox2.Image = null;
+            }
         }
 
         private void MostrarImagen2(Bitmap imagen) {
@@ -154,9 +156,10 @@ namespace SAARTAC {
                     lect = new LecturaArchivosDicom(imagen);
                     num_tacs = lect.num_archivos();
                     Console.WriteLine(num_tacs);
-                    matrizTratada.Clear();
+                    imagenesCaja2.Clear();
                     imagenesCaja1.Clear();
                     MostrarImagen1();
+                    MostrarImagen2();
 ;                }
                 else
                     Console.WriteLine("aqui es el pedo we");
@@ -167,7 +170,7 @@ namespace SAARTAC {
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-            matrizTratada.Clear();
+            imagenesCaja2.Clear();
             Console.WriteLine(comboBox1.SelectedItem);
             string lectura = (string)comboBox1.SelectedItem;
             Umbralizacion operaciones = new Umbralizacion();
@@ -181,7 +184,8 @@ namespace SAARTAC {
                 for (int i = 0; i < lect.num_archivos(); i++) {
                     var archivo = lect.obtenerArchivo(i);
                     var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                    matrizTratada.Add(matrizResultado);
+                    var imagenResultado = obtenerImagenUmbral(matrizResultado, auxUH.ObtenerImagen(), Color.Red);
+                    imagenesCaja2.Add(imagenResultado);
                 }
                 MostrarImagen2();
             }
@@ -264,19 +268,22 @@ namespace SAARTAC {
         }
 
         private void button6_Click(object sender, EventArgs e){
-            kMeans k = new kMeans(auxUH, 6, 30);
-            List<List<Tuple<int, int>>> clases = k.getClases();
-            pictureBox2.Image = obtenerImgK(auxUH.ObtenerImagen(), clases);
+            kMeans k = new kMeans(lect, 6, 5, lect.num_archivos());
+            int[,,] clases = k.getClases();
+            imagenesCaja2.Clear();
+            for(int i = 0; i < lect.num_archivos(); i++) {
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+            }
+            MostrarImagen2();
         }
 
-        private Bitmap obtenerImgK(Bitmap matrizOriginal, List<List<Tuple<int, int>>> lista){
+        private Bitmap obtenerImgK(Bitmap matrizOriginal, int[,,] lista, int p){
             Bitmap resultado = new Bitmap(matrizOriginal);
-            int indice = 0;
             List<Color> colores = new List<Color>() { Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
-            foreach (List<Tuple<int, int>> i in lista){
-                foreach (Tuple<int, int> j in i)
-                    resultado.SetPixel(j.Item1, j.Item2, colores[indice]);
-                indice++;
+            for(int i = 0; i < 512; i++) {
+                for (int j = 0; j < 512; j++) {
+                    resultado.SetPixel(i, j, colores [lista[i, j, p]]);
+                }
             }
             return resultado;
         }
@@ -311,7 +318,8 @@ namespace SAARTAC {
             for(int i = 0; i < lect.num_archivos() ; i++) {
                 var archivo = lect.obtenerArchivo(i);
                 var matrizResultado = operaciones.UmbralEnRango(archivo.matriz, uh_per - factor_per, uh_per + factor_per);
-                matrizTratada.Add(matrizResultado);
+                var imagenResultado = obtenerImagenUmbral(matrizResultado, auxUH.ObtenerImagen(), Color.Red);
+                imagenesCaja2.Add(imagenResultado);
             }
             MostrarImagen2();
         }
@@ -324,7 +332,7 @@ namespace SAARTAC {
             auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
 
-            if (matrizTratada.Count > 0)
+            if (imagenesCaja2.Count > 0)
                 MostrarImagen2();
 
             Console.WriteLine(id_tac);
