@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using SAARTA;
 
 namespace SAARTAC {
     public partial class Form1 : Form {
@@ -260,6 +261,24 @@ namespace SAARTAC {
             pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
             auxUH = auxUH.GirarIzquierda(auxUH);
             pictureBox1.Refresh();
+        }
+
+        private void button6_Click(object sender, EventArgs e){
+            kMeans k = new kMeans(auxUH, 6, 30);
+            List<List<Tuple<int, int>>> clases = k.getClases();
+            pictureBox2.Image = obtenerImgK(auxUH.ObtenerImagen(), clases);
+        }
+
+        private Bitmap obtenerImgK(Bitmap matrizOriginal, List<List<Tuple<int, int>>> lista){
+            Bitmap resultado = new Bitmap(matrizOriginal);
+            int indice = 0;
+            List<Color> colores = new List<Color>() { Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
+            foreach (List<Tuple<int, int>> i in lista){
+                foreach (Tuple<int, int> j in i)
+                    resultado.SetPixel(j.Item1, j.Item2, colores[indice]);
+                indice++;
+            }
+            return resultado;
         }
 
         private void button5_Click(object sender, EventArgs e) {

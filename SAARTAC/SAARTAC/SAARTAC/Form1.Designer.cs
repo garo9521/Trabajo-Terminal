@@ -36,6 +36,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotarDerechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotarIzquierdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,9 +61,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.zoom = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotarDerechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotarIzquierdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -108,9 +109,32 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
+            // 
+            // herramientasToolStripMenuItem
+            // 
+            this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rotarDerechaToolStripMenuItem,
+            this.rotarIzquierdaToolStripMenuItem});
+            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.herramientasToolStripMenuItem.Text = "Herramientas";
+            // 
+            // rotarDerechaToolStripMenuItem
+            // 
+            this.rotarDerechaToolStripMenuItem.Name = "rotarDerechaToolStripMenuItem";
+            this.rotarDerechaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.rotarDerechaToolStripMenuItem.Text = "Rotar Derecha";
+            this.rotarDerechaToolStripMenuItem.Click += new System.EventHandler(this.rotarDerechaToolStripMenuItem_Click_1);
+            // 
+            // rotarIzquierdaToolStripMenuItem
+            // 
+            this.rotarIzquierdaToolStripMenuItem.Name = "rotarIzquierdaToolStripMenuItem";
+            this.rotarIzquierdaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.rotarIzquierdaToolStripMenuItem.Text = "Rotar Izquierda";
+            this.rotarIzquierdaToolStripMenuItem.Click += new System.EventHandler(this.rotarIzquierdaToolStripMenuItem_Click_1);
             // 
             // comboBox1
             // 
@@ -342,34 +366,22 @@
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // herramientasToolStripMenuItem
+            // button6
             // 
-            this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rotarDerechaToolStripMenuItem,
-            this.rotarIzquierdaToolStripMenuItem});
-            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.herramientasToolStripMenuItem.Text = "Herramientas";
-            // 
-            // rotarDerechaToolStripMenuItem
-            // 
-            this.rotarDerechaToolStripMenuItem.Name = "rotarDerechaToolStripMenuItem";
-            this.rotarDerechaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.rotarDerechaToolStripMenuItem.Text = "Rotar Derecha";
-            this.rotarDerechaToolStripMenuItem.Click += new System.EventHandler(this.rotarDerechaToolStripMenuItem_Click_1);
-            // 
-            // rotarIzquierdaToolStripMenuItem
-            // 
-            this.rotarIzquierdaToolStripMenuItem.Name = "rotarIzquierdaToolStripMenuItem";
-            this.rotarIzquierdaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.rotarIzquierdaToolStripMenuItem.Text = "Rotar Izquierda";
-            this.rotarIzquierdaToolStripMenuItem.Click += new System.EventHandler(this.rotarIzquierdaToolStripMenuItem_Click_1);
+            this.button6.Location = new System.Drawing.Point(1097, 492);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 27;
+            this.button6.Text = "K-means";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 637);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.zoom);
             this.Controls.Add(this.button5);
@@ -443,6 +455,7 @@
         private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotarDerechaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotarIzquierdaToolStripMenuItem;
+        private System.Windows.Forms.Button button6;
     }
 }
 
