@@ -52,21 +52,22 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.button6 = new System.Windows.Forms.Button();
+            this.Bzoom = new System.Windows.Forms.Button();
+            this.zoom = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.zoom = new System.Windows.Forms.PictureBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zoom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -275,6 +276,73 @@
             this.label10.Text = "mm";
             this.label10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(1097, 389);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(45, 20);
+            this.textBox3.TabIndex = 22;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(1178, 389);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(34, 20);
+            this.textBox4.TabIndex = 23;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(1139, 426);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(63, 30);
+            this.button5.TabIndex = 24;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(1089, 176);
+            this.trackBar1.Maximum = 5;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(167, 45);
+            this.trackBar1.TabIndex = 26;
+            this.trackBar1.Value = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(1097, 492);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 27;
+            this.button6.Text = "K-means";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // Bzoom
+            // 
+            this.Bzoom.Location = new System.Drawing.Point(1178, 128);
+            this.Bzoom.Name = "Bzoom";
+            this.Bzoom.Size = new System.Drawing.Size(91, 23);
+            this.Bzoom.TabIndex = 28;
+            this.Bzoom.Text = "Activar zoom";
+            this.Bzoom.UseVisualStyleBackColor = true;
+            this.Bzoom.Click += new System.EventHandler(this.Bzoom_Click);
+            // 
+            // zoom
+            // 
+            this.zoom.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.zoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.zoom.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.zoom.Location = new System.Drawing.Point(1097, 227);
+            this.zoom.Name = "zoom";
+            this.zoom.Size = new System.Drawing.Size(159, 139);
+            this.zoom.TabIndex = 25;
+            this.zoom.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
@@ -284,6 +352,7 @@
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
             // 
             // button3
             // 
@@ -323,64 +392,12 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(1097, 389);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(45, 20);
-            this.textBox3.TabIndex = 22;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(1178, 389);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(34, 20);
-            this.textBox4.TabIndex = 23;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(1139, 426);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(63, 30);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // zoom
-            // 
-            this.zoom.Location = new System.Drawing.Point(1097, 227);
-            this.zoom.Name = "zoom";
-            this.zoom.Size = new System.Drawing.Size(159, 139);
-            this.zoom.TabIndex = 25;
-            this.zoom.TabStop = false;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(1089, 176);
-            this.trackBar1.Maximum = 3;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(167, 45);
-            this.trackBar1.TabIndex = 26;
-            this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(1097, 492);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 27;
-            this.button6.Text = "K-means";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 637);
+            this.Controls.Add(this.Bzoom);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.zoom);
@@ -413,10 +430,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,6 +473,7 @@
         private System.Windows.Forms.ToolStripMenuItem rotarDerechaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotarIzquierdaToolStripMenuItem;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Bzoom;
     }
 }
 

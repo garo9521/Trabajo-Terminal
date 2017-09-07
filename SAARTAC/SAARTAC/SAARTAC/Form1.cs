@@ -75,7 +75,7 @@ namespace SAARTAC {
             //PARTE DEL ZOOM
             if (zoomCon)
             {                
-                Bitmap zoomImage = new Bitmap(pictureBox1.Image);
+                Bitmap zoomImage = new Bitmap(pictureBox1.Image);                             
                 Rectangle zoomRect = new Rectangle(x-(ventanaZoom/2) , y-(ventanaZoom/2) ,ventanaZoom,ventanaZoom);
                 if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512)
                 {
@@ -83,7 +83,7 @@ namespace SAARTAC {
                     zoom.Image = newzoomImage;
                     zoom.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
-                Console.WriteLine("CLICK X {0} CLICK Y{1} RECTLEFT{2} RECT RIGHT{3} RECT TOP{4} RECTBOTTOM{5}",x,y,zoomRect.Left.ToString(),zoomRect.Right.ToString(),zoomRect.Top.ToString(),zoomRect.Bottom.ToString());
+                //Console.WriteLine("CLICK X {0} CLICK Y{1} RECTLEFT{2} RECT RIGHT{3} RECT TOP{4} RECTBOTTOM{5}",x,y,zoomRect.Left.ToString(),zoomRect.Right.ToString(),zoomRect.Top.ToString(),zoomRect.Bottom.ToString());
             }
         }
 
@@ -219,15 +219,7 @@ namespace SAARTAC {
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
                 pictureBox1.Invalidate();
-            }
-            if (zoomCon == false)
-            {
-                zoomCon = true;
-            }
-            else
-            {
-                zoomCon = false;
-            }
+            }            
         }        
 
         private void pictureBox2_Click(object sender, EventArgs e) {
@@ -245,26 +237,44 @@ namespace SAARTAC {
             }
             else if (trackBar1.Value == 2)
             {
-                ventanaZoom = 50;
+                ventanaZoom = 80;
             }
-            else
+            else if (trackBar1.Value == 3)
             {
-                ventanaZoom = 32;
+                ventanaZoom = 60;
+            }
+            else if (trackBar1.Value == 4)
+            {
+                ventanaZoom = 40;
+            }
+            else if (trackBar1.Value == 5)
+            {
+                ventanaZoom = 20;
             }
         }        
 
         private void rotarDerechaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            auxUH = auxUH.GirarDerecha(auxUH);
-            pictureBox1.Refresh();
+            if (pictureBox1.Image != null && pictureBox2.Image != null)
+            {
+                pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                auxUH = auxUH.GirarDerecha(auxUH);
+                pictureBox1.Refresh();
+                pictureBox2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                pictureBox2.Refresh();
+            }
         }
 
         private void rotarIzquierdaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            auxUH = auxUH.GirarIzquierda(auxUH);
-            pictureBox1.Refresh();
+            if (pictureBox1.Image != null && pictureBox2.Image != null)
+            {
+                pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                auxUH = auxUH.GirarIzquierda(auxUH);
+                pictureBox1.Refresh();
+                pictureBox2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                pictureBox2.Refresh();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e){
@@ -286,6 +296,45 @@ namespace SAARTAC {
                 }
             }
             return resultado;
+        }
+
+        private void Bzoom_Click(object sender, EventArgs e)
+        {
+            if (zoomCon == false)
+            {
+                zoomCon = true;
+            }
+            else
+            {
+                zoomCon = false;
+            }
+            if (Bzoom.Text=="Activar zoom")
+            {
+                Bzoom.Text = "Desactivar zoom";
+            }else if(Bzoom.Text == "Desactivar zoom")
+            {
+                Bzoom.Text = "Activar zoom";
+            }
+        }
+
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            int x = pictureBox2.PointToClient(Cursor.Position).X;
+            int y = pictureBox2.PointToClient(Cursor.Position).Y;
+            if (zoomCon)
+            {
+                if (pictureBox2.Image != null)
+                {
+                    Bitmap zoomTratedImage = new Bitmap(pictureBox2.Image);
+                    Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
+                    if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512)
+                    {
+                        var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
+                        zoom.Image = newzoomImage;
+                        zoom.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                }                
+            }            
         }
 
         private void button5_Click(object sender, EventArgs e) {
