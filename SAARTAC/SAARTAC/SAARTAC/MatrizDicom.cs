@@ -65,5 +65,33 @@ namespace SAARTAC {
             return imagen;
 
         }
+        public MatrizDicom GirarDerecha(MatrizDicom matrizD)
+        {
+            MatrizDicom matrizGirada = new MatrizDicom();
+            for (int i = 0; i < N; i++)
+            {
+                int h = N - 1;
+                for (int j = 0; j < N; j++)
+                {
+                    matrizGirada.matriz[h, i] = matrizD.matriz[i, j];
+                    h--;
+                }
+            }
+            return matrizGirada;
+        }
+        public MatrizDicom GirarIzquierda(MatrizDicom matrizI)
+        {
+            MatrizDicom matrizGirada = new MatrizDicom();
+            for (int i = 0; i < N; i++)
+            {
+                int h = N - 1;
+                for (int j = 0; j < N; j++)
+                {
+                    matrizGirada.matriz[i, j] = matrizI.matriz[N - j - 1, i];
+                    h--;
+                }
+            }
+            return matrizGirada;
+        }
     }
 }
