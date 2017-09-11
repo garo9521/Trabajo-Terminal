@@ -2,7 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
-
+//esto es una prueba
 namespace SAARTAC {
 
     internal class LecturaArchivosDicom {
