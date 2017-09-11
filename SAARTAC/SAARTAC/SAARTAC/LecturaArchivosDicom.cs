@@ -121,4 +121,6 @@ namespace SAARTAC {
             archivosDicom[pos] = dicom;
         }
     }
+	
+	//Esto es un prueba x3
 }
