@@ -10,17 +10,15 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
-using SAARTA;
 
 namespace SAARTAC {
     public partial class Form1 : Form {
         private static MatrizDicom auxUH;
         private Seccion seccion;
         private Regla regla;
-        private static int ventanaZoom = 100;
-        private bool draw = false, reglaBool = false, zoomCon = false;
+        private bool draw = false, reglaBool = false;
+        private List<bool[,]> matrizTratada = new List<bool[,]>();
         private List<Bitmap> imagenesCaja1 = new List<Bitmap>();
-        private List<Bitmap> imagenesCaja2 = new List<Bitmap>();
         int id_tac, num_tacs, uh_per, factor_per,bandera = 0;
         LecturaArchivosDicom lect;
         public Form1() {
@@ -36,7 +34,7 @@ namespace SAARTAC {
                     id_tac++;
                 auxUH = lect.obtenerArchivo(id_tac);
                 MostrarImagen1();
-                if (imagenesCaja2.Count > 0)
+                if (matrizTratada.Count > 0)
                     MostrarImagen2();
             }
             if (e.Delta < 0){
@@ -46,7 +44,7 @@ namespace SAARTAC {
                     id_tac--;
                 auxUH = lect.obtenerArchivo(id_tac);
                 MostrarImagen1();
-                if (imagenesCaja2.Count > 0)
+                if (matrizTratada.Count > 0)
                     MostrarImagen2();
             }
         }
@@ -72,19 +70,6 @@ namespace SAARTAC {
                 pictureBox1.Invalidate();
             }
 
-            //PARTE DEL ZOOM
-            if (zoomCon)
-            {                
-                Bitmap zoomImage = new Bitmap(pictureBox1.Image);                             
-                Rectangle zoomRect = new Rectangle(x-(ventanaZoom/2) , y-(ventanaZoom/2) ,ventanaZoom,ventanaZoom);
-                if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512)
-                {
-                    var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
-                    zoom.Image = newzoomImage;
-                    zoom.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-                //Console.WriteLine("CLICK X {0} CLICK Y{1} RECTLEFT{2} RECT RIGHT{3} RECT TOP{4} RECTBOTTOM{5}",x,y,zoomRect.Left.ToString(),zoomRect.Right.ToString(),zoomRect.Top.ToString(),zoomRect.Bottom.ToString());
-            }
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e){
@@ -115,7 +100,7 @@ namespace SAARTAC {
                 id_tac++;
             auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
-            if(imagenesCaja2.Count > 0)
+            if(matrizTratada.Count > 0)
                 MostrarImagen2();
             Console.WriteLine(id_tac);
             
@@ -136,11 +121,9 @@ namespace SAARTAC {
         }
 
         private void MostrarImagen2() {
-            if (imagenesCaja2.Count() > 0) {
-                pictureBox2.Image = imagenesCaja2[id_tac];
-            } else {
-                pictureBox2.Image = null;
-            }
+
+            var imagenResultado = obtenerImagenUmbral(matrizTratada[id_tac], auxUH.ObtenerImagen(), Color.Red);
+            pictureBox2.Image = imagenResultado;
         }
 
         private void MostrarImagen2(Bitmap imagen) {
@@ -156,10 +139,9 @@ namespace SAARTAC {
                     lect = new LecturaArchivosDicom(imagen);
                     num_tacs = lect.num_archivos();
                     Console.WriteLine(num_tacs);
-                    imagenesCaja2.Clear();
+                    matrizTratada.Clear();
                     imagenesCaja1.Clear();
                     MostrarImagen1();
-                    MostrarImagen2();
 ;                }
                 else
                     Console.WriteLine("aqui es el pedo we");
@@ -170,7 +152,7 @@ namespace SAARTAC {
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-            imagenesCaja2.Clear();
+            matrizTratada.Clear();
             Console.WriteLine(comboBox1.SelectedItem);
             string lectura = (string)comboBox1.SelectedItem;
             Umbralizacion operaciones = new Umbralizacion();
@@ -184,8 +166,7 @@ namespace SAARTAC {
                 for (int i = 0; i < lect.num_archivos(); i++) {
                     var archivo = lect.obtenerArchivo(i);
                     var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                    var imagenResultado = obtenerImagenUmbral(matrizResultado, auxUH.ObtenerImagen(), Color.Red);
-                    imagenesCaja2.Add(imagenResultado);
+                    matrizTratada.Add(matrizResultado);
                 }
                 MostrarImagen2();
             }
@@ -219,8 +200,10 @@ namespace SAARTAC {
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
                 pictureBox1.Invalidate();
-            }            
-        }        
+
+
+            }
+        }
 
         private void pictureBox2_Click(object sender, EventArgs e) {
 
@@ -228,113 +211,6 @@ namespace SAARTAC {
 
         private void pictureBox2_Click_1(object sender, EventArgs e) {
 
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e){
-            if (trackBar1.Value == 1)
-            {
-                ventanaZoom = 100;
-            }
-            else if (trackBar1.Value == 2)
-            {
-                ventanaZoom = 80;
-            }
-            else if (trackBar1.Value == 3)
-            {
-                ventanaZoom = 60;
-            }
-            else if (trackBar1.Value == 4)
-            {
-                ventanaZoom = 40;
-            }
-            else if (trackBar1.Value == 5)
-            {
-                ventanaZoom = 20;
-            }
-        }        
-
-        private void rotarDerechaToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null && pictureBox2.Image != null)
-            {
-                pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                auxUH = auxUH.GirarDerecha(auxUH);
-                pictureBox1.Refresh();
-                pictureBox2.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                pictureBox2.Refresh();
-            }
-        }
-
-        private void rotarIzquierdaToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null && pictureBox2.Image != null)
-            {
-                pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                auxUH = auxUH.GirarIzquierda(auxUH);
-                pictureBox1.Refresh();
-                pictureBox2.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                pictureBox2.Refresh();
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e){
-            kMeans k = new kMeans(lect, 6, 5, lect.num_archivos());
-            int[,,] clases = k.getClases();
-            imagenesCaja2.Clear();
-            for(int i = 0; i < lect.num_archivos(); i++) {
-                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
-            }
-            MostrarImagen2();
-        }
-
-        private Bitmap obtenerImgK(Bitmap matrizOriginal, int[,,] lista, int p){
-            Bitmap resultado = new Bitmap(matrizOriginal);
-            List<Color> colores = new List<Color>() { Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
-            for(int i = 0; i < 512; i++) {
-                for (int j = 0; j < 512; j++) {
-                    resultado.SetPixel(i, j, colores [lista[i, j, p]]);
-                }
-            }
-            return resultado;
-        }
-
-        private void Bzoom_Click(object sender, EventArgs e)
-        {
-            if (zoomCon == false)
-            {
-                zoomCon = true;
-            }
-            else
-            {
-                zoomCon = false;
-            }
-            if (Bzoom.Text=="Activar zoom")
-            {
-                Bzoom.Text = "Desactivar zoom";
-            }else if(Bzoom.Text == "Desactivar zoom")
-            {
-                Bzoom.Text = "Activar zoom";
-            }
-        }
-
-        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-            int x = pictureBox2.PointToClient(Cursor.Position).X;
-            int y = pictureBox2.PointToClient(Cursor.Position).Y;
-            if (zoomCon)
-            {
-                if (pictureBox2.Image != null)
-                {
-                    Bitmap zoomTratedImage = new Bitmap(pictureBox2.Image);
-                    Rectangle zoomRect2 = new Rectangle(x - (ventanaZoom / 2), y - (ventanaZoom / 2), ventanaZoom, ventanaZoom);
-                    if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512)
-                    {
-                        var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
-                        zoom.Image = newzoomImage;
-                        zoom.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }
-                }                
-            }            
         }
 
         private void button5_Click(object sender, EventArgs e) {
@@ -367,8 +243,7 @@ namespace SAARTAC {
             for(int i = 0; i < lect.num_archivos() ; i++) {
                 var archivo = lect.obtenerArchivo(i);
                 var matrizResultado = operaciones.UmbralEnRango(archivo.matriz, uh_per - factor_per, uh_per + factor_per);
-                var imagenResultado = obtenerImagenUmbral(matrizResultado, auxUH.ObtenerImagen(), Color.Red);
-                imagenesCaja2.Add(imagenResultado);
+                matrizTratada.Add(matrizResultado);
             }
             MostrarImagen2();
         }
@@ -381,7 +256,7 @@ namespace SAARTAC {
             auxUH = lect.obtenerArchivo(id_tac);
             MostrarImagen1();
 
-            if (imagenesCaja2.Count > 0)
+            if (matrizTratada.Count > 0)
                 MostrarImagen2();
 
             Console.WriteLine(id_tac);
