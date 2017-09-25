@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 //esto es una prueba
 //esto es una prueba x2
+//crack
 namespace SAARTAC {
 
     internal class LecturaArchivosDicom {
