@@ -184,7 +184,7 @@ namespace SAARTAC {
                 for (int i = 0; i < lect.num_archivos(); i++) {
                     var archivo = lect.obtenerArchivo(i);
                     var matrizResultado = operaciones.UmbralizacionPara(lectura, archivo.matriz);
-                    var imagenResultado = obtenerImagenUmbral(matrizResultado, auxUH.ObtenerImagen(), Color.Red);
+                    var imagenResultado = obtenerImagenUmbral(matrizResultado, archivo.ObtenerImagen(), Color.Red);
                     imagenesCaja2.Add(imagenResultado);
                 }
                 MostrarImagen2();
