@@ -20,7 +20,7 @@ namespace SAARTAC
         private Random rnd;
         private double m = 2.0;
 
-        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int iteraciones, int numeros_archivos)
+        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int numeros_archivos, int iteraciones = 5)
         {
             matrices = lect;
             numerosK = k;
@@ -36,6 +36,26 @@ namespace SAARTAC
 	            ActualizarPertenencia();
 	           	GeneraNuevosCentros();
         	}
+            for(int i = 0; i < 512; i++)
+            {
+                for(int j = 0; j < 512; j++)
+                {
+                    for(int kk = 0; kk < numArchivos; kk++)
+                    {
+                        int tipo = 0;
+                        double valor = pertenencia[i, j, 0, kk];
+                        for(int p = 1; p < numerosK; p++)
+                        {
+                            if(valor < pertenencia[i, j, p, kk])
+                            {
+                                tipo = p;
+                                valor = pertenencia[i, j, p, kk];
+                            }
+                        }
+                        clases[i, j, kk] = tipo;
+                    }
+                }
+            }
         }
 
         public void generarCentros()
@@ -104,7 +124,7 @@ namespace SAARTAC
 	        		for(int i = 0; i < 512; i++){
 	        			for(int j = 0; j < 512; j++){
                             double valor = Math.Round(Math.Pow(pertenencia [i, j, k, p], m), 5);
-                            if (valor <= 0.001)
+                            if (valor <= 0.00001)
                                 continue;
                             aa +=(long) (Math.Round(valor * matriz_actual.ObtenerUH(i, j), 5) * 100000);
                             bb += (long) (valor * 100000);
@@ -118,6 +138,11 @@ namespace SAARTAC
         		}
         		centros[k] = (double)aa / (double)bb;
         	}
+        }
+
+        public int[,,] getClases()
+        {
+            return clases;
         }
 
     }
