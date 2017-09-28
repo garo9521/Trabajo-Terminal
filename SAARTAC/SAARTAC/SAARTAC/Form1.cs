@@ -278,7 +278,7 @@ namespace SAARTAC {
         }
 
         private void button6_Click(object sender, EventArgs e){
-            kMeans k = new kMeans(lect, 6, 5, lect.num_archivos());
+            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos());
             int[,,] clases = k.getClases();
             imagenesCaja2.Clear();
             for(int i = 0; i < lect.num_archivos(); i++) {
@@ -344,8 +344,14 @@ namespace SAARTAC {
 
         private void button7_Click(object sender, EventArgs e)
         {
-            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, 5, lect.num_archivos());
-            int sum = 0;
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, lect.num_archivos());
+            int[,,] clases = algoritmo.getClases();
+            imagenesCaja2.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++)
+            {
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+            }
+            MostrarImagen2();
         }
 
         private void button5_Click(object sender, EventArgs e) {

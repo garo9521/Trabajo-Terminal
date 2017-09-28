@@ -43,3 +43,4 @@ C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\De
 C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.Form1.resources
 C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.Properties.Resources.resources
 C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csproj.GenerateResource.Cache
+C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csproj.CoreCompileInputs.cache
