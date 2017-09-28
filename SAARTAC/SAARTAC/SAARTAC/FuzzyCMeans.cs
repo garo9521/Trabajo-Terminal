@@ -85,7 +85,7 @@ namespace SAARTAC
                             {
                                 sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));
                             }
-                            pertenencia[i, j, k, p] = 1000.0 / sum;
+                            pertenencia[i, j, k, p] = 1.0 / sum;
                             test += pertenencia[i, j, k, p];
                         }
                     }
@@ -97,16 +97,26 @@ namespace SAARTAC
         	for(int k = 0; k < numerosK; k++){
         		double a = 0.0;
         		double b = 0.0;
+                long aa = 0;
+                long bb = 0;
 				for(int p = 0; p < numArchivos; p++){
 					matriz_actual = matrices.obtenerArchivo(p);
 	        		for(int i = 0; i < 512; i++){
 	        			for(int j = 0; j < 512; j++){
-	        				a += Math.Pow(pertenencia[i, j, k, p], m) * matriz_actual.ObtenerUH(i, j);
-	        				b += Math.Pow(pertenencia[i, j, k, p], m);
-	        			}
-        			}
+                            double valor = Math.Round(Math.Pow(pertenencia [i, j, k, p], m), 5);
+                            if (valor <= 0.001)
+                                continue;
+                            aa +=(long) (Math.Round(valor * matriz_actual.ObtenerUH(i, j), 5) * 100000);
+                            bb += (long) (valor * 100000);
+                            a += valor * matriz_actual.ObtenerUH(i, j);
+                            b += valor;
+                            a = Math.Round(a, 5);
+                            b = Math.Round(b, 5);
+
+                        }
+                    }
         		}
-        		centros[k] = a / b;
+        		centros[k] = (double)aa / (double)bb;
         	}
         }
 
