@@ -278,7 +278,7 @@ namespace SAARTAC {
         }
 
         private void button6_Click(object sender, EventArgs e){
-            kMeans k = new kMeans(lect, 6, 5, lect.num_archivos());
+            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos());
             int[,,] clases = k.getClases();
             imagenesCaja2.Clear();
             for(int i = 0; i < lect.num_archivos(); i++) {

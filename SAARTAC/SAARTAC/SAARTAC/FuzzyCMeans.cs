@@ -20,7 +20,7 @@ namespace SAARTAC
         private Random rnd;
         private double m = 2.0;
 
-        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int numeros_archivos, int iteraciones = 5)
+        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int numeros_archivos, int iteraciones = 10)
         {
             matrices = lect;
             numerosK = k;
@@ -97,7 +97,6 @@ namespace SAARTAC
 
                     for (int p = 0; p < numArchivos; p++)
                     {
-                        double test = 0.0;
                         for (int k = 0; k < numerosK; k++)
                         {
                             double sum = 0.0;
@@ -106,7 +105,6 @@ namespace SAARTAC
                                 sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));
                             }
                             pertenencia[i, j, k, p] = 1.0 / sum;
-                            test += pertenencia[i, j, k, p];
                         }
                     }
                 }
@@ -115,8 +113,6 @@ namespace SAARTAC
 
         public void GeneraNuevosCentros(){
         	for(int k = 0; k < numerosK; k++){
-        		double a = 0.0;
-        		double b = 0.0;
                 long aa = 0;
                 long bb = 0;
 				for(int p = 0; p < numArchivos; p++){
@@ -128,11 +124,6 @@ namespace SAARTAC
                                 continue;
                             aa +=(long) (Math.Round(valor * matriz_actual.ObtenerUH(i, j), 5) * 100000);
                             bb += (long) (valor * 100000);
-                            a += valor * matriz_actual.ObtenerUH(i, j);
-                            b += valor;
-                            a = Math.Round(a, 5);
-                            b = Math.Round(b, 5);
-
                         }
                     }
         		}
