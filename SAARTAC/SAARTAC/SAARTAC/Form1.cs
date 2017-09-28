@@ -337,6 +337,17 @@ namespace SAARTAC {
             }            
         }
 
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, 5, lect.num_archivos());
+            int sum = 0;
+        }
+
         private void button5_Click(object sender, EventArgs e) {
             int lim_inf_ven = int.Parse(textBox3.Text);
             int lim_sup_ven = int.Parse(textBox4.Text);
