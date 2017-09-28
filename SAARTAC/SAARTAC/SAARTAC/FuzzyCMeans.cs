@@ -31,8 +31,11 @@ namespace SAARTAC
             ite = iteraciones;
             rnd = new Random();
             generarCentros();
-            GenerarDistancias();
-            ActualizarPertenencia();
+            for(int i = 0; i < iteraciones; i++){
+	            GenerarDistancias();
+	            ActualizarPertenencia();
+	           	GeneraNuevosCentros();
+        	}
         }
 
         public void generarCentros()
@@ -88,6 +91,23 @@ namespace SAARTAC
                     }
                 }
             }
+        }
+
+        public void GeneraNuevosCentros(){
+        	for(int k = 0; k < numerosK; k++){
+        		double a = 0.0;
+        		double b = 0.0;
+				for(int p = 0; p < numArchivos; p++){
+					matriz_actual = matrices.obtenerArchivo(p);
+	        		for(int i = 0; i < 512; i++){
+	        			for(int j = 0; j < 512; j++){
+	        				a += Math.Pow(pertenencia[i, j, k, p], m) * matriz_actual.ObtenerUH(i, j);
+	        				b += Math.Pow(pertenencia[i, j, k, p], m);
+	        			}
+        			}
+        		}
+        		centros[k] = a / b;
+        	}
         }
 
     }
