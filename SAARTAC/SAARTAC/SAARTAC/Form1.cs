@@ -336,8 +336,7 @@ namespace SAARTAC {
                 }                
             }            
         }
-
-<<<<<<< HEAD
+        
         private void ventanasToolStripMenuItem_Click(object sender, EventArgs e){
 
         }
@@ -369,11 +368,11 @@ namespace SAARTAC {
             generalEscalaGris(lim_inf_ven, lim_sup_ven);
         }
 
-        private void huesoToolStripMenuItem_Click(object sender, EventArgs e){
+        private void huesoToolStripMenuItem_Click(object sender, EventArgs e) {
             int lim_inf_ven = -450;
             int lim_sup_ven = 1050;
             generalEscalaGris(lim_inf_ven, lim_sup_ven);
-=======
+        }
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -389,7 +388,6 @@ namespace SAARTAC {
                 imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
             }
             MostrarImagen2();
->>>>>>> master
         }
 
         private void button5_Click(object sender, EventArgs e) {
