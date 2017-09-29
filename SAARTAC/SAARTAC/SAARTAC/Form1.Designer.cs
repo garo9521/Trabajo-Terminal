@@ -63,11 +63,15 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+<<<<<<< HEAD
             this.ventanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partesBlandasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pulmónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerebroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.huesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.button7 = new System.Windows.Forms.Button();
+>>>>>>> master
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zoom)).BeginInit();
@@ -112,11 +116,12 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
+            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
@@ -398,6 +403,7 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
+<<<<<<< HEAD
             // ventanasToolStripMenuItem
             // 
             this.ventanasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -437,12 +443,24 @@
             this.huesoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.huesoToolStripMenuItem.Text = "Hueso";
             this.huesoToolStripMenuItem.Click += new System.EventHandler(this.huesoToolStripMenuItem_Click);
+=======
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1100, 575);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 29;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+>>>>>>> master
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 637);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.Bzoom);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.trackBar1);
@@ -520,11 +538,15 @@
         private System.Windows.Forms.ToolStripMenuItem rotarIzquierdaToolStripMenuItem;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button Bzoom;
+<<<<<<< HEAD
         private System.Windows.Forms.ToolStripMenuItem ventanasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem partesBlandasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pulmónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerebroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem huesoToolStripMenuItem;
+=======
+        private System.Windows.Forms.Button button7;
+>>>>>>> master
     }
 }
 
