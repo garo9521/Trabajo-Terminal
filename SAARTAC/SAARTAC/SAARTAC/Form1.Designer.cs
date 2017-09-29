@@ -63,7 +63,15 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+<<<<<<< HEAD
+            this.ventanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.partesBlandasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pulmónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerebroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.huesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
             this.button7 = new System.Windows.Forms.Button();
+>>>>>>> master
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zoom)).BeginInit();
@@ -93,7 +101,8 @@
             this.menuStrip1.BackColor = System.Drawing.Color.DarkCyan;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.herramientasToolStripMenuItem});
+            this.herramientasToolStripMenuItem,
+            this.ventanasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1293, 24);
@@ -394,6 +403,47 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
+<<<<<<< HEAD
+            // ventanasToolStripMenuItem
+            // 
+            this.ventanasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.partesBlandasToolStripMenuItem,
+            this.pulmónToolStripMenuItem,
+            this.cerebroToolStripMenuItem,
+            this.huesoToolStripMenuItem});
+            this.ventanasToolStripMenuItem.Name = "ventanasToolStripMenuItem";
+            this.ventanasToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ventanasToolStripMenuItem.Text = "Ventanas";
+            this.ventanasToolStripMenuItem.Click += new System.EventHandler(this.ventanasToolStripMenuItem_Click);
+            // 
+            // partesBlandasToolStripMenuItem
+            // 
+            this.partesBlandasToolStripMenuItem.Name = "partesBlandasToolStripMenuItem";
+            this.partesBlandasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.partesBlandasToolStripMenuItem.Text = "Partes blandas";
+            this.partesBlandasToolStripMenuItem.Click += new System.EventHandler(this.partesBlandasToolStripMenuItem_Click);
+            // 
+            // pulmónToolStripMenuItem
+            // 
+            this.pulmónToolStripMenuItem.Name = "pulmónToolStripMenuItem";
+            this.pulmónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pulmónToolStripMenuItem.Text = "Pulmón";
+            this.pulmónToolStripMenuItem.Click += new System.EventHandler(this.pulmónToolStripMenuItem_Click);
+            // 
+            // cerebroToolStripMenuItem
+            // 
+            this.cerebroToolStripMenuItem.Name = "cerebroToolStripMenuItem";
+            this.cerebroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerebroToolStripMenuItem.Text = "Cerebro";
+            this.cerebroToolStripMenuItem.Click += new System.EventHandler(this.cerebroToolStripMenuItem_Click);
+            // 
+            // huesoToolStripMenuItem
+            // 
+            this.huesoToolStripMenuItem.Name = "huesoToolStripMenuItem";
+            this.huesoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.huesoToolStripMenuItem.Text = "Hueso";
+            this.huesoToolStripMenuItem.Click += new System.EventHandler(this.huesoToolStripMenuItem_Click);
+=======
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(1100, 575);
@@ -403,6 +453,7 @@
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+>>>>>>> master
             // 
             // Form1
             // 
@@ -487,7 +538,15 @@
         private System.Windows.Forms.ToolStripMenuItem rotarIzquierdaToolStripMenuItem;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button Bzoom;
+<<<<<<< HEAD
+        private System.Windows.Forms.ToolStripMenuItem ventanasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem partesBlandasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pulmónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerebroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem huesoToolStripMenuItem;
+=======
         private System.Windows.Forms.Button button7;
+>>>>>>> master
     }
 }
 
