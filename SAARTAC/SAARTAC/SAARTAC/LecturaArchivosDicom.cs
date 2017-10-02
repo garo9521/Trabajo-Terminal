@@ -11,12 +11,18 @@ namespace SAARTAC {
 
         public static MatrizDicom[] archivosDicom;
         public Thread[] threadsArray;
+        private static Mutex[] mutex1;
+        private int numeroHilos = 4;
 
         public MatrizDicom obtenerArchivo(int x) {
             return archivosDicom[x];
         }
 
         public LecturaArchivosDicom(string ruta) {
+            mutex1 = new Mutex [numeroHilos];
+            for(int i = 0; i < mutex1.Length; i++) {
+                mutex1[i] = new Mutex();
+            }
             int x = 0;
             string[] fileEntries = Directory.GetFiles(ruta);
 
@@ -57,8 +63,8 @@ namespace SAARTAC {
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta) {
 
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
             
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -82,44 +88,56 @@ namespace SAARTAC {
         }
 
         public static void Pregunta_Python(ParametroPython o) {
-            string ruta = o.ruta;
-            int pregunta = o.x;
-            int pos = o.pos;            
-            string python = @"C:\Python27\python.exe";
-            string myPythonApp = @"C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";            
-            ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
-
-            myProcessStartInfo.UseShellExecute = false;
-            myProcessStartInfo.RedirectStandardOutput = true;
-
-            myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
-            myProcessStartInfo.CreateNoWindow = true;
-            Process myProcess = new Process();
-            myProcess.StartInfo = myProcessStartInfo;
-
-            //Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
-            myProcess.Start();
-
-            StreamReader myStreamReader = myProcess.StandardOutput;
-
-            string myString = myStreamReader.ReadLine();
-            string [] tokens = myString.Split();
-            int N = Convert.ToInt32(tokens [0]);
-            int M = Convert.ToInt32(tokens [1]);
-            MatrizDicom dicom = new MatrizDicom(ruta, N, M);
-            int [,] auxMatriz = new int[N, M];
-            for (int j = 0; j < N; j++) {
-                myString = myStreamReader.ReadLine();
-                string[] tokens2 = myString.Split();
-                int[] filaDicom = Array.ConvertAll(tokens2, int.Parse);
-                for (int k = 0; k < M; k++) {
-                    auxMatriz[j, k] = filaDicom[k] - 1000;
+            int pos_hilo = 0;
+            while (true) {
+                if (!mutex1 [pos_hilo].WaitOne(100)) {
+                    pos_hilo++;
+                    pos_hilo %= mutex1.Length;
+                    continue;
                 }
+                Console.Write("Entro Hilo ");
+                Console.WriteLine(pos_hilo);
+                string ruta = o.ruta;
+                int pregunta = o.x;
+                int pos = o.pos;
+                string python = @"D:\Python27\python.exe";
+                string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+                ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
+
+                myProcessStartInfo.UseShellExecute = false;
+                myProcessStartInfo.RedirectStandardOutput = true;
+
+                myProcessStartInfo.Arguments = myPythonApp + " " + pregunta + " " + ruta;
+                myProcessStartInfo.CreateNoWindow = true;
+                Process myProcess = new Process();
+                myProcess.StartInfo = myProcessStartInfo;
+
+                //Console.WriteLine("Calling Python script with arguments {0} and {1} pos == {2}", pregunta, ruta, pos);
+                myProcess.Start();
+
+                StreamReader myStreamReader = myProcess.StandardOutput;
+
+                string myString = myStreamReader.ReadLine();
+                string [] tokens = myString.Split();
+                int N = Convert.ToInt32(tokens [0]);
+                int M = Convert.ToInt32(tokens [1]);
+                MatrizDicom dicom = new MatrizDicom(ruta, N, M);
+                int [,] auxMatriz = new int [N, M];
+                for (int j = 0; j < N; j++) {
+                    myString = myStreamReader.ReadLine();
+                    string [] tokens2 = myString.Split();
+                    int [] filaDicom = Array.ConvertAll(tokens2, int.Parse);
+                    for (int k = 0; k < M; k++) {
+                        auxMatriz [j, k] = filaDicom [k] - 1000;
+                    }
+                }
+                dicom.CopiarMatriz(ref auxMatriz);
+                myProcess.WaitForExit();
+                myProcess.Close();
+                archivosDicom [pos] = dicom;
+                mutex1 [pos_hilo].ReleaseMutex();
+                break;
             }
-            dicom.CopiarMatriz(ref auxMatriz);
-            myProcess.WaitForExit();
-            myProcess.Close();            
-            archivosDicom[pos] = dicom;
         }
     }
 	
