@@ -106,9 +106,15 @@ namespace SAARTAC {
             Console.WriteLine(pos_hilo);
             string ruta = o.ruta;
             int pregunta = o.x;
+<<<<<<< HEAD
             int pos = o.pos;
             string python = @"D:\Python27\python.exe";
             string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+=======
+            int pos = o.pos;            
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";            
+>>>>>>> master
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;

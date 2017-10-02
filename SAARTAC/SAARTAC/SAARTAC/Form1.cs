@@ -336,7 +336,43 @@ namespace SAARTAC {
                 }                
             }            
         }
+        
+        private void ventanasToolStripMenuItem_Click(object sender, EventArgs e){
 
+        }
+
+        private void partesBlandasToolStripMenuItem_Click(object sender, EventArgs e){
+            int lim_inf_ven = -125;
+            int lim_sup_ven = 225;
+            generalEscalaGris(lim_inf_ven,lim_sup_ven);
+        }
+        private void generalEscalaGris(int lim_inf, int lim_sup){
+            imagenesCaja1.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++){
+                var archivo = lect.obtenerArchivo(i);
+                var imagen = obtenerImagenConVentana(archivo.matriz, lim_inf, lim_sup);
+                imagenesCaja1.Add(imagen);
+            }
+            MostrarImagen1();
+        }
+
+        private void pulmónToolStripMenuItem_Click(object sender, EventArgs e){
+            int lim_inf_ven = -1200;
+            int lim_sup_ven = 800;
+            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+        }
+
+        private void cerebroToolStripMenuItem_Click(object sender, EventArgs e){
+            int lim_inf_ven = -10;
+            int lim_sup_ven = 80;
+            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+        }
+
+        private void huesoToolStripMenuItem_Click(object sender, EventArgs e) {
+            int lim_inf_ven = -450;
+            int lim_sup_ven = 1050;
+            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+        }
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
