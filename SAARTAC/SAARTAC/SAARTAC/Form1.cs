@@ -11,6 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading;
 using SAARTA;
+using OpenTK;
 
 namespace SAARTAC {
     public partial class Form1 : Form {
@@ -62,7 +63,7 @@ namespace SAARTAC {
             int x = pictureBox1.PointToClient(Cursor.Position).X;
             int y = pictureBox1.PointToClient(Cursor.Position).Y;
             if (auxUH != null){
-                label2.Text = (auxUH.ObtenerUH(x, y)).ToString();
+                contUH.Text = (auxUH.ObtenerUH(x, y)).ToString();
             }
             if (draw & e.Button == MouseButtons.Left){
                 seccion.setFinal(x, y);
@@ -80,8 +81,8 @@ namespace SAARTAC {
                 if (zoomRect.Left >= 0 && zoomRect.Top >= 0 && zoomRect.Right <= 512 && zoomRect.Bottom <= 512)
                 {
                     var newzoomImage = zoomImage.Clone(zoomRect, zoomImage.PixelFormat);
-                    zoom.Image = newzoomImage;
-                    zoom.SizeMode = PictureBoxSizeMode.StretchImage;
+                    visibleZoom.Image = newzoomImage;
+                    visibleZoom.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
                 //Console.WriteLine("CLICK X {0} CLICK Y{1} RECTLEFT{2} RECT RIGHT{3} RECT TOP{4} RECTBOTTOM{5}",x,y,zoomRect.Left.ToString(),zoomRect.Right.ToString(),zoomRect.Top.ToString(),zoomRect.Bottom.ToString());
             }
@@ -100,7 +101,7 @@ namespace SAARTAC {
                 Graphics objGrafico = this.pictureBox1.CreateGraphics();
                 seccion.setRectangle();
                 objGrafico.DrawRectangle(seccion.getPen(), seccion.getRectangle());
-                label5.Text = (seccion.createAverage()).ToString();
+                contPromedio.Text = (seccion.createAverage()).ToString();
                 draw = false;
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
@@ -148,38 +149,20 @@ namespace SAARTAC {
         }
 
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e) {
-            try {
-                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
-                    Console.WriteLine("si entre we");
-                    id_tac = 0;
-                    string imagen = folderBrowserDialog1.SelectedPath;
-                    lect = new LecturaArchivosDicom(imagen);
-                    num_tacs = lect.num_archivos();
-                    Console.WriteLine(num_tacs);
-                    imagenesCaja2.Clear();
-                    imagenesCaja1.Clear();
-                    MostrarImagen1();
-                    MostrarImagen2();
-;                }
-                else
-                    Console.WriteLine("aqui es el pedo we");
-            }
-            catch (Exception ex) {
-                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
-            }
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             imagenesCaja2.Clear();
-            Console.WriteLine(comboBox1.SelectedItem);
-            string lectura = (string)comboBox1.SelectedItem;
+            Console.WriteLine(seleccionUmbralizacion.SelectedItem);
+            string lectura = (string)seleccionUmbralizacion.SelectedItem;
             Umbralizacion operaciones = new Umbralizacion();
             if(lectura == "Personalizada"){
-                label6.Visible = true;
-                label7.Visible = true;
-                textBox1.Visible = true;
-                textBox2.Visible = true;
-                button1.Visible = true;
+                textoUHumbralizacion.Visible = true;
+                textoMasmenos.Visible = true;
+                centroUmbralizacion.Visible = true;
+                ventanaUmbralizacion.Visible = true;
+                botonUmbralizacion.Visible = true;
             } else {
                 for (int i = 0; i < lect.num_archivos(); i++) {
                     var archivo = lect.obtenerArchivo(i);
@@ -215,7 +198,7 @@ namespace SAARTAC {
                 Pen myPen = new Pen(Color.Red, 1);
                 objGrafico.DrawLine(myPen, regla.getPointInicio(), regla.getPoinFinal());
                 double [] distancias = LecturaArchivosDicom.Pregunta_Python_Dimensiones(1, auxUH.obtenerRuta());
-                label9.Text = (regla.getDistancia(distancias[0], distancias[1])).ToString("N3");
+                contMedida.Text = (regla.getDistancia(distancias[0], distancias[1])).ToString("N3");
                 int milliseconds = 1200;
                 Thread.Sleep(milliseconds);
                 pictureBox1.Invalidate();
@@ -231,23 +214,23 @@ namespace SAARTAC {
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e){
-            if (trackBar1.Value == 1)
+            if (barraZoom.Value == 1)
             {
                 ventanaZoom = 100;
             }
-            else if (trackBar1.Value == 2)
+            else if (barraZoom.Value == 2)
             {
                 ventanaZoom = 80;
             }
-            else if (trackBar1.Value == 3)
+            else if (barraZoom.Value == 3)
             {
                 ventanaZoom = 60;
             }
-            else if (trackBar1.Value == 4)
+            else if (barraZoom.Value == 4)
             {
                 ventanaZoom = 40;
             }
-            else if (trackBar1.Value == 5)
+            else if (barraZoom.Value == 5)
             {
                 ventanaZoom = 20;
             }
@@ -308,12 +291,12 @@ namespace SAARTAC {
             {
                 zoomCon = false;
             }
-            if (Bzoom.Text=="Activar zoom")
+            if (botonZoom.Text=="Activar zoom")
             {
-                Bzoom.Text = "Desactivar zoom";
-            }else if(Bzoom.Text == "Desactivar zoom")
+                botonZoom.Text = "Desactivar zoom";
+            }else if(botonZoom.Text == "Desactivar zoom")
             {
-                Bzoom.Text = "Activar zoom";
+                botonZoom.Text = "Activar zoom";
             }
         }
 
@@ -330,16 +313,52 @@ namespace SAARTAC {
                     if (zoomRect2.Left >= 0 && zoomRect2.Top >= 0 && zoomRect2.Right <= 512 && zoomRect2.Bottom <= 512)
                     {
                         var newzoomImage = zoomTratedImage.Clone(zoomRect2, zoomTratedImage.PixelFormat);
-                        zoom.Image = newzoomImage;
-                        zoom.SizeMode = PictureBoxSizeMode.StretchImage;
+                        visibleZoom.Image = newzoomImage;
+                        visibleZoom.SizeMode = PictureBoxSizeMode.StretchImage;
                     }
                 }                
             }            
         }
 
+        private void button7_Click(object sender, EventArgs e) {
+            GameWindow window = new GameWindow(600, 600);
+            Reconstruccion tridi = new Reconstruccion(window);
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
+        }
+
+        private void toolStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e) {
+
+        }
+
+        private void abrirToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            try {
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
+                    Console.WriteLine("si entre we");
+                    id_tac = 0;
+                    string imagen = folderBrowserDialog1.SelectedPath;
+                    lect = new LecturaArchivosDicom(imagen);
+                    num_tacs = lect.num_archivos();
+                    Console.WriteLine(num_tacs);
+                    imagenesCaja2.Clear();
+                    imagenesCaja1.Clear();
+                    MostrarImagen1();
+                    MostrarImagen2();
+                    ;
+                }
+                else
+                    Console.WriteLine("aqui es el pedo we");
+            }
+            catch (Exception ex) {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
+        }
+
         private void button5_Click(object sender, EventArgs e) {
-            int lim_inf_ven = int.Parse(textBox3.Text);
-            int lim_sup_ven = int.Parse(textBox4.Text);
+            int lim_inf_ven = int.Parse(centroVentana.Text);
+            int lim_sup_ven = int.Parse(ventanaVentana.Text);
             imagenesCaja1.Clear();
             for (int i = 0; i < lect.num_archivos(); i++) {
                 var archivo = lect.obtenerArchivo(i);
@@ -354,15 +373,15 @@ namespace SAARTAC {
         }
 
         private void button1_Click_1(object sender, EventArgs e) {
-            uh_per = int.Parse(textBox1.Text);
-            factor_per = int.Parse(textBox2.Text);
+            uh_per = int.Parse(centroUmbralizacion.Text);
+            factor_per = int.Parse(ventanaUmbralizacion.Text);
             Console.WriteLine(uh_per);
             Console.WriteLine(factor_per);
-            label6.Visible = false;
-            label7.Visible = false;
-            textBox1.Visible = false;
-            textBox2.Visible = false;
-            button1.Visible = false;
+            textoUHumbralizacion.Visible = false;
+            textoMasmenos.Visible = false;
+            centroUmbralizacion.Visible = false;
+            ventanaUmbralizacion.Visible = false;
+            botonUmbralizacion.Visible = false;
             Umbralizacion operaciones = new Umbralizacion();
             for(int i = 0; i < lect.num_archivos() ; i++) {
                 var archivo = lect.obtenerArchivo(i);

@@ -30,72 +30,79 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.textoUH = new System.Windows.Forms.Label();
+            this.contUH = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotarDerechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotarIzquierdaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button6 = new System.Windows.Forms.Button();
-            this.Bzoom = new System.Windows.Forms.Button();
-            this.zoom = new System.Windows.Forms.PictureBox();
+            this.seleccionUmbralizacion = new System.Windows.Forms.ComboBox();
+            this.texto_umbralizacion = new System.Windows.Forms.Label();
+            this.textoPromedio = new System.Windows.Forms.Label();
+            this.contPromedio = new System.Windows.Forms.Label();
+            this.centroUmbralizacion = new System.Windows.Forms.TextBox();
+            this.ventanaUmbralizacion = new System.Windows.Forms.TextBox();
+            this.textoUHumbralizacion = new System.Windows.Forms.Label();
+            this.textoMasmenos = new System.Windows.Forms.Label();
+            this.botonUmbralizacion = new System.Windows.Forms.Button();
+            this.botonRegla = new System.Windows.Forms.Button();
+            this.textoDistancia = new System.Windows.Forms.Label();
+            this.contMedida = new System.Windows.Forms.Label();
+            this.textoMm = new System.Windows.Forms.Label();
+            this.centroVentana = new System.Windows.Forms.TextBox();
+            this.ventanaVentana = new System.Windows.Forms.TextBox();
+            this.botonVentana = new System.Windows.Forms.Button();
+            this.barraZoom = new System.Windows.Forms.TrackBar();
+            this.botonKmeans = new System.Windows.Forms.Button();
+            this.botonZoom = new System.Windows.Forms.Button();
+            this.boton3D = new System.Windows.Forms.Button();
+            this.barraHerramientas = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.visibleZoom = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.botonDerecha = new System.Windows.Forms.Button();
+            this.botonIzquierda = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barraZoom)).BeginInit();
+            this.barraHerramientas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.visibleZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // textoUH
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 602);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "UH: ";
+            this.textoUH.AutoSize = true;
+            this.textoUH.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUH.Location = new System.Drawing.Point(12, 612);
+            this.textoUH.Name = "textoUH";
+            this.textoUH.Size = new System.Drawing.Size(34, 16);
+            this.textoUH.TabIndex = 2;
+            this.textoUH.Text = "UH: ";
             // 
-            // label2
+            // contUH
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 602);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 3;
+            this.contUH.AutoSize = true;
+            this.contUH.Font = new System.Drawing.Font("Arial", 10F);
+            this.contUH.Location = new System.Drawing.Point(46, 610);
+            this.contUH.Name = "contUH";
+            this.contUH.Size = new System.Drawing.Size(0, 16);
+            this.contUH.TabIndex = 3;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DarkCyan;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.herramientasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1293, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1354, 25);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,45 +110,44 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirToolStripMenuItem});
+            this.archivoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // abrirToolStripMenuItem
-            // 
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.abrirToolStripMenuItem.Text = "Abrir";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rotarDerechaToolStripMenuItem,
             this.rotarIzquierdaToolStripMenuItem});
+            this.herramientasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(98, 21);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
             // 
             // rotarDerechaToolStripMenuItem
             // 
+            this.rotarDerechaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.rotarDerechaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rotarDerechaToolStripMenuItem.Name = "rotarDerechaToolStripMenuItem";
-            this.rotarDerechaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.rotarDerechaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.rotarDerechaToolStripMenuItem.Text = "Rotar Derecha";
             this.rotarDerechaToolStripMenuItem.Click += new System.EventHandler(this.rotarDerechaToolStripMenuItem_Click_1);
             // 
             // rotarIzquierdaToolStripMenuItem
             // 
+            this.rotarIzquierdaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.rotarIzquierdaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rotarIzquierdaToolStripMenuItem.Name = "rotarIzquierdaToolStripMenuItem";
-            this.rotarIzquierdaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.rotarIzquierdaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.rotarIzquierdaToolStripMenuItem.Text = "Rotar Izquierda";
             this.rotarIzquierdaToolStripMenuItem.Click += new System.EventHandler(this.rotarIzquierdaToolStripMenuItem_Click_1);
             // 
-            // comboBox1
+            // seleccionUmbralizacion
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.seleccionUmbralizacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.seleccionUmbralizacion.FormattingEnabled = true;
+            this.seleccionUmbralizacion.Items.AddRange(new object[] {
             "Agua",
             "Aire",
             "Grasa",
@@ -151,202 +157,238 @@
             "Pulmones",
             "Sangre",
             "Personalizada"});
-            this.comboBox1.Location = new System.Drawing.Point(1086, 62);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.seleccionUmbralizacion.Location = new System.Drawing.Point(1086, 67);
+            this.seleccionUmbralizacion.Name = "seleccionUmbralizacion";
+            this.seleccionUmbralizacion.Size = new System.Drawing.Size(183, 22);
+            this.seleccionUmbralizacion.TabIndex = 8;
+            this.seleccionUmbralizacion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label3
+            // texto_umbralizacion
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1086, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Umbralización de tejido";
+            this.texto_umbralizacion.AutoSize = true;
+            this.texto_umbralizacion.Location = new System.Drawing.Point(1086, 43);
+            this.texto_umbralizacion.Name = "texto_umbralizacion";
+            this.texto_umbralizacion.Size = new System.Drawing.Size(117, 14);
+            this.texto_umbralizacion.TabIndex = 9;
+            this.texto_umbralizacion.Text = "Umbralización de tejido";
             // 
-            // label4
+            // textoPromedio
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(77, 602);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Promedio: ";
+            this.textoPromedio.AutoSize = true;
+            this.textoPromedio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoPromedio.Location = new System.Drawing.Point(77, 612);
+            this.textoPromedio.Name = "textoPromedio";
+            this.textoPromedio.Size = new System.Drawing.Size(76, 16);
+            this.textoPromedio.TabIndex = 11;
+            this.textoPromedio.Text = "Promedio: ";
             // 
-            // label5
+            // contPromedio
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(132, 602);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 12;
+            this.contPromedio.AutoSize = true;
+            this.contPromedio.Location = new System.Drawing.Point(153, 614);
+            this.contPromedio.Name = "contPromedio";
+            this.contPromedio.Size = new System.Drawing.Size(0, 14);
+            this.contPromedio.TabIndex = 12;
             // 
-            // textBox1
+            // centroUmbralizacion
             // 
-            this.textBox1.Location = new System.Drawing.Point(1113, 89);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(30, 20);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.Visible = false;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.centroUmbralizacion.Location = new System.Drawing.Point(1113, 96);
+            this.centroUmbralizacion.Name = "centroUmbralizacion";
+            this.centroUmbralizacion.Size = new System.Drawing.Size(30, 20);
+            this.centroUmbralizacion.TabIndex = 13;
+            this.centroUmbralizacion.Visible = false;
+            this.centroUmbralizacion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // ventanaUmbralizacion
             // 
-            this.textBox2.Location = new System.Drawing.Point(1182, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(30, 20);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Visible = false;
+            this.ventanaUmbralizacion.Location = new System.Drawing.Point(1182, 96);
+            this.ventanaUmbralizacion.Name = "ventanaUmbralizacion";
+            this.ventanaUmbralizacion.Size = new System.Drawing.Size(30, 20);
+            this.ventanaUmbralizacion.TabIndex = 14;
+            this.ventanaUmbralizacion.Visible = false;
             // 
-            // label6
+            // textoUHumbralizacion
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1083, 92);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "UH: ";
-            this.label6.Visible = false;
+            this.textoUHumbralizacion.AutoSize = true;
+            this.textoUHumbralizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUHumbralizacion.Location = new System.Drawing.Point(1083, 99);
+            this.textoUHumbralizacion.Name = "textoUHumbralizacion";
+            this.textoUHumbralizacion.Size = new System.Drawing.Size(29, 13);
+            this.textoUHumbralizacion.TabIndex = 15;
+            this.textoUHumbralizacion.Text = "UH: ";
+            this.textoUHumbralizacion.Visible = false;
             // 
-            // label7
+            // textoMasmenos
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1149, 89);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 15);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "+/- :";
-            this.label7.Visible = false;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.textoMasmenos.AutoSize = true;
+            this.textoMasmenos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoMasmenos.Location = new System.Drawing.Point(1149, 96);
+            this.textoMasmenos.Name = "textoMasmenos";
+            this.textoMasmenos.Size = new System.Drawing.Size(27, 15);
+            this.textoMasmenos.TabIndex = 16;
+            this.textoMasmenos.Text = "+/- :";
+            this.textoMasmenos.Visible = false;
+            this.textoMasmenos.Click += new System.EventHandler(this.label7_Click);
             // 
-            // button1
+            // botonUmbralizacion
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkCyan;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(1218, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Aplicar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.botonUmbralizacion.BackColor = System.Drawing.Color.DarkCyan;
+            this.botonUmbralizacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonUmbralizacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.botonUmbralizacion.Location = new System.Drawing.Point(1218, 96);
+            this.botonUmbralizacion.Name = "botonUmbralizacion";
+            this.botonUmbralizacion.Size = new System.Drawing.Size(50, 25);
+            this.botonUmbralizacion.TabIndex = 17;
+            this.botonUmbralizacion.Text = "Aplicar";
+            this.botonUmbralizacion.UseVisualStyleBackColor = false;
+            this.botonUmbralizacion.Visible = false;
+            this.botonUmbralizacion.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // button4
+            // botonRegla
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkCyan;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(1086, 128);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Regla";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.botonRegla.BackColor = System.Drawing.Color.DarkCyan;
+            this.botonRegla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonRegla.Location = new System.Drawing.Point(1086, 138);
+            this.botonRegla.Name = "botonRegla";
+            this.botonRegla.Size = new System.Drawing.Size(75, 25);
+            this.botonRegla.TabIndex = 18;
+            this.botonRegla.Text = "Regla";
+            this.botonRegla.UseVisualStyleBackColor = false;
+            this.botonRegla.Click += new System.EventHandler(this.button4_Click);
             // 
-            // label8
+            // textoDistancia
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(184, 601);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Distancia: ";
+            this.textoDistancia.AutoSize = true;
+            this.textoDistancia.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoDistancia.Location = new System.Drawing.Point(178, 612);
+            this.textoDistancia.Name = "textoDistancia";
+            this.textoDistancia.Size = new System.Drawing.Size(74, 16);
+            this.textoDistancia.TabIndex = 19;
+            this.textoDistancia.Text = "Distancia: ";
             // 
-            // label9
+            // contMedida
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(231, 602);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 13);
-            this.label9.TabIndex = 20;
+            this.contMedida.AutoSize = true;
+            this.contMedida.Location = new System.Drawing.Point(252, 616);
+            this.contMedida.Name = "contMedida";
+            this.contMedida.Size = new System.Drawing.Size(0, 14);
+            this.contMedida.TabIndex = 20;
             // 
-            // label10
+            // textoMm
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(275, 602);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(23, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "mm";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.textoMm.AutoSize = true;
+            this.textoMm.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoMm.Location = new System.Drawing.Point(275, 612);
+            this.textoMm.Name = "textoMm";
+            this.textoMm.Size = new System.Drawing.Size(30, 16);
+            this.textoMm.TabIndex = 21;
+            this.textoMm.Text = "mm";
+            this.textoMm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // textBox3
+            // centroVentana
             // 
-            this.textBox3.Location = new System.Drawing.Point(1097, 389);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(45, 20);
-            this.textBox3.TabIndex = 22;
+            this.centroVentana.Location = new System.Drawing.Point(1097, 419);
+            this.centroVentana.Name = "centroVentana";
+            this.centroVentana.Size = new System.Drawing.Size(45, 20);
+            this.centroVentana.TabIndex = 22;
             // 
-            // textBox4
+            // ventanaVentana
             // 
-            this.textBox4.Location = new System.Drawing.Point(1178, 389);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(34, 20);
-            this.textBox4.TabIndex = 23;
+            this.ventanaVentana.Location = new System.Drawing.Point(1178, 419);
+            this.ventanaVentana.Name = "ventanaVentana";
+            this.ventanaVentana.Size = new System.Drawing.Size(34, 20);
+            this.ventanaVentana.TabIndex = 23;
             // 
-            // button5
+            // botonVentana
             // 
-            this.button5.Location = new System.Drawing.Point(1139, 426);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(63, 30);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.botonVentana.Location = new System.Drawing.Point(1139, 459);
+            this.botonVentana.Name = "botonVentana";
+            this.botonVentana.Size = new System.Drawing.Size(63, 32);
+            this.botonVentana.TabIndex = 24;
+            this.botonVentana.Text = "button5";
+            this.botonVentana.UseVisualStyleBackColor = true;
+            this.botonVentana.Click += new System.EventHandler(this.button5_Click);
             // 
-            // trackBar1
+            // barraZoom
             // 
-            this.trackBar1.Location = new System.Drawing.Point(1089, 176);
-            this.trackBar1.Maximum = 5;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(167, 45);
-            this.trackBar1.TabIndex = 26;
-            this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.barraZoom.Location = new System.Drawing.Point(1089, 190);
+            this.barraZoom.Maximum = 5;
+            this.barraZoom.Minimum = 1;
+            this.barraZoom.Name = "barraZoom";
+            this.barraZoom.Size = new System.Drawing.Size(167, 45);
+            this.barraZoom.TabIndex = 26;
+            this.barraZoom.Value = 1;
+            this.barraZoom.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // button6
+            // botonKmeans
             // 
-            this.button6.Location = new System.Drawing.Point(1097, 492);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 27;
-            this.button6.Text = "K-means";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.botonKmeans.Location = new System.Drawing.Point(1097, 530);
+            this.botonKmeans.Name = "botonKmeans";
+            this.botonKmeans.Size = new System.Drawing.Size(75, 25);
+            this.botonKmeans.TabIndex = 27;
+            this.botonKmeans.Text = "K-means";
+            this.botonKmeans.UseVisualStyleBackColor = true;
+            this.botonKmeans.Click += new System.EventHandler(this.button6_Click);
             // 
-            // Bzoom
+            // botonZoom
             // 
-            this.Bzoom.Location = new System.Drawing.Point(1178, 128);
-            this.Bzoom.Name = "Bzoom";
-            this.Bzoom.Size = new System.Drawing.Size(91, 23);
-            this.Bzoom.TabIndex = 28;
-            this.Bzoom.Text = "Activar zoom";
-            this.Bzoom.UseVisualStyleBackColor = true;
-            this.Bzoom.Click += new System.EventHandler(this.Bzoom_Click);
+            this.botonZoom.Location = new System.Drawing.Point(1178, 138);
+            this.botonZoom.Name = "botonZoom";
+            this.botonZoom.Size = new System.Drawing.Size(91, 25);
+            this.botonZoom.TabIndex = 28;
+            this.botonZoom.Text = "Activar zoom";
+            this.botonZoom.UseVisualStyleBackColor = true;
+            this.botonZoom.Click += new System.EventHandler(this.Bzoom_Click);
             // 
-            // zoom
+            // boton3D
             // 
-            this.zoom.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.zoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.zoom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.zoom.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.zoom.Location = new System.Drawing.Point(1097, 227);
-            this.zoom.Name = "zoom";
-            this.zoom.Size = new System.Drawing.Size(159, 139);
-            this.zoom.TabIndex = 25;
-            this.zoom.TabStop = false;
+            this.boton3D.Location = new System.Drawing.Point(1114, 599);
+            this.boton3D.Name = "boton3D";
+            this.boton3D.Size = new System.Drawing.Size(123, 45);
+            this.boton3D.TabIndex = 29;
+            this.boton3D.Text = "reconstruccion";
+            this.boton3D.UseVisualStyleBackColor = true;
+            this.boton3D.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // barraHerramientas
+            // 
+            this.barraHerramientas.AllowDrop = true;
+            this.barraHerramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.barraHerramientas.Location = new System.Drawing.Point(0, 25);
+            this.barraHerramientas.Name = "barraHerramientas";
+            this.barraHerramientas.Size = new System.Drawing.Size(1354, 25);
+            this.barraHerramientas.TabIndex = 30;
+            this.barraHerramientas.Text = "toolStrip1";
+            this.barraHerramientas.Visible = false;
+            this.barraHerramientas.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked_1);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // visibleZoom
+            // 
+            this.visibleZoom.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.visibleZoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.visibleZoom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.visibleZoom.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.visibleZoom.Location = new System.Drawing.Point(1097, 244);
+            this.visibleZoom.Name = "visibleZoom";
+            this.visibleZoom.Size = new System.Drawing.Size(159, 149);
+            this.visibleZoom.TabIndex = 25;
+            this.visibleZoom.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox2.Location = new System.Drawing.Point(547, 87);
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox2.Location = new System.Drawing.Point(547, 94);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(512, 512);
             this.pictureBox2.TabIndex = 7;
@@ -354,35 +396,39 @@
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
             // 
-            // button3
+            // botonDerecha
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(467, 32);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 55);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.botonDerecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.botonDerecha.BackgroundImage = global::SAARTAC.Properties.Resources._905535_32;
+            this.botonDerecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonDerecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonDerecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.botonDerecha.Location = new System.Drawing.Point(488, 608);
+            this.botonDerecha.Name = "botonDerecha";
+            this.botonDerecha.Size = new System.Drawing.Size(36, 36);
+            this.botonDerecha.TabIndex = 5;
+            this.botonDerecha.UseVisualStyleBackColor = false;
+            this.botonDerecha.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // botonIzquierda
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(413, 34);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 53);
-            this.button2.TabIndex = 4;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.botonIzquierda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.botonIzquierda.BackgroundImage = global::SAARTAC.Properties.Resources._905524_32;
+            this.botonIzquierda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonIzquierda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonIzquierda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.botonIzquierda.Location = new System.Drawing.Point(446, 608);
+            this.botonIzquierda.Name = "botonIzquierda";
+            this.botonIzquierda.Size = new System.Drawing.Size(36, 36);
+            this.botonIzquierda.TabIndex = 4;
+            this.botonIzquierda.UseVisualStyleBackColor = false;
+            this.botonIzquierda.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 87);
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 94);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 512);
             this.pictureBox1.TabIndex = 1;
@@ -392,46 +438,61 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
+            // abrirToolStripMenuItem
+            // 
+            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abrirToolStripMenuItem.Text = "Abrir";
+            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click_1);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 637);
-            this.Controls.Add(this.Bzoom);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.zoom);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.barraHerramientas);
+            this.Controls.Add(this.boton3D);
+            this.Controls.Add(this.botonZoom);
+            this.Controls.Add(this.botonKmeans);
+            this.Controls.Add(this.barraZoom);
+            this.Controls.Add(this.visibleZoom);
+            this.Controls.Add(this.botonVentana);
+            this.Controls.Add(this.ventanaVentana);
+            this.Controls.Add(this.centroVentana);
+            this.Controls.Add(this.textoMm);
+            this.Controls.Add(this.contMedida);
+            this.Controls.Add(this.textoDistancia);
+            this.Controls.Add(this.botonRegla);
+            this.Controls.Add(this.botonUmbralizacion);
+            this.Controls.Add(this.textoMasmenos);
+            this.Controls.Add(this.textoUHumbralizacion);
+            this.Controls.Add(this.ventanaUmbralizacion);
+            this.Controls.Add(this.centroUmbralizacion);
+            this.Controls.Add(this.contPromedio);
+            this.Controls.Add(this.textoPromedio);
+            this.Controls.Add(this.texto_umbralizacion);
+            this.Controls.Add(this.seleccionUmbralizacion);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.botonDerecha);
+            this.Controls.Add(this.botonIzquierda);
+            this.Controls.Add(this.contUH);
+            this.Controls.Add(this.textoUH);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.White;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SAARTAC";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barraZoom)).EndInit();
+            this.barraHerramientas.ResumeLayout(false);
+            this.barraHerramientas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.visibleZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -442,38 +503,41 @@
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label textoUH;
+        private System.Windows.Forms.Label contUH;
+        private System.Windows.Forms.Button botonIzquierda;
+        private System.Windows.Forms.Button botonDerecha;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.PictureBox zoom;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.ComboBox seleccionUmbralizacion;
+        private System.Windows.Forms.Label texto_umbralizacion;
+        private System.Windows.Forms.Label textoPromedio;
+        private System.Windows.Forms.Label contPromedio;
+        private System.Windows.Forms.TextBox centroUmbralizacion;
+        private System.Windows.Forms.TextBox ventanaUmbralizacion;
+        private System.Windows.Forms.Label textoUHumbralizacion;
+        private System.Windows.Forms.Label textoMasmenos;
+        private System.Windows.Forms.Button botonUmbralizacion;
+        private System.Windows.Forms.Button botonRegla;
+        private System.Windows.Forms.Label textoDistancia;
+        private System.Windows.Forms.Label contMedida;
+        private System.Windows.Forms.Label textoMm;
+        private System.Windows.Forms.TextBox centroVentana;
+        private System.Windows.Forms.TextBox ventanaVentana;
+        private System.Windows.Forms.Button botonVentana;
+        private System.Windows.Forms.PictureBox visibleZoom;
+        private System.Windows.Forms.TrackBar barraZoom;
         private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotarDerechaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rotarIzquierdaToolStripMenuItem;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button Bzoom;
+        private System.Windows.Forms.Button botonKmeans;
+        private System.Windows.Forms.Button botonZoom;
+        private System.Windows.Forms.Button boton3D;
+        private System.Windows.Forms.ToolStrip barraHerramientas;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
     }
 }
 

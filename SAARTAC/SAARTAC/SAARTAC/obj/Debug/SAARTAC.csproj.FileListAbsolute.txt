@@ -34,3 +34,7 @@ C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\
 C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csproj.GenerateResource.Cache
 C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.exe
 C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.pdb
+C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.dll
+C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.pdb
+C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.xml
+C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.dll.config

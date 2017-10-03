@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\OpenTK\1.1\Binaries\OpenTK\Release\OpenTK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +61,7 @@
     <Compile Include="ParametroPython.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reconstruccion.cs" />
     <Compile Include="Regla.cs" />
     <Compile Include="Seccion.cs" />
     <Compile Include="Umbralizacion.cs" />
@@ -94,6 +99,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Plano-Cartesiano-300x295.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\160_F_118843686_FDM6YMhZSkDtvtl81wegWV1WfGDJYxMd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\905535-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\905524-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
