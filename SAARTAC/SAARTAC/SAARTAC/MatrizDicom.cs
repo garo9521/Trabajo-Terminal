@@ -52,7 +52,7 @@ namespace SAARTAC {
         public Bitmap ObtenerImagen() {
             Bitmap imagen = new Bitmap(N, M);
             int tam = maxValor - minValor + 1;
-            double porcion = 255.0 / tam;
+            double porcion = 256.0 / tam;
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {

@@ -4,18 +4,25 @@ using System.Diagnostics;
 using System.Threading;
 //esto es una prueba
 //esto es una prueba x2
+//crack
 namespace SAARTAC {
 
     internal class LecturaArchivosDicom {
 
         public static MatrizDicom[] archivosDicom;
         public Thread[] threadsArray;
+        private static Mutex[] mutex;
+        private int numeroHilos = 4;
 
         public MatrizDicom obtenerArchivo(int x) {
             return archivosDicom[x];
         }
 
         public LecturaArchivosDicom(string ruta) {
+            mutex = new Mutex [numeroHilos];
+            for(int i = 0; i < mutex.Length; i++) {
+                mutex[i] = new Mutex();
+            }
             int x = 0;
             string[] fileEntries = Directory.GetFiles(ruta);
 
@@ -56,8 +63,16 @@ namespace SAARTAC {
 
         public static double[] Pregunta_Python_Dimensiones(int pregunta, string ruta) {
 
+<<<<<<< HEAD
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+||||||| merged common ancestors
+            string python = @"C:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\AlexisAlan\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+=======
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";
+>>>>>>> master
             
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
@@ -80,12 +95,34 @@ namespace SAARTAC {
             return M;
         }
 
+         public static int EncuentraHiloLibre() {
+            int pos_hilo = 0;
+            while (true) {
+                if (!mutex [pos_hilo].WaitOne(100)) {
+                    pos_hilo++;
+                    pos_hilo %= mutex.Length;
+                } else {
+                    break;
+                }
+            }
+            return pos_hilo;
+        }
+
         public static void Pregunta_Python(ParametroPython o) {
+            int pos_hilo = EncuentraHiloLibre();
             string ruta = o.ruta;
             int pregunta = o.x;
             int pos = o.pos;            
+<<<<<<< HEAD
             string python = @"C:\Python27\python.exe";
             string myPythonApp = @"C:\Users\raull\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";            
+||||||| merged common ancestors
+            string python = @"C:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\AlexisAlan\Documents\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";            
+=======
+            string python = @"D:\Python27\python.exe";
+            string myPythonApp = @"C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\TT2.0C#\sum.py";            
+>>>>>>> master
             ProcessStartInfo myProcessStartInfo = new ProcessStartInfo(python);
 
             myProcessStartInfo.UseShellExecute = false;
@@ -119,6 +156,7 @@ namespace SAARTAC {
             myProcess.WaitForExit();
             myProcess.Close();            
             archivosDicom[pos] = dicom;
+            mutex [pos_hilo].ReleaseMutex();   
         }
     }
 	

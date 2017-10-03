@@ -34,7 +34,21 @@ C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\
 C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csproj.GenerateResource.Cache
 C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.exe
 C:\Users\Alberto Rios\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.pdb
+<<<<<<< HEAD
 C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.dll
 C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.pdb
 C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.xml
 C:\Users\raull\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\OpenTK.dll.config
+||||||| merged common ancestors
+=======
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\SAARTAC.exe.config
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.exe
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.pdb
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\SAARTAC.exe
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\bin\Debug\SAARTAC.pdb
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.Form1.resources
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.Properties.Resources.resources
+C:\Users\lenovo\Documents\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csproj.GenerateResource.Cache
+C:\Users\edgar\Documentos\GitHub\Trabajo-Terminal\SAARTAC\SAARTAC\SAARTAC\obj\Debug\SAARTAC.csproj.CoreCompileInputs.cache
+>>>>>>> master

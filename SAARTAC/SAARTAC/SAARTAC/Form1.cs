@@ -261,7 +261,7 @@ namespace SAARTAC {
         }
 
         private void button6_Click(object sender, EventArgs e){
-            kMeans k = new kMeans(lect, 6, 5, lect.num_archivos());
+            kMeans k = new kMeans(lect, 6, 10, lect.num_archivos());
             int[,,] clases = k.getClases();
             imagenesCaja2.Clear();
             for(int i = 0; i < lect.num_archivos(); i++) {
@@ -318,6 +318,59 @@ namespace SAARTAC {
                     }
                 }                
             }            
+        }
+        
+        private void ventanasToolStripMenuItem_Click(object sender, EventArgs e){
+
+        }
+
+        private void partesBlandasToolStripMenuItem_Click(object sender, EventArgs e){
+            int lim_inf_ven = -125;
+            int lim_sup_ven = 225;
+            generalEscalaGris(lim_inf_ven,lim_sup_ven);
+        }
+        private void generalEscalaGris(int lim_inf, int lim_sup){
+            imagenesCaja1.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++){
+                var archivo = lect.obtenerArchivo(i);
+                var imagen = obtenerImagenConVentana(archivo.matriz, lim_inf, lim_sup);
+                imagenesCaja1.Add(imagen);
+            }
+            MostrarImagen1();
+        }
+
+        private void pulmónToolStripMenuItem_Click(object sender, EventArgs e){
+            int lim_inf_ven = -1200;
+            int lim_sup_ven = 800;
+            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+        }
+
+        private void cerebroToolStripMenuItem_Click(object sender, EventArgs e){
+            int lim_inf_ven = -10;
+            int lim_sup_ven = 80;
+            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+        }
+
+        private void huesoToolStripMenuItem_Click(object sender, EventArgs e) {
+            int lim_inf_ven = -450;
+            int lim_sup_ven = 1050;
+            generalEscalaGris(lim_inf_ven, lim_sup_ven);
+        }
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FuzzyCMeans algoritmo = new FuzzyCMeans(lect, 6, lect.num_archivos());
+            int[,,] clases = algoritmo.getClases();
+            imagenesCaja2.Clear();
+            for (int i = 0; i < lect.num_archivos(); i++)
+            {
+                imagenesCaja2.Add(obtenerImgK(lect.obtenerArchivo(i).ObtenerImagen(), clases, i));
+            }
+            MostrarImagen2();
         }
 
         private void button7_Click(object sender, EventArgs e) {
