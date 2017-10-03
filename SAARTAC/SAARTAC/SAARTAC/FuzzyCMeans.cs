@@ -20,8 +20,7 @@ namespace SAARTAC
         private Random rnd;
         private double m = 2.0;
 
-        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int numeros_archivos, int iteraciones = 10)
-        {
+        public FuzzyCMeans(LecturaArchivosDicom lect, int k, int numeros_archivos, int iteraciones = 10){
             matrices = lect;
             numerosK = k;
             numArchivos = numeros_archivos;
@@ -36,18 +35,13 @@ namespace SAARTAC
 	            ActualizarPertenencia();
 	           	GeneraNuevosCentros();
         	}
-            for(int i = 0; i < 512; i++)
-            {
-                for(int j = 0; j < 512; j++)
-                {
-                    for(int kk = 0; kk < numArchivos; kk++)
-                    {
+            for(int i = 0; i < 512; i++){
+                for(int j = 0; j < 512; j++){
+                    for(int kk = 0; kk < numArchivos; kk++){
                         int tipo = 0;
                         double valor = pertenencia[i, j, 0, kk];
-                        for(int p = 1; p < numerosK; p++)
-                        {
-                            if(valor < pertenencia[i, j, p, kk])
-                            {
+                        for(int p = 1; p < numerosK; p++){
+                            if(valor < pertenencia[i, j, p, kk]){
                                 tipo = p;
                                 valor = pertenencia[i, j, p, kk];
                             }
@@ -58,27 +52,19 @@ namespace SAARTAC
             }
         }
 
-        public void generarCentros()
-        {
+        public void generarCentros(){
             centros = new List<Double>();
             rnd = new Random();
             for (int i = 0; i < numerosK; i++)
                 centros.Add(rnd.Next(min, max));
         }
 
-        public void GenerarDistancias()
-        {
-            for (int i = 0; i < 512; i++)
-            {
-                for (int j = 0; j < 512; j++)
-                {
-
-                    for (int p = 0; p < numArchivos; p++)
-                    {
+        public void GenerarDistancias(){
+            for (int i = 0; i < 512; i++){
+                for (int j = 0; j < 512; j++){
+                    for (int p = 0; p < numArchivos; p++){
                         matriz_actual = matrices.obtenerArchivo(p);
-
-                        for (int k = 0; k < numerosK; k++)
-                        {
+                        for (int k = 0; k < numerosK; k++){
                             double dist = matriz_actual.ObtenerUH(i, j) - centros[k];
                             distancias[i, j, k, p] = dist * dist;
                         }
@@ -88,20 +74,13 @@ namespace SAARTAC
         }
     
 
-        public void ActualizarPertenencia()
-        {
-            for (int i = 0; i < 512; i++)
-            {
-                for (int j = 0; j < 512; j++)
-                {
-
-                    for (int p = 0; p < numArchivos; p++)
-                    {
-                        for (int k = 0; k < numerosK; k++)
-                        {
+        public void ActualizarPertenencia(){
+            for (int i = 0; i < 512; i++){
+                for (int j = 0; j < 512; j++){
+                    for (int p = 0; p < numArchivos; p++){
+                        for (int k = 0; k < numerosK; k++){
                             double sum = 0.0;
-                            for(int l = 0; l < numerosK; l++)
-                            {
+                            for(int l = 0; l < numerosK; l++){
                                 sum += Math.Pow(distancias[i, j, k, p] / distancias[i, j, l, p], 2.0 / (m - 1.0));
                             }
                             pertenencia[i, j, k, p] = 1.0 / sum;

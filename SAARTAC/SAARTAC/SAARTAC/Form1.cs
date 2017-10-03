@@ -289,7 +289,7 @@ namespace SAARTAC {
 
         private Bitmap obtenerImgK(Bitmap matrizOriginal, int[,,] lista, int p){
             Bitmap resultado = new Bitmap(matrizOriginal);
-            List<Color> colores = new List<Color>() { Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
+            List<Color> colores = new List<Color>() {Color.Black, Color.Red, Color.Blue, Color.Orange, Color.Yellow, Color.Pink, Color.Purple };
             for(int i = 0; i < 512; i++) {
                 for (int j = 0; j < 512; j++) {
                     resultado.SetPixel(i, j, colores [lista[i, j, p]]);

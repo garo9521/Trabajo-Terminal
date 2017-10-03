@@ -44,25 +44,26 @@ namespace SAARTA
                     for (int i = 0; i < 512; i++)
                         for (int j = 0; j < 512; j++)
                             distanciaEuclidiana(i, j, p);
-                    promedio();
+                    
                 }
+                promedio();
             }
 
         }
 
         public void distanciaEuclidiana(int i, int j, int p)
         {
+            //if (matriz_actual.ObtenerUH(i, j) < -890) return;
             int indc = 0;
             conjunto.Clear();
-            foreach (Double indice in centros)
-            {
+            foreach (Double indice in centros){
                 Double resta = Math.Abs(matriz_actual.ObtenerUH(i, j) - indice);
                 conjunto.Add(resta);
             }
             for (int k = 1; k < conjunto.Count; k++)
                 if (conjunto[indc] > conjunto[k])
                     indc = k;
-            clases [i, j, p] = indc;            
+            clases [i, j, p] = indc + 1;            
         }
 
         public void promedio(){
@@ -76,8 +77,9 @@ namespace SAARTA
                 matriz_actual = matrices.obtenerArchivo(p);
                 for(int i = 0; i < 512; i++) {
                     for(int j = 0; j < 512; j++) {
-                        sumas [clases [i, j, p]] += matriz_actual.ObtenerUH(i, j);
-                        contador [clases [i, j, p]]++;
+                        //if (matriz_actual.ObtenerUH(i, j) < -890) continue;
+                        sumas [clases [i, j, p] - 1] += matriz_actual.ObtenerUH(i, j);
+                        contador [clases [i, j, p]- 1]++;
                     }
                 }
             }
@@ -87,7 +89,7 @@ namespace SAARTA
             }
         }
 
-        public int[,,] getClases(){
+        public int[,,] getClases(){            
             return clases;
         }
 
